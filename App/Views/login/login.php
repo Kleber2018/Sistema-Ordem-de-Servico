@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="content has-background-light">
+<html class="content tela-login">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -12,8 +12,7 @@
 <body>
 <div class="container has-text-centered">
     <div class="column is-4 is-offset-4">
-        <h3 class="title">Login</h3>
-        <p class="subtitle">Por favor, faça o login para continuar.</p>
+        <p class="subtitle"><span style="font-size: 32px;">LOGIN</span><br/>Por favor, faça o login para continuar.</p>
         <div class="box">
             <form name="logar" action="http://<?php echo APP_HOST; ?>/Login/verificar" method="POST">
                 <div class="field">
