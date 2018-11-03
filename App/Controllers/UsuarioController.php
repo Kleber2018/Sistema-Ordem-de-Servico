@@ -19,8 +19,6 @@ class UsuarioController extends Controller
     public function salvar()
     {
         $Usuario = new Usuario();
-
-
         $Usuario->setFnCodigo($_POST['usuario-codigo']);
         $Usuario->setFnNome($_POST['usuario-nome']);
         $Usuario->setFnSenha($_POST['usuario-senha']);
@@ -35,6 +33,7 @@ class UsuarioController extends Controller
             $this->redirect('/usuario/cadastro');
         }
 */
+
         if($usuarioDAO->salvar($Usuario)){
             $this->redirect('/usuario/sucesso');
         }else{

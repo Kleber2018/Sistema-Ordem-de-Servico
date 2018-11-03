@@ -51,8 +51,6 @@ class App
         //usuário que está logado
         $usuario = $_SESSION["usuario"];
 
-
-
             if ($this->controller) {
                 $this->controllerName = ucwords($this->controller) . 'Controller';
                 $this->controllerName = preg_replace('/[^a-zA-Z]/i', '', $this->controllerName);
@@ -63,11 +61,6 @@ class App
                     $this->controllerName = "LoginController";
                 }
             }
-
-
-
-
-
 
 
         $this->controllerFile   = $this->controllerName . '.php';
@@ -87,8 +80,6 @@ class App
             var_dump($this->action);
 */
 
-
-
         //nesse momente que ele abre as páginas
         if (!$this->controller) {
             //verifica se está logado para direcionar para tela inicial ou login
@@ -100,8 +91,6 @@ class App
                 $this->controller->renderLogin();
             }
         }
-
-
 
 
 
@@ -145,8 +134,6 @@ class App
         } else {
             throw new Exception("Nosso suporte já esta verificando desculpe!", 500);
         }
-
-
         throw new Exception("Página não encontrada.", 404);
     }
 

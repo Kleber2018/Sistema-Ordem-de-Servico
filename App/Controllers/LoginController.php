@@ -2,6 +2,9 @@
 
 namespace App\Controllers;
 
+use App\Models\DAO\UsuarioDAO;
+use App\Models\Entidades\Usuario;
+
 class LoginController extends Controller
 {
 
@@ -14,46 +17,64 @@ class LoginController extends Controller
 
 
     public function verificar(){
-        $usuario = $_POST["usuario"] ?? null;
-        $senha = $_POST["senha"] ?? null;
 
-        //IMPLEMENTAR
-        //NESSA PARTE PRECISA IMPLEMENTAR A PARTE QUE BUSCA ANO BANCO DE DADOS
-        $verificador[0] = array(
-            'usuario' => "kleber",
-            'senha' => "123"
-        );
-        $verificador[1] = array(
-            'usuario' => "Leandro",
-            'senha' => "123"
-        );
-        $verificador[2] = array(
-            'usuario' => "adm",
-            'senha' => "333"
-        );
+        //Setando dados para buscar no banco de dados
+        $usuario = new Usuario();
+        $usuario->setFnCodigo($_POST['usuario']);
+        $usuario->setFnSenha($_POST['senha']);
+
+        $usuarioDAO = new UsuarioDAO();
         session_destroy();
 
+        //Executa a query para encontrar se existe usuário e senha no banco de dados
+        $login = $usuarioDAO->buscaLogin($usuario) ?? null;
 
-        session_start();
+        //Começa a sessão se encontrado
+        if (isset($login['FN_CODIGO']) && isset($login['SENHA'])) {
+            session_start();
+            $_SESSION['logado'] = "true";
+            $_SESSION['usuario'] = $login['FN_CODIGO'];
+            $_SESSION['senha'] = $login['SENHA'];
+            $this->redirect('/home/index');
+        } else {
+            echo "<script>alert('Dados incorretos!');";
+            echo "window.location='..';</script>";
+        }    
 
-        $vr=true;
-        //VERIFICA SE O USUARIO EXISTE E CRIA A SESSION
-        foreach($verificador as $linha){
-            if($usuario == $linha['usuario'] && $senha == $linha['senha']){
-                $_SESSION['logado'] = "true";
-                $_SESSION['usuario'] = $usuario;
-                $this->redirect('/home/index');
-                $vr=false;//
-            }
-        }
+        // //CÓDIGO ANTIGO
+        // session_start();
 
-        //????????? não está sendo usado
-        if($vr){
-            header("location: login.php");
-        }
-        if(isset($_SESSION["logado"]) && $_SESSION["logado"] == "true"){
-            header("location: index.php");
-        }
+        // $verificador[0] = array(
+        //     'usuario' => "kleber",
+        //     'senha' => "123"
+        // );
+        // $verificador[1] = array(
+        //     'usuario' => "Leandro",
+        //     'senha' => "123"
+        // );
+        // $verificador[2] = array(
+        //     'usuario' => "adm",
+        //     'senha' => "333"
+        // );
+
+        // $vr=true;
+        // //VERIFICA SE O USUARIO EXISTE E CRIA A SESSION
+        // foreach($usuario as $linha){
+        //     if($usuario == $linha['usuario'] && $senha == $linha['senha']){
+        //         $_SESSION['logado'] = "true";
+        //         $_SESSION['usuario'] = $usuario;
+        //         $this->redirect('/home/index');
+        //         $vr=false;
+        //     }
+        // }
+
+        // if($vr){
+        //     header("location: login.php");
+        // }
+        // if(isset($_SESSION["logado"]) && $_SESSION["logado"] == "true"){
+        //     header("location: index.php");
+        // }
+        
     }
 
 
