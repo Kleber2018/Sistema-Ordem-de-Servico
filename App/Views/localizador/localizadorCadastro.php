@@ -8,27 +8,43 @@
         <br/>
     </nav>
     <div class="content">
+
             <?php if($Sessao::retornaMensagem()){ ?>
                 <div class="alert alert-warning" role="alert"><?php echo $Sessao::retornaMensagem(); ?></div>
             <?php } ?>
 
+
+
             <form action="http://<?php echo APP_HOST; ?>/localizador/salvar" method="post" id="form_cadastro">
+
+
+
                 <label for="localizador-codigo" class="label" >Código do localizador</label>
                 <div class="field is-grouped">
-                        <div class="control has-icons-left is-expanded">
-                            <input type="text" class="input" name="loc-codigo" placeholder="Ex: QD(PONTA GROSSA), OQ(PALMEIRA)" value="" required>
-                            <span class="icon is-small is-left">
+                    <div class="control has-icons-left is-expanded">
+                        <input type="text" class="input" name="os-localizador1" placeholder="Ex: QD(PONTA GROSSA), OQ(PALMEIRA)" value="" required>
+                        <span class="icon is-small is-left">
                                 <i class="fas fa-map-marker-alt"></i>
                             </span>
-                        </div>
-                        <div class="control has-icons-left is-expanded">
-                            <input type="text" class="input" name="loc-codigo" placeholder="Ex: J1:(ETA)" value="" required>
-                            <span class="icon is-small is-left">
+                    </div>
+                    <div class="control has-icons-left is-expanded">
+                        <input type="text" class="input" name="os-localizador2" placeholder="Ex: J1:(ETA)" value="" required>
+                        <span class="icon is-small is-left">
                                 <i class="fas fa-map-marker"></i>
                             </span>
-                        </div>
-                    
+                    </div>
+                    <div class="control has-icons-left is-expanded">
+                        <input type="text" class="input" name="os-localizador3" placeholder="Ex: BM:(BOMBEAMENTO)" value="" required>
+                        <span class="icon is-small is-left">
+                                <i class="fas fa-map-marker"></i>
+                            </span>
+                    </div>
+                    <div class="control has-icons-left is-expanded"">
+                        <button class="button is-primary">Buscar</button>
+                    </div>
                 </div>
+
+
                 <div class="field">
                     <label for="localizacao-titulo" class="label">Título do localizador</label>
                     <div class="control has-icons-left">
@@ -38,6 +54,8 @@
                         </span>
                     </div>
                 </div>
+
+
                 <div class="field">
                     <label for="equipe" class="label">Equipe Responsável Pelo Localizador</label>
                     <div class="control has-icons-left">
@@ -47,6 +65,8 @@
                         </span>
                     </div>
                 </div>
+
+
                 <div class="control">
                     <div class="field">
                         <button type="submit" class="button is-link">Salvar</button>

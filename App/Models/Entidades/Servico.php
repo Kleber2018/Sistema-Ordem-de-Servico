@@ -14,11 +14,31 @@ class Servico
     private $os_equipe; // equipe A, equipe B
     private $os_status; //emitida, nao executada, executada
 
+    //usado em ambos
+    private $dataCriacao;
+
     //variaveis apropriacao de horas do serviço
     private $osa_data;
     private $osa_hora_final;
     private $osa_tipo_apropriacao;//hora extra ou normal
     private $osa_funcionario;
+
+    /**
+     * @return mixed
+     */
+    public function getDataCriacao()
+    {
+        return $this->dataCriacao;
+    }
+
+    /**
+     * @param mixed $dataCriacao
+     */
+    public function setDataCriacao($dataCriacao)
+    {
+        $this->dataCriacao = $dataCriacao;
+    }
+
 
     /**
      * @return mixed

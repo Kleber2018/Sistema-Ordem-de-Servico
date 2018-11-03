@@ -20,18 +20,20 @@ class ServicoController extends Controller
 
     public function salvar()
     {
-
+        $servicoDAO = new ServicoDAO();
         $Servico = new Servico();
-        $Servico->setOsLocalizacao('os-localizador');
-        $Servico->setOsResponsavel('os-responsavel');
-       // $Servico->setOsTipo('os-tipo');
-        $Servico->setOsTitulo('os-titulo');
-        $Servico->setOsObs('os-obs');
 
+
+        $Servico->setOsLocalizacao($_POST['os-localizador1'].$_POST['os-localizador2'].$_POST['os-localizador3']);
+        $Servico->setOsResponsavel($_POST['os-responsavel']);
+        //var_dump($_POST['os-localizador1']);
+       // $Servico->setOsTipo($_POST['os-tipo']);
+        $Servico->setOsTitulo($_POST['os-titulo']);
+        $Servico->setOsObs($_POST['os-obs']);
 
         Sessao::gravaFormulario($_POST);
 
-        $servicoDAO = new ServicoDAO();
+
 
             if($servicoDAO->salvar($Servico)){
                 $this->redirect('/servico/sucesso');

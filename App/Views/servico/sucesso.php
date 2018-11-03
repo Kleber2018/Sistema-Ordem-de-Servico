@@ -3,12 +3,12 @@
         <ul>
             <li><a href="#">Administração</a></li>
             <li><a>Cadastros</a></li>
-            <li class="is-active"><a href="#" aria-current="page">Localizadores</a></li>
+            <li class="is-active"><a href="#" aria-current="page">Serviços</a></li>
         </ul>
         <br/>
     </nav>
         <div class="content">
-            <h1>Localizador <?php echo $Sessao::retornaValorFormulario('loc-titulo');?> cadastrado com sucesso.</h1>
-            <a href="http://<?php echo APP_HOST; ?>/localizador/localizadorCadastro" class="button is-info">Voltar</a>
+            <h1>Localizador <?php echo $Sessao::retornaValorFormulario('os-titulo');?> cadastrado com sucesso.</h1>
+            <a href="http://<?php echo APP_HOST; ?>/servico/servicoCadastro" class="button is-info">Voltar</a>
         </div>
 </main>

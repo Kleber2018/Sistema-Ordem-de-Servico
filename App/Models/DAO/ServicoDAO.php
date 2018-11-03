@@ -6,43 +6,71 @@ use App\Models\Entidades\Servico;
 
 class ServicoDAO extends BaseDAO
 {
+    private $codigosOse;
+    //codigo da ose é Ex: QD:000023
+    private $codLetra;
+    private $codNumero;
 
+    private $vr;//verificador para depurar
     //salva os dados do formulário da View/usuario/cadastro
     public  function salvar(Servico $servico) {
         try {
             $servico->setOsTipo('2');
-            $servico->setOsCodigo('QD00002');//CRIAR UMA FUNÇÃO PARA GERAR ESSE CÓDIGO
-           // $nome      = $usuario->getNome();
-            //$email     = $usuario->getEmail();
+
+            $servico->setOsCodigo($this->geraCodOse($servico->getOsLocalizacao()));
+            //var_dump($servico->getOsCodigo());
             return $this->insert(
                 'SMIOS',
-                ":OS_CODIGO, :OS_OBS, :OS_NOME_RESP, :OS_TIPO, :OS_TITULO",
+                ":OS_CODIGO, :OS_OBS, :OS_NOME_RESP, :OS_TIPO, :OS_TITULO, :LOC_CODIGO, :OS_DATA_R",
                 [
                     ':OS_CODIGO'=>$servico->getOsCodigo(),
                     ':OS_OBS'=>$servico->getOsObs(),
                     ':OS_NOME_RESP'=>$servico->getOsResponsavel(),
                     ':OS_TIPO'=>$servico->getOsTipo(),
-                    ':OS_TITULO'=>$servico->getOsTitulo()
-
+                    ':OS_TITULO'=>$servico->getOsTitulo(),
+                    ':LOC_CODIGO'=>$servico->getOsLocalizacao(),
+                    ':OS_DATA_R'=>'NOW()'
                 ]
             );
 
         }catch (\Exception $e){
-            throw new \Exception("Erro na gravação de dados dentro do Dao Servico.", 500);
+            throw new \Exception("Erro na gravação de dados dentro do ServicoDAO.", 500);
         }
     }
     /*
-     * Para criar um código para a OSE
+     * Para criar um código para a OSE no padrão Ex: QD:026
      */
-    public function geraCodOse($cod)
+    public function geraCodOse($loc)
     {
         try {
 
             $query = $this->select(
-                "SELECT * FROM SMICL WHERE LOC_CODIGO = '$cod' "
+                "SELECT OS_CODIGO FROM SMIOS WHERE OS_CODIGO like '$loc%' order by os_codigo DESC LIMIT 1"
             );
 
-            return $query->fetch();
+            var_dump('antes do if');
+            if($query->fetch()){
+
+                var_dump('dentro do if');
+                $this->codigosOse = $query->fetchAll();
+
+                var_dump($this->codigosOse);//NAO CONSIGO ATRIBUIR O RETORNO OS_CODIGO DO SELECT PARA EXPLODIR NA SEQUENCIA
+
+
+                $this->vr = explode(":",$this->codigosOse['0']);
+                $this->codNumero = intval($this->vr['1']+9);
+                $this->codLetra = $this->vr[0];
+                var_dump($this->codLetra);
+                var_dump($this->codNumero);
+            } else {
+                $this->vr = str_split($loc,2);
+
+                $this->codLetra = $this->vr[0];
+                $this->codNumero = 01;
+            }
+
+
+              return  $this->codLetra.':0'.$this->codNumero;
 
         }catch (Exception $e){
             throw new \Exception("Erro no acesso aos dados.", 500);
@@ -60,7 +88,7 @@ OS_TITULO VARCHAR(120),
 OS_DATA_R DATETIME,
 OS_UO_EQUIPE VARCHAR(7),
 OS_STATUS VARCHAR(15),
-ADIC_DATA VARCHAR(10),
+ADIC_DATA DATE,
 LOC_CODIGO CHAR(12),
 FN_CODIGO VARCHAR(10),
 EEM_CODIGO CHAR(12),
