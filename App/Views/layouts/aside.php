@@ -1,6 +1,6 @@
 <section class="main-content columns is-fullheight">
   
-  <aside class="column is-2 is-narrow-mobile is-fullheight aside menu">
+  <aside class="column is-2 aside menu">
     
     <ul class="menu-list ">
     <p class="menu-label">Administração</p>
@@ -9,7 +9,7 @@
             <li><a><span class="icon is-small"><i class="fas fa-edit"></i></span> Cadastros</a>
               <ul>
                   <li><a>Equipamentos</a></li>
-                  <li><a <?php if($viewVar['nameController'] == "LocalizadorController") { ?> class="is-active" <?php } ?> href="http://<?php echo APP_HOST; ?>/localizador/localizadorCadastro">Localizadores</a></li>
+                  <li class="menu-item"><a <?php if($viewVar['nameController'] == "LocalizadorController") { ?> class="is-active" <?php } ?> href="http://<?php echo APP_HOST; ?>/localizador/localizadorCadastro">Localizadores</a></li>
                   <li><a>Serviços</a></li>
                 </ul>
             </li>
@@ -17,7 +17,7 @@
             <li><a <?php if($viewVar['nameController'] == "UsuarioController") { ?> class="is-active" <?php } ?> href="http://<?php echo APP_HOST; ?>/usuario/cadastro"><i class="fa fa-cog"></i> Controle de usuários</a></li>
           </ul>
     </ul>
-  </aside>
+            </aside>
 
 <!--   
 <div class="wrapper">

@@ -1,5 +1,5 @@
 <nav class="navbar is-large" role="navigation" aria-label="main navigation">
-    <div class="navbar-brand">
+    <div class="hero navbar-brand is-centered">
         <a href="http://<?php echo APP_HOST; ?>" class="navbar-item">
           <img src="http://<?php echo APP_HOST; ?>/public/imgs/logo-cog-2.png">
           <p class = "is-size-4" style="padding-bottom:2px; padding-left:6px;"> Sistema Eletromecânico</p>
@@ -8,7 +8,7 @@
     </div>
 
     <div class="navbar-end">
-        <div class='navbar-item has-dropdown is-hoverable'>
+        <div class='navbar-item has-dropdown is-hoverable has-text-dark'>
             <a class='navbar-link has-text-grey'>
             Bem vindo <?php echo $_SESSION['usuario']?>
             </a>
