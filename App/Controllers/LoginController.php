@@ -35,6 +35,7 @@ class LoginController extends Controller
             $_SESSION['logado'] = "true";
             $_SESSION['usuario'] = $login['FN_CODIGO'];
             $_SESSION['senha'] = $login['SENHA'];
+            $_SESSION['lembrar'] = $_POST['lembrar'];
             $this->redirect('/home/index');
         } else {
             echo "<script>alert('Dados incorretos!');";

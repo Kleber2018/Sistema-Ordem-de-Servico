@@ -8,6 +8,7 @@ abstract class Controller
 {
     protected $app;
     private $viewVar;
+    //public static $segundosDeslogar = 5; 
 
     public function __construct($app)
     {
@@ -18,6 +19,10 @@ abstract class Controller
     //monta a página
     public function render($view)
     {
+        if ($_SESSION['lembrar'] != "on"){
+            $segundosDeslogar = 5; // Deslogar se a última requisição for maior que X segundos
+            $this->checaAutenticacao($segundosDeslogar);
+        }
         $viewVar = $this->getViewVar();
         $Sessao  = Sessao::class;
 
@@ -44,5 +49,18 @@ abstract class Controller
         if ($varName != "" && $varValue != "") {
             $this->viewVar[$varName] = $varValue;
         }
+    }
+
+
+    public function checaAutenticacao($segundosDeslogar){
+        if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > $segundosDeslogar)) {
+            
+            session_unset(); 
+            session_destroy();
+        
+            echo "<script>alert('Você permaneceu inativo mais que ${segundosDeslogar} segundos e foi deslogado!');";
+            echo "window.location='..';</script>";
+        }
+        $_SESSION['LAST_ACTIVITY'] = time();
     }
 }
