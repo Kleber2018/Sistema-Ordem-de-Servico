@@ -1,7 +1,7 @@
-<nav class="navbar is-large" role="navigation" aria-label="main navigation">
+<nav class="navbar" role="navigation" aria-label="main navigation">
     <div class="hero navbar-brand is-centered">
         <a href="http://<?php echo APP_HOST; ?>" class="navbar-item">
-          <img src="http://<?php echo APP_HOST; ?>/public/imgs/logo-cog-2.png">
+          <img src="http://<?php echo APP_HOST; ?>/public/imgs/logo-cog-2.png"  height="128">
           <p class = "is-size-4" style="padding-bottom:2px; padding-left:6px;"> Sistema Eletromecânico</p>
         </a>
 
