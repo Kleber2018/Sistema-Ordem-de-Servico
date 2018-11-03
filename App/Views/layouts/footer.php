@@ -1,4 +1,7 @@
-    <footer class="footer">
+</body>
+</html>
+
+    <!-- <footer class="footer">
         <div class="container">
             <p class="text-muted">
                 Rodapé :)
@@ -11,4 +14,4 @@
     <script src="http://<?php echo APP_HOST; ?>/public/js/validacao.js"type="text/javascript"></script>
     <script src="http://<?php echo APP_HOST; ?>/public/js/bootstrap.min.js"></script>
 </body>
-</html>
+</html> -->

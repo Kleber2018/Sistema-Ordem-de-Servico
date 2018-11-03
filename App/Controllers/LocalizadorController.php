@@ -23,7 +23,6 @@ class LocalizadorController extends Controller
         $Localizador->setLocTitulo($_POST['loc-titulo']);
         $Localizador->setLocEquipe($_POST['loc-equipe']);
 
-
         Sessao::gravaFormulario($_POST);
 
         $localizadorDAO = new LocalizadorDAO();
@@ -34,6 +33,7 @@ class LocalizadorController extends Controller
             $this->redirect('/localizador/cadastro');
         }
         */
+
         if($localizadorDAO->salvar($Localizador)){
             $this->redirect('/localizador/sucesso');
         }else{
@@ -43,7 +43,7 @@ class LocalizadorController extends Controller
     
     public function sucesso()
     {
-        if(Sessao::retornaValorFormulario('nome')) {
+        if(Sessao::retornaValorFormulario('loc-titulo')) {
             $this->render('/localizador/sucesso');
 
             Sessao::limpaFormulario();

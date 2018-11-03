@@ -40,4 +40,18 @@ class UsuarioDAO extends BaseDAO
             throw new \Exception("Erro na gravação de dados.", 500);
         }
     }
+
+    public function buscaLogin(Usuario $usuario)
+    {
+        try {
+            $sql = "SELECT * FROM SMIFN WHERE FN_CODIGO = '" . $usuario->getFnCodigo() ."' AND SENHA = '" . $usuario->getFnSenha() . "'";
+            //echo $sql . "<br/>";
+            $query = $this->select($sql);
+            return $query->fetch();
+
+        }catch (Exception $e){
+            throw new \Exception("Erro no acesso aos dados.", 500);
+        }
+    }
+
 }
