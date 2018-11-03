@@ -14,7 +14,7 @@
 
             <form action="http://<?php echo APP_HOST; ?>/localizador/salvar" method="post" id="form_cadastro">
                 <div class="field">
-                    <label for="localizador-codigo" class="label" >Codigo da Localização</label>
+                    <label for="localizador-codigo" class="label" >Código do localizador</label>
                     <div class="control has-icons-left">
                         <input type="text" class="input" name="loc-codigo" placeholder="Ex: QD(PONTA GROSSA), OQ(PALMEIRA)" value="" required>
                         <span class="icon is-small is-left">
@@ -23,7 +23,7 @@
                     </div>
                 </div>
                 <div class="field">
-                    <label for="localizacao-titulo" class="label">Título da Localização</label>
+                    <label for="localizacao-titulo" class="label">Título do localizador</label>
                     <div class="control has-icons-left">
                         <input type="text" class="input"  name="loc-titulo" placeholder="Título" value="" required>
                         <span class="icon is-small is-left">
@@ -32,7 +32,7 @@
                     </div>
                 </div>
                 <div class="field">
-                    <label for="equipe" class="label">Equipe Responsável Pela Localização</label>
+                    <label for="equipe" class="label">Equipe Responsável Pelo Localizador</label>
                     <div class="control has-icons-left">
                         <input type="text" class="input" name="loc-equipe" placeholder="Equipe" value="" required>
                         <span class="icon is-small is-left">
