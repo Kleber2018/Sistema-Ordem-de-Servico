@@ -15,11 +15,19 @@
             <form action="http://<?php echo APP_HOST; ?>/localizador/salvar" method="post" id="form_cadastro">
                 <div class="field">
                     <label for="localizador-codigo" class="label" >Código do localizador</label>
-                    <div class="control has-icons-left">
-                        <input type="text" class="input" name="loc-codigo" placeholder="Ex: QD(PONTA GROSSA), OQ(PALMEIRA)" value="" required>
-                        <span class="icon is-small is-left">
-                            <i class="fas fa-map-marker-alt"></i>
-                        </span>
+                    <div class="columns">
+                        <div class="control has-icons-left column">
+                            <input type="text" class="input" name="loc-codigo" placeholder="Ex: QD(PONTA GROSSA), OQ(PALMEIRA)" value="" required>
+                            <span class="icon is-small is-left">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </span>
+                        </div>
+                        <div class="control has-icons-left column">
+                            <input type="text" class="input" name="loc-codigo" placeholder="Ex: QD(PONTA GROSSA), OQ(PALMEIRA)" value="" required>
+                            <span class="icon is-small is-left">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </span>
+                        </div>
                     </div>
                 </div>
                 <div class="field">

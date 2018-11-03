@@ -34,11 +34,18 @@ class LocalizadorController extends Controller
         }
         */
 
-        if($localizadorDAO->salvar($Localizador)){
-            $this->redirect('/localizador/sucesso');
-        }else{
-            Sessao::gravaMensagem("Erro ao gravar");
+        if($localizadorDAO->verificaCodIgual($Localizador->getLocCodigo())){
+            $this->redirect('/localizador/existente');
+        }else {
+            if($localizadorDAO->salvar($Localizador)){
+                $this->redirect('/localizador/sucesso');
+            }else{
+                //$this->redirect('/localizador/exitente');
+                Sessao::gravaMensagem("Erro ao gravar");
+            }
         }
+
+
     }
     
     public function sucesso()
@@ -49,6 +56,20 @@ class LocalizadorController extends Controller
             Sessao::limpaFormulario();
             Sessao::limpaMensagem();
         }else{
+            
+            $this->redirect('/');
+        }
+    }
+
+    public function existente()
+    {
+        if(Sessao::retornaValorFormulario('loc-titulo')) {
+            $this->render('/localizador/existente');
+
+            //Sessao::limpaFormulario();
+            //Sessao::limpaMensagem();
+        }else{
+            
             $this->redirect('/');
         }
     }
