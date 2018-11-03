@@ -19,6 +19,10 @@
                 </span>
                 <h1 class='content has-text-grey'>Deslogar</h1>
             </a>
+            </div>
+        </div>
+        </div>
+    </nav>
           <!-- PHP que desloga após certo tempo -->
 <?php
 	// 	session_start();
@@ -29,10 +33,7 @@
 	// require("checaAutenticacao.php"); 
   ?>
 
-        </div>
-        </div>
-        </div>
-    </nav>
+
 
 <!-- <nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container">

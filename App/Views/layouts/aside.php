@@ -1,6 +1,6 @@
-<section class="main-content columns is-fullheight">
+<section class="columns is-fullheight">
   
-  <aside class="column is-2 aside menu">
+  <aside class="column is-2 aside menu is-fullheight">
     
     <ul class="menu-list ">
     <p class="menu-label">Administração</p>
@@ -17,6 +17,7 @@
             <li class="menu-item"><a <?php if($viewVar['nameController'] == "UsuarioController") { ?> class="is-active" <?php } ?> href="http://<?php echo APP_HOST; ?>/usuario/cadastro"><i class="fa fa-cog"></i> Controle de usuários</a></li>
           </ul>
     </ul>
+    <!-- <br/> -->
             </aside>
 
 <!--   
