@@ -25,7 +25,7 @@ class LocalizadorDAO extends BaseDAO
             );
 
         }catch (\Exception $e){
-            throw new \Exception("Erro na gravação de dados.", 500);
+            throw new \Exception("Erro na gravação de dados do Localizador DAO.", 500);
         }
     }
 

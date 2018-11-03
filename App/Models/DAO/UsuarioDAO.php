@@ -37,7 +37,7 @@ class UsuarioDAO extends BaseDAO
             );
 
         }catch (\Exception $e){
-            throw new \Exception("Erro na gravação de dados.", 500);
+            throw new \Exception("Erro na gravação de dados do usuarioDao.", 500);
         }
     }
 
@@ -50,7 +50,7 @@ class UsuarioDAO extends BaseDAO
             return $query->fetch();
 
         }catch (Exception $e){
-            throw new \Exception("Erro no acesso aos dados.", 500);
+            throw new \Exception("Erro no acesso aos dados no dao usuario.", 500);
         }
     }
 

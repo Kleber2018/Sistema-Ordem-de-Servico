@@ -3,14 +3,16 @@
 namespace App\Controllers;
 
 use App\Lib\Sessao;
-use App\Models\DAO\LocalizadorDAO;
-use App\Models\Entidades\Localizador;
+use App\Models\DAO\ServicoDAO;
+use App\Models\Entidades\Servico;
 
-class LocalizadorController extends Controller
+class ServicoController extends Controller
 {
-    public function localizadorCadastro()
+    //Para abrir a view usuarioCadastro
+    // Utiliza a render do Controller para montar a página
+    public function servicoCadastro()
     {
-        $this->render('/localizador/localizadorCadastro');
+        $this->render('/servico/servicoCadastro');
 
         Sessao::limpaFormulario();
         Sessao::limpaMensagem();
@@ -18,40 +20,30 @@ class LocalizadorController extends Controller
 
     public function salvar()
     {
-        $Localizador = new Localizador();
-        $Localizador->setLocCodigo($_POST['loc-codigo']);
-        $Localizador->setLocTitulo($_POST['loc-titulo']);
-        $Localizador->setLocEquipe($_POST['loc-equipe']);
+
+        $Servico = new Servico();
+        $Servico->setOsLocalizacao('os-localizador');
+        $Servico->setOsResponsavel('os-responsavel');
+       // $Servico->setOsTipo('os-tipo');
+        $Servico->setOsTitulo('os-titulo');
+        $Servico->setOsObs('os-obs');
+
 
         Sessao::gravaFormulario($_POST);
 
-        $localizadorDAO = new LocalizadorDAO();
+        $servicoDAO = new ServicoDAO();
 
-        /*
-        if($usuarioDAO->verificaEmail($_POST['email'])){
-            Sessao::gravaMensagem("Email existente");
-            $this->redirect('/localizador/cadastro');
-        }
-        */
-
-        if($localizadorDAO->verificaCodIgual($Localizador->getLocCodigo())){
-            $this->redirect('/localizador/existente');
-        }else {
-            if($localizadorDAO->salvar($Localizador)){
-                $this->redirect('/localizador/sucesso');
+            if($servicoDAO->salvar($Servico)){
+                $this->redirect('/servico/sucesso');
             }else{
-                //$this->redirect('/localizador/exitente');
                 Sessao::gravaMensagem("Erro ao gravar");
             }
-        }
-
-
     }
     
     public function sucesso()
     {
-        if(Sessao::retornaValorFormulario('loc-titulo')) {
-            $this->render('/localizador/sucesso');
+        if(Sessao::retornaValorFormulario('os-titulo')) {
+            $this->render('/servico/sucesso');
 
             Sessao::limpaFormulario();
             Sessao::limpaMensagem();
@@ -61,22 +53,9 @@ class LocalizadorController extends Controller
         }
     }
 
-    public function existente()
-    {
-        if(Sessao::retornaValorFormulario('loc-titulo')) {
-            $this->render('/localizador/existente');
-
-            //Sessao::limpaFormulario();
-            //Sessao::limpaMensagem();
-        }else{
-            
-            $this->redirect('/');
-        }
-    }
-
     public function index()
     {
-        $this->redirect('/localizador/localizadorCadastro');
+        $this->redirect('/servico/servicoCadastro');
     }
 
 }

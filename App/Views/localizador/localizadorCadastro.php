@@ -22,7 +22,7 @@
                             </span>
                         </div>
                         <div class="control has-icons-left is-expanded">
-                            <input type="text" class="input" name="loc-codigo" placeholder="Ex: QD(PONTA GROSSA), OQ(PALMEIRA)" value="" required>
+                            <input type="text" class="input" name="loc-codigo" placeholder="Ex: J1:(ETA)" value="" required>
                             <span class="icon is-small is-left">
                                 <i class="fas fa-map-marker"></i>
                             </span>
