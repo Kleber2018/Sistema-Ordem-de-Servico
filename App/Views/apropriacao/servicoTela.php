@@ -3,7 +3,7 @@
         <ul>
             <li><a href="#">Administração</a></li>
             <li><a>Serviço</a></li>
-            <li class="is-active"><a href="#" aria-current="page">QD:0005(IMPLEMENTAR)</a></li>
+            <li class="is-active"><a href="#" aria-current="page"><?php echo $serv->getOsCodigo(); ?></a></li>
         </ul>
         <br/>
     </nav>
@@ -18,7 +18,7 @@
 
 
 
-        <label for="localizador-os-codigo" class="label" >Ordem de Servico QD::0022 (IMPLEMENTAR)</label>
+        <label for="localizador-os-codigo" class="label" >Ordem de Servico <h3><?php echo $serv->getOsCodigo(); ?></h3></label>
 
         <form id="form_cadastro" action="http://<?php echo APP_HOST; ?>/apropriacao/servicoApropriacaoHH" method="POST">
 
@@ -26,7 +26,7 @@
                     <label for="localizador-os-codigo" class="label" >Código do localizador</label>
                     <div class="field is-grouped">
                         <div class="control has-icons-left is-expanded is-disabled">
-                            <input type="text" class="input" name="os-localizador1" placeholder="Ex: QDJ1(PONTA GROSSA - ETA)" value="<?php echo $viewVar['Servico']->getOsCodigo(); ?>" required>
+                            <input type="text" class="input" name="os-localizador1" placeholder="Ex: QDJ1(PONTA GROSSA - ETA)" value="<?php echo $serv->getOsLocalizacao(); ?>" required>
                             <span class="icon is-small is-left">
                                     <i class="fas fa-map-marker-alt"></i>
                                 </span>
@@ -37,7 +37,7 @@
                     <div class="field">
                         <label for="responsavel-ose" class="label">Responsável</label>
                         <div class="control has-icons-left">
-                            <input type="text" class="input" name="os-responsavel" placeholder="Responsável" value="<?php echo $viewVar['Servico']->getOsResponsavel(); ?>" required>
+                            <input type="text" class="input" name="os-responsavel" placeholder="Responsável" value="<?php echo $serv->getOsResponsavel(); ?>" required>
                             <span class="icon is-small is-left">
                                  <i class="fas fa-users"></i>
                             </span>
@@ -74,7 +74,7 @@
                     <div class="field">
                         <label for="titulo-os" class="label">Título da ordem de Serviço</label>
                         <div class="control has-icons-left">
-                            <input type="text" class="input"  name="os-titulo" placeholder="Título" value="" required>
+                            <input type="text" class="input"  name="os-titulo" placeholder="Título" value="<?php echo $serv->getOsTitulo(); ?>" required>
                             <span class="icon is-small is-left">
                                 <i class="fas fa-map-signs"></i>
                             </span>
@@ -84,7 +84,7 @@
                     <div class="field">
                         <label for="obs-os" class="label">Observação</label>
                         <div class="control has-icons-left">
-                            <input type="text" class="input"  name="os-obs" placeholder="Observação" value="" required>
+                            <input type="text" class="input"  name="os-obs" placeholder="Observação" value="<?php echo $serv->getOsObs(); ?>" required>
                             <span class="icon is-small is-left">
                                 <i class="fas fa-map-signs"></i>
                             </span>

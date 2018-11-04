@@ -17,14 +17,21 @@ class ApropriacaoController extends Controller
         Sessao::limpaMensagem();
     }
 
-    //Function é chamada pelo App.php com os parametros passados pela View servicoTela.php
+    //Function é chamada pelo App.php com o codigo passados pela View servicoBusca.php
     public function servicoTela()
     {
         $servicoDAO = new ServicoDAO();
         $Servico = new Servico();
-        $Servico->setOsCodigo($_POST['os-codigo']);
+        //$Servico->setOsCodigo($_POST['os-codigo']);
 
-        self::setViewParam('Servico',$Servico);
+
+        $Servico = $servicoDAO->buscaOrdemServico($_POST['os-codigo']);//envia para o servicoDAO o codigo informado na tela servicoBusca e retorna um objeto Servico
+
+
+        //$Servico->getOsCodigo();
+        //self::setViewParam('Servico',$Servico);
+
+        $this->setServ($Servico);
 
         $this->render('/apropriacao/servicoTela');
 

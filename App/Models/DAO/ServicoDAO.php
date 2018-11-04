@@ -7,16 +7,18 @@ use App\Models\Entidades\Servico;
 class ServicoDAO extends BaseDAO
 {
     private $codigosOse;
-    //codigo da ose é Ex: QD:000023
-    private $codLetra;
-    private $codNumero;
+
+    //codigo da ose é Ex: QD:023
+    private $codLetra; //QD
+    private $codNumero;//023
 
     private $vr;//verificador para depurar
+
     //salva os dados do formulário da View/usuario/cadastro
     public  function salvar(Servico $servico) {
         try {
 
-            $servico->setOsCodigo($this->geraCodOse($servico->getOsLocalizacao()));
+            $servico->setOsCodigo($this->geraCodOse($servico->getOsLocalizacao()));//para gerar o cod da Ordem de serviçõ padrão Ex:QD:023
             
             echo "<br/> getOsCodigo: " . $servico->getOsCodigo() . "         -------  PRIMARY KEY: deve ser única e não repetida"; //PRIMARY KEY: deve ser única e não repetida
             echo "<br/> getOsObs: " . $servico->getOsObs();
@@ -46,50 +48,65 @@ class ServicoDAO extends BaseDAO
             throw new \Exception("Erro na gravação de dados dentro do ServicoDAO.", 500);
         }
     }
+
     /*
      * Para criar um código para a OSE no padrão Ex: QD:026
      */
     public function geraCodOse($loc)
     {
         try {
-
             $query = $this->select(
                 "SELECT OS_CODIGO FROM SMIOS WHERE OS_CODIGO like '$loc%' order by os_codigo DESC LIMIT 1"
             );
 
-
-           // $this->codigosOse = $query->fetch();
-            var_dump('antes do if'.$this->codigosOse);
+            //se retornar uma linha no select ele pega esse resultado e aumenta mais 9 para gerar o código da OSE Ex:qd:045
            if($query->execute()){
-               echo '</br>';
-               // var_dump('dentro do if');
                 $this->codigosOse = $query->fetch();
-               echo '</br>';
-                var_dump($this->codigosOse);//NAO CONSIGO ATRIBUIR O RETORNO OS_CODIGO DO SELECT PARA EXPLODIR NA SEQUENCIA
-               echo '</br>';
-
-                $this->vr = explode(":",$this->codigosOse['0']);
+                 $this->vr = explode(":",$this->codigosOse['0']);
                 $this->codNumero = intval($this->vr['1']+9);
                 $this->codLetra = $this->vr[0];
-                echo '</br>';
-                var_dump($this->codLetra);
-               echo '</br>';
-                var_dump($this->codNumero);
-            } else {
+            } else {//caso nao retorne resultado é pq nao existe ordem de servico para akele localizador entaõ ele cria um com numero 01, ex. OQ:01
                 $this->vr = str_split($loc,2);
-
                 $this->codLetra = $this->vr[0];
                 $this->codNumero = 01;
             }
 
-            echo $this->codLetra.':0'.$this->codNumero;
-
-              return  $this->codLetra.':0'.$this->codNumero;
+             return  $this->codLetra.':0'.$this->codNumero;//Retornando no padrão Ex QD:023
 
         }catch (Exception $e){
             throw new \Exception("Erro no acesso aos dados.", 500);
         }
     }
+
+    //AINDA NÃO TERMINADO
+    //busca as informações do Serviço pelo codigo informado na View buscaServico.php
+    public function buscaOrdemServico($cod){
+
+        $servico = new Servico();
+
+        try {
+            $query = $this->select(
+                "SELECT OS_CODIGO, OS_TITULO, LOC_CODIGO, FN_CODIGO, OS_OBS FROM SMIOS WHERE OS_CODIGO = '$cod'"
+            );
+
+            //ARRUMAR - O RETORNO DO SELECT PRECISA POPULAR O OBJ SERVICO ABAIXO
+            $servico->setOsCodigo('qd:002 PRECISA ARRUMAR O MÉTODO buscaOrdemServico DENTRO DO ServicoDAO');//precisa receber os parametros do select;
+            $servico->setOsTitulo('qualquer PRECISA ARRUMAR O MÉTODO buscaOrdemServico DENTRO DO ServicoDAO');
+            $servico->setOsLocalizacao('qd');
+            $servico->setOsResponsavel('kleber');
+            $servico->setOsObs('observacao qualquer');
+
+
+            return  $servico;//Retornando o objeto servico
+
+        }catch (Exception $e){
+            throw new \Exception("Erro no acesso aos dados.", 500);
+        }
+
+    }
+
+
+
 }
 
 /*CREATE TABLE SMIOS (
