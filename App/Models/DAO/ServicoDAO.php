@@ -57,19 +57,23 @@ class ServicoDAO extends BaseDAO
                 "SELECT OS_CODIGO FROM SMIOS WHERE OS_CODIGO like '$loc%' order by os_codigo DESC LIMIT 1"
             );
 
-           // var_dump('antes do if');
 
-           if($query->fetch()){
-
-                var_dump('dentro do if');
-                $this->codigosOse = $query->fetchAll();
-
+           // $this->codigosOse = $query->fetch();
+            var_dump('antes do if'.$this->codigosOse);
+           if($query->execute()){
+               echo '</br>';
+               // var_dump('dentro do if');
+                $this->codigosOse = $query->fetch();
+               echo '</br>';
                 var_dump($this->codigosOse);//NAO CONSIGO ATRIBUIR O RETORNO OS_CODIGO DO SELECT PARA EXPLODIR NA SEQUENCIA
+               echo '</br>';
 
                 $this->vr = explode(":",$this->codigosOse['0']);
                 $this->codNumero = intval($this->vr['1']+9);
                 $this->codLetra = $this->vr[0];
+                echo '</br>';
                 var_dump($this->codLetra);
+               echo '</br>';
                 var_dump($this->codNumero);
             } else {
                 $this->vr = str_split($loc,2);
