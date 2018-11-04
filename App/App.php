@@ -48,8 +48,7 @@ class App
         //para puxar uma sessão válida
         session_start();
         $logado = $_SESSION["logado"];
-        //usuário que está logado
-        $usuario = $_SESSION["usuario"];
+
 
             if ($this->controller) {
                 $this->controllerName = ucwords($this->controller) . 'Controller';

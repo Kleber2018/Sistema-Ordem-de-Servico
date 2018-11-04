@@ -19,7 +19,7 @@ class LocalizadorController extends Controller
     public function salvar()
     {
         $Localizador = new Localizador();
-        $Localizador->setLocCodigo($_POST['loc-codigo']);
+        $Localizador->setLocCodigo($_POST['loc-codigo1'].$_POST['loc-codigo2'].$_POST['loc-codigo3']);
         $Localizador->setLocTitulo($_POST['loc-titulo']);
         $Localizador->setLocEquipe($_POST['loc-equipe']);
 

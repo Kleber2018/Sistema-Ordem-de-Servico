@@ -8,14 +8,29 @@ use App\Models\Entidades\Servico;
 
 class ServicoController extends Controller
 {
-    //Para abrir a view usuarioCadastro
-    // Utiliza a render do Controller para montar a página
-    public function servicoCadastro()
+    //Function é chamada pelo App.php com os parametros passados pela View servicoCadastro.php
+    public function chamaViewServicoCadastro()
     {
-        $this->render('/servico/servicoCadastro');
+        $this->render('/servico/servicoCadastro');//através do render do Controller é montado as Views
 
         Sessao::limpaFormulario();
         Sessao::limpaMensagem();
+    }
+
+    //Function é chamada pelo App.php com os parametros passados pela View servicoTela.php
+    public function chamaViewServicoTela()
+    {
+        $this->render('/servico/servicoTela');
+
+        Sessao::limpaFormulario();
+        Sessao::limpaMensagem();
+    }
+
+    //Function é chamada pelo App.php com os parametros passados pela View servicoApropriacaoHH.php
+    public function chamaViewApropriacaoHH()
+    {
+        $this->render('/servico/servicoApropriacaoHH');
+
     }
 
     public function salvar()
@@ -41,7 +56,13 @@ class ServicoController extends Controller
                 Sessao::gravaMensagem("Erro ao gravar");
             }
     }
-    
+
+    //function é chamada pelo App que por sua vez é chamada pelo form servicoTela para abrir novamente o servicoTela com os campos populados do View servicoTela
+    public function buscarServico(){
+
+        echo 'Precisa implementar um jeito de o codigo que for informado popular a a View servicoTela';
+    }
+
     public function sucesso()
     {
         if(Sessao::retornaValorFormulario('os-titulo')) {
