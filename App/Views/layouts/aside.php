@@ -15,7 +15,7 @@
               <ul>
                   <li class="menu-item"><a>Equipamentos</a></li>
                   <li class="menu-item"><a <?php if($viewVar['nameController'] == "LocalizadorController") { ?> class="is-active" <?php } ?> href="http://<?php echo APP_HOST; ?>/localizador/localizadorCadastro">Localizadores</a></li>
-                  <li class="menu-item"><a <?php if($viewVar['nameController'] == "ServicoController") { ?> class="is-active" <?php } ?> href="http://<?php echo APP_HOST; ?>/servico/chamaViewServicoCadastro">Serviços</a></li>
+                  <li class="menu-item"><a <?php if($viewVar['nameController'] == "ServicoController") { ?> class="is-active" <?php } ?> href="http://<?php echo APP_HOST; ?>/servico/servicoCadastro">Serviços</a></li>
                 </ul>
             </li>
             <li class="menu-item"><a href="tables.html"><span class="icon is-small"><i class="fa fa-table"></i></span> Relatórios</a></li>

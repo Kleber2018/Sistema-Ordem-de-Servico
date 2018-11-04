@@ -9,7 +9,7 @@ use App\Models\Entidades\Servico;
 class ServicoController extends Controller
 {
     //Function é chamada pelo App.php com os parametros passados pela View servicoCadastro.php
-    public function chamaViewServicoCadastro()
+    public function servicoCadastro()
     {
         $this->render('/servico/servicoCadastro');//através do render do Controller é montado as Views
 
@@ -38,17 +38,16 @@ class ServicoController extends Controller
         $servicoDAO = new ServicoDAO();
         $Servico = new Servico();
 
+        //Não entendi por que $_POST['os-localizador1'].$_POST['os-localizador2'].$_POST['os-localizador3']
+        //$Servico->setOsLocalizacao($_POST['os-localizador1'].$_POST['os-localizador2'].$_POST['os-localizador3']); 
 
-        $Servico->setOsLocalizacao($_POST['os-localizador1'].$_POST['os-localizador2'].$_POST['os-localizador3']);
+        $Servico->setOsLocalizacao($_POST['os-localizador1']);
         $Servico->setOsResponsavel($_POST['os-responsavel']);
-        //var_dump($_POST['os-localizador1']);
-       // $Servico->setOsTipo($_POST['os-tipo']);
+        $Servico->setOsTipo($_POST['os-tipo']);
         $Servico->setOsTitulo($_POST['os-titulo']);
         $Servico->setOsObs($_POST['os-obs']);
 
         Sessao::gravaFormulario($_POST);
-
-
 
             if($servicoDAO->salvar($Servico)){
                 $this->redirect('/servico/sucesso');

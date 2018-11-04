@@ -26,7 +26,7 @@
                                 <i class="fas fa-map-marker-alt"></i>
                             </span>
                     </div>
-                    <div class="control has-icons-left is-expanded"">
+                    <div class="control has-icons-left is-expanded">
                         <button class="button is-primary">Buscar</button>
                     </div>
                 </div>
@@ -48,11 +48,11 @@
                     <label for="tipo-os" class="label">Tipo (nao está puchando)</label>
                     <div class="select">
                         <select name="os-tipo">
-                            <option value="1">1 - CEG (Corretiva Emergêncial)</option>
-                            <option value="2">2 - CNE (Corretiva não Emergêncial)</option>
-                            <option value="3">3 - PNS (Preventiva)</option>
-                            <option value="9">9 - MEM (Melhoria)</option>
-                            <option value="6">6 - SIG (Serviço Interno)</option>
+                            <option value="CEG">1 - CEG (Corretiva Emergêncial)</option>
+                            <option value="CNE">2 - CNE (Corretiva não Emergêncial)</option>
+                            <option value="PNS">3 - PNS (Preventiva)</option>
+                            <option value="MEM">9 - MEM (Melhoria)</option>
+                            <option value="SIG">6 - SIG (Serviço Interno)</option>
                         </select>
                     </div>
                 </div>
@@ -61,7 +61,7 @@
                 <div class="field">
                     <label for="data-ose" class="label">Data Prevista</label>
                     <div class="control has-icons-left">
-                        <input type="text" class="input" name="os-data-prevista" placeholder="   /   /     " value="" required>
+                        <input type="text" class="input" name="os-data-prevista" placeholder="   /   /     " value="">
                         <span class="icon is-small is-left">
                                          <i class="fas fa-users"></i>
                                     </span>

@@ -35,7 +35,6 @@ class UsuarioDAO extends BaseDAO
                     ':senha'=>$usuario->getFnSenha()
                 ]
             );
-
         }catch (\Exception $e){
             throw new \Exception("Erro na gravação de dados do usuarioDao.", 500);
         }

@@ -26,7 +26,7 @@
                                 <i class="fas fa-map-marker-alt"></i>
                             </span>
                     </div>
-                    <div class="control has-icons-left is-expanded"">
+                    <div class="control has-icons-left is-expanded">
                         <button class="button is-primary">Buscar</button>
                     </div>
                 </div>

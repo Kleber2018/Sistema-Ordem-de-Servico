@@ -15,20 +15,29 @@ class ServicoDAO extends BaseDAO
     //salva os dados do formulário da View/usuario/cadastro
     public  function salvar(Servico $servico) {
         try {
-            $servico->setOsTipo('2');
 
             $servico->setOsCodigo($this->geraCodOse($servico->getOsLocalizacao()));
-            //var_dump($servico->getOsCodigo());
+            
+            echo "<br/> getOsCodigo: " . $servico->getOsCodigo() . "         -------  PRIMARY KEY: deve ser única e não repetida"; //PRIMARY KEY: deve ser única e não repetida
+            echo "<br/> getOsObs: " . $servico->getOsObs();
+            echo "<br/> getOsResponsavel: " . $servico->getOsResponsavel();
+            echo "<br/> getOsTipo: " . $servico->getOsTipo();
+            echo "<br/> getOsTitulo: " . $servico->getOsTitulo();
+            echo "<br/> getOsLocalizacao: " . $servico->getOsLocalizacao() . "         ------- CHAVE ESTRANGEIRA: deve pré-existir na tabela SMICL"; //CHAVE ESTRANGEIRA: deve pré-existir na tabela SMICL
+            echo "<br/>";
+            echo "<br/>";
+            echo "<br/>";
+            
             return $this->insert(
                 'SMIOS',
                 ":OS_CODIGO, :OS_OBS, :OS_NOME_RESP, :OS_TIPO, :OS_TITULO, :LOC_CODIGO, :OS_DATA_R",
                 [
-                    ':OS_CODIGO'=>$servico->getOsCodigo(),
+                    ':OS_CODIGO'=>$servico->getOsCodigo(), //PRIMARY KEY: deve ser única e não repetida
                     ':OS_OBS'=>$servico->getOsObs(),
                     ':OS_NOME_RESP'=>$servico->getOsResponsavel(),
                     ':OS_TIPO'=>$servico->getOsTipo(),
                     ':OS_TITULO'=>$servico->getOsTitulo(),
-                    ':LOC_CODIGO'=>$servico->getOsLocalizacao(),
+                    ':LOC_CODIGO'=>$servico->getOsLocalizacao(), //CHAVE ESTRANGEIRA: deve pré-existir na tabela SMICL
                     ':OS_DATA_R'=>'NOW()'
                 ]
             );
@@ -48,14 +57,14 @@ class ServicoDAO extends BaseDAO
                 "SELECT OS_CODIGO FROM SMIOS WHERE OS_CODIGO like '$loc%' order by os_codigo DESC LIMIT 1"
             );
 
-            var_dump('antes do if');
-            if($query->fetch()){
+           // var_dump('antes do if');
+
+           if($query->fetch()){
 
                 var_dump('dentro do if');
                 $this->codigosOse = $query->fetchAll();
 
                 var_dump($this->codigosOse);//NAO CONSIGO ATRIBUIR O RETORNO OS_CODIGO DO SELECT PARA EXPLODIR NA SEQUENCIA
-
 
                 $this->vr = explode(":",$this->codigosOse['0']);
                 $this->codNumero = intval($this->vr['1']+9);
@@ -69,6 +78,7 @@ class ServicoDAO extends BaseDAO
                 $this->codNumero = 01;
             }
 
+            echo $this->codLetra.':0'.$this->codNumero;
 
               return  $this->codLetra.':0'.$this->codNumero;
 
