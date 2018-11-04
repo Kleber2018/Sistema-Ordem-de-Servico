@@ -6,30 +6,36 @@ use App\Lib\Sessao;
 use App\Models\DAO\ServicoDAO;
 use App\Models\Entidades\Servico;
 
-class ServicoController extends Controller
+class ApropriacaoController extends Controller
 {
-    //Function é chamada pelo App.php com os parametros passados pela View servicoCadastro.php
-    public function servicoCadastro()
+
+    public function servicoBusca()
     {
-        $this->render('/servico/servicoCadastro');//através do render do Controller é montado as Views
+        $this->render('/apropriacao/servicoBusca');
 
         Sessao::limpaFormulario();
         Sessao::limpaMensagem();
     }
 
     //Function é chamada pelo App.php com os parametros passados pela View servicoTela.php
-    public function chamaViewServicoTela()
+    public function servicoTela()
     {
-        $this->render('/servico/servicoTela');
+        $servicoDAO = new ServicoDAO();
+        $Servico = new Servico();
+        $Servico->setOsCodigo($_POST['os-codigo']);
+
+        self::setViewParam('Servico',$Servico);
+
+        $this->render('/apropriacao/servicoTela');
 
         Sessao::limpaFormulario();
         Sessao::limpaMensagem();
     }
 
     //Function é chamada pelo App.php com os parametros passados pela View servicoApropriacaoHH.php
-    public function chamaViewApropriacaoHH()
+    public function servicoApropriacaoHH()
     {
-        $this->render('/servico/servicoApropriacaoHH');
+        $this->render('/apropriacao/servicoApropriacaoHH');
 
     }
 
