@@ -86,16 +86,24 @@ class ServicoDAO extends BaseDAO
 
         try {
             $query = $this->select(
-                "SELECT OS_CODIGO, OS_TITULO, LOC_CODIGO, FN_CODIGO, OS_OBS FROM SMIOS WHERE OS_CODIGO = '$cod'"
+                "SELECT OS_CODIGO, OS_TITULO, LOC_CODIGO, OS_NOME_RESP, OS_OBS FROM SMIOS WHERE OS_CODIGO = '$cod'"
             );
 
-            //ARRUMAR - O RETORNO DO SELECT PRECISA POPULAR O OBJ SERVICO ABAIXO
-            $servico->setOsCodigo('qd:002 PRECISA ARRUMAR O MÉTODO buscaOrdemServico DENTRO DO ServicoDAO');//precisa receber os parametros do select;
-            $servico->setOsTitulo('qualquer PRECISA ARRUMAR O MÉTODO buscaOrdemServico DENTRO DO ServicoDAO');
-            $servico->setOsLocalizacao('qd');
-            $servico->setOsResponsavel('kleber');
-            $servico->setOsObs('observacao qualquer');
+            $retorno = ($query->fetchObject());
 
+            print_r($retorno);
+            $servico->setOsCodigo($retorno->OS_CODIGO);
+            $servico->setOsTitulo($retorno->OS_TITULO);
+            $servico->setOsLocalizacao($retorno->LOC_CODIGO);
+            $servico->setOsResponsavel($retorno->OS_NOME_RESP);
+            $servico->setOsObs($retorno->OS_OBS);
+            
+            //ARRUMAR - O RETORNO DO SELECT PRECISA POPULAR O OBJ SERVICO ABAIXO
+           // $servico->setOsCodigo('qd:002 PRECISA ARRUMAR O MÉTODO buscaOrdemServico DENTRO DO ServicoDAO');//precisa receber os parametros do select;
+            // $servico->setOsTitulo('qualquer PRECISA ARRUMAR O MÉTODO buscaOrdemServico DENTRO DO ServicoDAO');
+            // $servico->setOsLocalizacao('qd');
+            // $servico->setOsResponsavel('kleber');
+            // $servico->setOsObs('observacao qualquer');
 
             return  $servico;//Retornando o objeto servico
 
