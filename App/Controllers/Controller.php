@@ -10,7 +10,6 @@ abstract class Controller
     protected $app;
     private $viewVar;
     //private $serv;
-    //private $serv;
 
 
     public function __construct($app)
@@ -29,7 +28,7 @@ abstract class Controller
         $viewVar = $this->getViewVar();
         $Sessao  = Sessao::class;
 
-        $serv = $this->getServ(); //precisa estar aki dentro para popular os compos dentro da view
+       // $serv = $this->getServ(); //precisa estar aki dentro para popular os compos dentro da view
 
         require_once PATH . '/App/Views/layouts/header.php';
         require_once PATH . '/App/Views/layouts/menu.php';

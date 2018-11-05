@@ -9,6 +9,25 @@ use App\Models\Entidades\Servico;
 class ApropriacaoController extends Controller
 {
 
+        //monta a página
+        public function render($view)
+        {
+            if ($_SESSION['lembrar'] != "on"){
+                $segundosDeslogar = 5; // Deslogar se a última requisição for maior que X segundos
+                $this->checaAutenticacao($segundosDeslogar);
+            }
+            $viewVar = $this->getViewVar();
+            $Sessao  = Sessao::class;
+    
+           $serv = $this->getServ(); //precisa estar aki dentro para popular os compos dentro da view
+    
+            require_once PATH . '/App/Views/layouts/header.php';
+            require_once PATH . '/App/Views/layouts/menu.php';
+            require_once PATH . '/App/Views/layouts/aside.php';
+            require_once PATH . '/App/Views/' . $view . '.php';
+            require_once PATH . '/App/Views/layouts/footer.php';
+        }
+
     public function servicoBusca()
     {
         $this->render('/apropriacao/servicoBusca');
