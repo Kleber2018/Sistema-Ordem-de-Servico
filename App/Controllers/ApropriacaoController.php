@@ -93,4 +93,19 @@ class ApropriacaoController extends Controller
         $this->redirect('/servico/servicoCadastro');
     }
 
+        /**
+     * @return mixed
+     */
+    public function getServ()
+    {
+        return $this->serv;
+    }
+
+    /**
+     * @param mixed $serv
+     */
+    public function setServ(Servico $serv)
+    {
+        $this->serv = $serv;
+    }
 }

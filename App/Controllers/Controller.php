@@ -9,8 +9,8 @@ abstract class Controller
 {
     protected $app;
     private $viewVar;
-    //public static $segundosDeslogar = 5;
-    private $serv;
+    //private $serv;
+    //private $serv;
 
 
     public function __construct($app)
@@ -29,7 +29,7 @@ abstract class Controller
         $viewVar = $this->getViewVar();
         $Sessao  = Sessao::class;
 
-        $serv= $this->getServ();//precisa estar aki dentro para popular os compos dentro da view
+        $serv = $this->getServ(); //precisa estar aki dentro para popular os compos dentro da view
 
         require_once PATH . '/App/Views/layouts/header.php';
         require_once PATH . '/App/Views/layouts/menu.php';
@@ -71,21 +71,21 @@ abstract class Controller
         $_SESSION['LAST_ACTIVITY'] = time();
     }
 
-    /**
-     * @return mixed
-     */
-    public function getServ()
-    {
-        return $this->serv;
-    }
+    // /**
+    //  * @return mixed
+    //  */
+    // public function getServ()
+    // {
+    //     return $this->serv;
+    // }
 
-    /**
-     * @param mixed $serv
-     */
-    public function setServ(Servico $serv)
-    {
-        $this->serv = $serv;
-    }
+    // /**
+    //  * @param mixed $serv
+    //  */
+    // public function setServ(Servico $serv)
+    // {
+    //     $this->serv = $serv;
+    // }
 
 
 
