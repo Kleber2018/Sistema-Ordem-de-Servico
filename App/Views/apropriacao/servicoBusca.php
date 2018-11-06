@@ -37,7 +37,7 @@
             <!--Redireciona para ServicoController function servicoApropriacaoHH-->
                 <div class="control">
                     <div class="field">
-                        <button type="submit" class="button is-link" >Buscar</button> Abre a Tela Servico com os campos po
+                        <button type="submit" class="button is-link" >Buscar</button>
                     </div>
                 </div>
             </form>

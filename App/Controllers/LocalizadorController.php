@@ -27,14 +27,7 @@ class LocalizadorController extends Controller
 
         $localizadorDAO = new LocalizadorDAO();
 
-        /*
-        if($usuarioDAO->verificaEmail($_POST['email'])){
-            Sessao::gravaMensagem("Email existente");
-            $this->redirect('/localizador/cadastro');
-        }
-        */
-
-        if($localizadorDAO->verificaCodIgual($Localizador->getLocCodigo())){
+         if($localizadorDAO->verificaCodIgual($Localizador->getLocCodigo())){
             $this->redirect('/localizador/existente');
         }else {
             if($localizadorDAO->salvar($Localizador)){
@@ -44,10 +37,9 @@ class LocalizadorController extends Controller
                 Sessao::gravaMensagem("Erro ao gravar");
             }
         }
-
-
     }
-    
+
+
     public function sucesso()
     {
         if(Sessao::retornaValorFormulario('loc-titulo')) {
@@ -61,6 +53,7 @@ class LocalizadorController extends Controller
         }
     }
 
+
     public function existente()
     {
         if(Sessao::retornaValorFormulario('loc-titulo')) {
@@ -73,6 +66,7 @@ class LocalizadorController extends Controller
             $this->redirect('/');
         }
     }
+
 
     public function index()
     {

@@ -1,4 +1,4 @@
-<main class="column main">
+<main class="column main" xmlns="http://www.w3.org/1999/html">
     <nav class="breadcrumb is-small" aria-label="breadcrumbs">
         <ul>
             <li><a href="#">Administração</a></li>
@@ -10,19 +10,41 @@
 
 
     <div class="content">
-            <?php if($Sessao::retornaMensagem()){ ?>
-                <div class="alert alert-warning" role="alert"><?php echo $Sessao::retornaMensagem(); ?></div>
-            <?php } ?>
+            <!--< ?php if($Sessao::retornaMensagem()){ ?>
+                <div class="alert alert-warning" role="alert">< ?php echo $Sessao::retornaMensagem(); ?></div>
+            < ?php } ?> -->
 
 
 
 
 
-        <label for="localizador-os-codigo" class="label" >Ordem de Servico <h3><?php echo $serv->getOsCodigo(); ?></h3></label>
+        <label for="localizador-os-codigo" class="label" >Ordem de Servico: <?php echo $serv->getOsCodigo(); ?></label>
+
+
+        <div class="control">
+            <div class="field">
+                <button type="submit" class="button is-link" >Excluir</button> Implementar: esse botão para excluir a Ordem de Serviço
+            </div>
+        </div>
+
+
 
         <form id="form_cadastro" action="http://<?php echo APP_HOST; ?>/apropriacao/servicoApropriacaoHH" method="POST">
 
                 <fieldset disabled>
+
+                    <label for="localizador-os-codigo" class="label" >Status do Serviço</label>
+                    <div class="field is-grouped">
+                        <div class="control has-icons-left is-expanded is-disabled">
+                            <input type="text" class="input" name="os-localizador1" placeholder="Ex: PENDENTE, EXECUTADA" value="<?php echo $serv->getOsStatus(); ?>" required>
+                            <span class="icon is-small is-left">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                </span>
+                        </div>
+                    </div>
+
+
+
                     <label for="localizador-os-codigo" class="label" >Código do localizador</label>
                     <div class="field is-grouped">
                         <div class="control has-icons-left is-expanded is-disabled">
@@ -105,6 +127,14 @@
 
 
 
+    <div class="control">
+        <div class="field">
+            <button type="submit" class="button is-link" >informar não realização</button> Implementar: esse botão para somente alterar o status da Ose para NÃO EXECUTADA
+        </div>
+    </div>
+
+
+
     <table class="table">
         <thead>
         <tr>
@@ -152,6 +182,11 @@
         </tbody>
     </table>
 
+    <div class="control">
+        <div class="field">
+            <button type="submit" class="button is-link" >Apropriar mais horas na Ordem de Servico executada</button> Implementar: esse botão abrir a tela para add aproipriação de horas
+        </div>
+    </div></br>
 
 
 </main>

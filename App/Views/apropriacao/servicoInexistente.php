@@ -8,7 +8,7 @@
         <br/>
     </nav>
         <div class="content">
-            <h1>Localizador <?php echo $Sessao::retornaValorFormulario('loc-titulo');?> Código já existe.</h1>
-            <a href="http://<?php echo APP_HOST; ?>/localizador/localizadorCadastro" class="button is-info">Voltar</a>
+            <h2>Não encontrado o serviço com o código: <b><?php echo $this->getBuscado();/*$Sessao::retornaValorFormulario('loc-titulo');*/?></b></h2>
+            <a href="http://<?php echo APP_HOST; ?>/apropriacao/servicoBusca" class="button is-info">Voltar</a>
         </div>
 </main>
