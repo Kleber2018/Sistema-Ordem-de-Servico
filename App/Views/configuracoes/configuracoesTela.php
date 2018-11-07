@@ -7,7 +7,7 @@
         <br/>
     </nav>
     <div class="content">
-    <form action="http://<?php echo APP_HOST; ?>/" method="post" id="form_configuracoes">
+    <form action="http://<?php echo APP_HOST; ?>/configuracoes" method="post" id="form_configuracoes">
     <label class="label">Selecione o driver do banco de dados</label>
         <div class="field has-addons">
             <div class="control">

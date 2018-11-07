@@ -29,7 +29,7 @@ class App
          if (isset ($_SESSION['databaseDriver'])) self::$driver = $_SESSION['databaseDriver'];
          else self::$driver = 'mysql';
               
-         echo "POST['databaseDriver']:" . $_POST['databaseDriver'] . 'self::$driver: ' . self::$driver . '$_SESSION["databaseDriver"]: ' . $_SESSION['databaseDriver'];
+        // echo "POST['databaseDriver']:" . $_POST['databaseDriver'] . 'self::$driver: ' . self::$driver . '$_SESSION["databaseDriver"]: ' . $_SESSION['databaseDriver'];
 
         define('APP_HOST'       , $_SERVER['HTTP_HOST'] . "/projeto-final");
         define('PATH'           , realpath('./'));//para poder gerenciar os diretorios internos da aplicação

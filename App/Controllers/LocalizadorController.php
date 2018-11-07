@@ -10,6 +10,7 @@ class LocalizadorController extends Controller
 {
     public function localizadorCadastro()
     {
+
         $this->render('/localizador/localizadorCadastro');
 
         Sessao::limpaFormulario();

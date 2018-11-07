@@ -47,4 +47,22 @@ class LocalizadorDAO extends BaseDAO
             throw new \Exception("Erro no acesso aos dados.", 500);
         }
     }
+
+    public function listar($cod = null)
+    {
+        if($cod) {
+            $query = $this->select(
+                "SELECT * FROM SMICL WHERE LOC_CODIGO = '$cod' "
+            );
+            return $query->fetchObject(Localizador::class);
+        }else{
+            $query = $this->select(
+                "SELECT * FROM SMICL"
+            );
+            return $query->fetchAll(\PDO::FETCH_CLASS, Localizador::class);
+        }
+
+        return false;
+    }  
+
 }

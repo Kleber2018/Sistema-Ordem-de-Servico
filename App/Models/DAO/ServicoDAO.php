@@ -98,6 +98,7 @@ class ServicoDAO extends BaseDAO
             throw new \Exception("Erro no acesso aos dados.", 500);
         }
     }
+    
 }
 
 /*CREATE TABLE SMIOS (
