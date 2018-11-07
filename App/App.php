@@ -15,7 +15,7 @@ class App
     private $action;
     private $params;
     public  $controllerName;
-
+    public static $driver;
 
 
     public function __construct()
@@ -23,6 +23,14 @@ class App
         /*
          * Constantes do sistema para usar em qualquer parte de nossa aplicação
          */
+
+         //NÃO ESTOU CONSEGUINDO SALVAR GLOBALMENTE A CONFIGURAÇÃO DO DRIVER
+         if (isset($_POST['databaseDriver'])) $_SESSION['databaseDriver'] = $_POST['databaseDriver'] ;
+         if (isset ($_SESSION['databaseDriver'])) self::$driver = $_SESSION['databaseDriver'];
+         else self::$driver = 'mysql';
+              
+         echo "POST['databaseDriver']:" . $_POST['databaseDriver'] . 'self::$driver: ' . self::$driver . '$_SESSION["databaseDriver"]: ' . $_SESSION['databaseDriver'];
+
         define('APP_HOST'       , $_SERVER['HTTP_HOST'] . "/projeto-final");
         define('PATH'           , realpath('./'));//para poder gerenciar os diretorios internos da aplicação
         define('TITLE'          , "Projeto Final de PHP");
@@ -30,7 +38,7 @@ class App
         define('DB_USER'        , "root");
         define('DB_PASSWORD'    , "");
         define('DB_NAME'        , "ProjetoWebServidor");
-        define('DB_DRIVER'      , "mysql");
+        define('DB_DRIVER'      , self::$driver);
 
         $this->url();
     }
@@ -46,15 +54,15 @@ class App
     public function run()
     {
         //para puxar uma sessão válida
-        session_start();
+        
         $logado = $_SESSION["logado"];
-
 
             if ($this->controller) {
                 $this->controllerName = ucwords($this->controller) . 'Controller';
                 $this->controllerName = preg_replace('/[^a-zA-Z]/i', '', $this->controllerName);
             } else {
                 if($logado == "true"){
+                    session_start();
                     $this->controllerName = "HomeController";
                 } else {
                     $this->controllerName = "LoginController";
@@ -78,7 +86,7 @@ class App
             echo '</br>';
             var_dump($this->action);
 */
-
+ 
         //nesse momente que ele abre as páginas
         if (!$this->controller) {
             //verifica se está logado para direcionar para tela inicial ou login
