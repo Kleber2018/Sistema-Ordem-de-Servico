@@ -9,7 +9,7 @@ abstract class Controller
 {
     protected $app;
     private $viewVar;
-    //private $serv;
+    private $var;
 
 
     public function __construct($app)
@@ -73,18 +73,18 @@ abstract class Controller
     // /**
     //  * @return mixed
     //  */
-    // public function getServ()
-    // {
-    //     return $this->serv;
-    // }
+    public function getVar()
+    {
+        return $this->var;
+    }
 
     // /**
     //  * @param mixed $serv
     //  */
-    // public function setServ(Servico $serv)
-    // {
-    //     $this->serv = $serv;
-    // }
+    public function setVar($var)
+    {
+        $this->var = $var;
+    }
 
 
 

@@ -20,8 +20,9 @@ class ApropriacaoController extends Controller
         //$viewVar = $this->getViewVar();
         $Sessao  = Sessao::class;
 
-       $serv = $this->getServ(); //precisa estar aki dentro para popular os compos dentro da view
-
+       $serv = $this->getVar(); //precisa estar aki dentro para popular os compos dentro da view
+      //  print_r ($serv);
+        
         require_once PATH . '/App/Views/layouts/header.php';
         require_once PATH . '/App/Views/layouts/menu.php';
         require_once PATH . '/App/Views/layouts/aside.php';
@@ -52,7 +53,7 @@ class ApropriacaoController extends Controller
 
         //Verifica se o cod informado na view servicoBusca existe
         if($Servico->getOsCodigo()){
-            $this->setServ($Servico);
+            $this->setVar($Servico);
 
             $this->render('/apropriacao/servicoTela');
         } else {
@@ -122,14 +123,14 @@ class ApropriacaoController extends Controller
     }
 
     //utilizado dentro da View servicoTela
-    public function getServ()
-    {
-        return $this->serv;
-    }
-    public function setServ(Servico $serv)
-    {
-        $this->serv = $serv;
-    }
+    // public function getServ()
+    // {
+    //     return $this->serv;
+    // }
+    // public function setServ(Servico $serv)
+    // {
+    //     $this->serv = $serv;
+    // }
 
   //utilizado pela view servicoInexistente
     public function getBuscado()

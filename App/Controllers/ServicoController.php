@@ -18,9 +18,12 @@ class ServicoController extends Controller
 
         //print_r ($localizadorDAO->listar());
 
-        self::setViewParam('listaLocalizadores',$localizadorDAO->listar());
-        print_r ($viewVar['listaLocalizadores']);
-        
+        //self::setViewParam('listaLocalizadores',$localizadorDAO->listar());
+
+        $localizadores = $localizadorDAO->listar();
+        $this->setVar($localizadores);
+
+
         $this->render('/servico/servicoCadastro');//através do render do Controller é montado as Views
 
         Sessao::limpaFormulario();

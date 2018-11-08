@@ -50,19 +50,35 @@ class LocalizadorDAO extends BaseDAO
 
     public function listar($cod = null)
     {
+        $localizadores = array();
+
         if($cod) {
             $query = $this->select(
                 "SELECT * FROM SMICL WHERE LOC_CODIGO = '$cod' "
             );
-            return $query->fetchObject(Localizador::class);
+            $retorno = $query->fetchObject();
+            $localizador = new Localizador();
+            $localizador->setLocCodigo($retorno->LOC_CODIGO);
+            $localizador->setLocNivel($retorno->LOC_NIVEL);
+            $localizador->setLocTitulo($retorno->LOC_TITULO);
+            $localizador->setLocEquipe($retorno->LOC_EQUIPE);
+
+            return $localizador;
+
         }else{
             $query = $this->select(
                 "SELECT * FROM SMICL"
             );
-            return $query->fetchAll(\PDO::FETCH_CLASS, Localizador::class);
+            while ($retorno = $query -> fetchObject()){
+                $localizador = new Localizador();
+                $localizador->setLocCodigo($retorno->LOC_CODIGO);
+                $localizador->setLocNivel($retorno->LOC_NIVEL);
+                $localizador->setLocTitulo($retorno->LOC_TITULO);
+                $localizador->setLocEquipe($retorno->LOC_EQUIPE);
+                $localizadores[] = $localizador;
+            }
+            return $localizadores;
         }
-
-        return false;
     }  
 
 }

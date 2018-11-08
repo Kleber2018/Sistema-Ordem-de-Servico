@@ -20,32 +20,22 @@
 
                 <label for="localizador-os-codigo" class="label" >Código do localizador</label>
         <div class="field">
-            <div class="control">
+            <div class="control has-icons-left">
+            <span class="icon is-small is-left">
+                <i class="fas fa-map-marker-alt"></i>
+            </span>
                 <div class="select">
-                <select name="localizador1">
+                <select name="os-localizador1">
                     <?php
-                    foreach ($viewVar['listaLocalizadores'] as $localizador) {
-                        echo "<option value=''>". $localizador->getLocCodigo() . "</option>";
+                    foreach ($this->getVar() as $localizador) {
+                        echo "<option value='".$localizador->getLocCodigo()."'>".$localizador->getLocCodigo()."</option>";
                     }
-                        echo "<option value=''>TESTE</option>";
                     ?>
                 </select>
                 </div>
             </div>
         </div>
-                <div class="field">
-                    <div class="control has-icons-left is-expanded">
-                        <input type="text" class="input" name="os-localizador1" placeholder="Ex: QDJ1(PONTA GROSSA - ETA)" value="" required>
-                        <span class="icon is-small is-left">
-                                <i class="fas fa-map-marker-alt"></i>
-                            </span>
-                    </div>
-                </div>
-                            <?php 
-                                print_r ($viewVar['listaLocalizadores']); 
-                               // echo $viewVar['listaLocalizadores']['LOC_CODIGO'];
-                            
-                            ?>
+
 
                 <div class="field">
                     <label for="responsavel-ose" class="label">Responsável</label>
