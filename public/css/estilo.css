@@ -45,3 +45,9 @@ html,body{
 .title{
     color: #ffffff;
 }
+
+.navbar-dropdown.is-right input {
+    background-color:#f5f5f5;
+    color:#363636;
+    width: 100%;
+}

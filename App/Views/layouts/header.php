@@ -6,10 +6,29 @@
   <link rel="stylesheet" href="http://<?php echo APP_HOST; ?>/public/css/bulma-0.7.2/css/bulma.min.css">
   <link rel="stylesheet" href="http://<?php echo APP_HOST; ?>/public/css/estilo.css">
   
-  <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+  <script src="http://<?php echo APP_HOST; ?>/public/js/translate.js"></script>
+
+    <script>
+    function load(idioma){
+        var translate = new Translate();
+        var currentLng = idioma;
+        var attributeName = 'data-tag';
+        translate.init(attributeName, currentLng);
+        translate.process(); 
+    }
+    </script>
 
 </head>
-<body>
+<body onLoad="load('<?php echo $_SESSION['idioma']; ?>')"> 
+<?php 
+    //Atribuindo a língua escolhida
+    // $str = file_get_contents("http://" . APP_HOST . "/public/lang/pt-br.json");
+
+    // //$str = file_get_contents("http://" . APP_HOST . "/public/lang/" . $idioma . ".json");
+    // $json = json_decode($str, true);
+    // // echo '<br/>' . $idioma;
+    // // echo '<br/>' . '<pre>' . print_r($json, true) . '</pre>';
+?>
 
 <!-- <!DOCTYPE html>
 <html lang="pt">

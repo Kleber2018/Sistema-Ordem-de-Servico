@@ -10,6 +10,7 @@
   <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
 </head>
 <body>
+    
 <div class="container has-text-centered">
     <div class="column is-4 is-offset-4">
         <p class="subtitle"><span style="font-size: 32px;">LOGIN</span><br/>Por favor, faça o login para continuar.</p>
