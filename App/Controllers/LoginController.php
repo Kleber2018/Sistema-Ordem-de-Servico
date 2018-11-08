@@ -15,6 +15,11 @@ class LoginController extends Controller
         require_once PATH . '/App/Views/login/login.php';
     }
 
+    public function index()
+    {
+        $Sessao  = Sessao::class;
+        require_once PATH . '/App/Views/login/login.php';
+    }
 
     public function verificar(){
 
@@ -35,6 +40,7 @@ class LoginController extends Controller
             $_SESSION['logado'] = "true";
             $_SESSION['usuario'] = $login['FN_CODIGO'];
             $_SESSION['senha'] = $login['SENHA'];
+            $_SESSION['admin'] = $login['ADMIN'];
             $_SESSION['lembrar'] = $_POST['lembrar'];
             $this->redirect('/home/index');
         } else {
@@ -94,4 +100,6 @@ class LoginController extends Controller
             $this->redirect('/');
         }
     }
+
+
 }

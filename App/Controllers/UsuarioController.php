@@ -23,6 +23,12 @@ class UsuarioController extends Controller
         $Usuario->setFnNome($_POST['usuario-nome']);
         $Usuario->setFnSenha($_POST['usuario-senha']);
 
+        if (($_POST['admin']) == 'on') {
+            $Usuario->setAdmin(1);
+        } else {
+            $Usuario->setAdmin(0);
+        }
+
         Sessao::gravaFormulario($_POST);
 
         $usuarioDAO = new UsuarioDAO();

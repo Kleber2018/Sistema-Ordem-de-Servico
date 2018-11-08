@@ -24,13 +24,11 @@ class App
          * Constantes do sistema para usar em qualquer parte de nossa aplicação
          */
 
-         //NÃO ESTOU CONSEGUINDO SALVAR GLOBALMENTE A CONFIGURAÇÃO DO DRIVER
+         //Para salvar a configuração de database temporariamente durante a sessão. OBS: O correto é salvar em arquivo.
          if (isset($_POST['databaseDriver'])) $_SESSION['databaseDriver'] = $_POST['databaseDriver'] ;
          if (isset ($_SESSION['databaseDriver'])) self::$driver = $_SESSION['databaseDriver'];
          else self::$driver = 'mysql';
               
-        // echo "POST['databaseDriver']:" . $_POST['databaseDriver'] . 'self::$driver: ' . self::$driver . '$_SESSION["databaseDriver"]: ' . $_SESSION['databaseDriver'];
-
         define('APP_HOST'       , $_SERVER['HTTP_HOST'] . "/projeto-final");
         define('PATH'           , realpath('./'));//para poder gerenciar os diretorios internos da aplicação
         define('TITLE'          , "Projeto Final de PHP");
@@ -45,15 +43,13 @@ class App
 
     public function login(){
         $login = new LoginController($this);
-       // $login->renderLogin();
-
         $this->run();
     }
 
 
     public function run()
     {
-        //para puxar uma sessão válida
+        //Para começar uma sessão válida
         
         $logado = $_SESSION["logado"];
 
@@ -76,8 +72,6 @@ class App
 
 /*
             echo '</br>';
-            echo '</br>';
-            echo '</br>';
             var_dump($this->controller);
             echo '</br>';
             var_dump(!$this->controller);
@@ -85,11 +79,12 @@ class App
             var_dump($this->controllerFile);
             echo '</br>';
             var_dump($this->action);
+            echo '</br>';
 */
  
-        //nesse momente que ele abre as páginas
+        //Nesse momento  ele abre as páginas
         if (!$this->controller) {
-            //verifica se está logado para direcionar para tela inicial ou login
+            //Verifica se está logado para direcionar para tela inicial ou login
             if($logado == "true"){
                 $this->controller = new HomeController($this);
                 $this->controller->index();
@@ -99,8 +94,6 @@ class App
             }
         }
 
-
-
         if (!file_exists(PATH . '/App/Controllers/' . $this->controllerFile)) {
             throw new Exception("Página não encontrada.", 404);
         }
@@ -108,8 +101,8 @@ class App
 /*
         echo '</br>nome da classe';
         var_dump($this->controllerName);
-        echo '</br>nome da classe';
 */
+
         //não entendi esse aki
         $nomeClasse     = "\\App\\Controllers\\" . $this->controllerName;
         $objetoController = new $nomeClasse($this);
@@ -125,13 +118,12 @@ class App
         var_dump($this->params);
 
 */
-
+        //Se o controller não existir lança exceção
         if (!class_exists($nomeClasse)) {
             throw new Exception("Erro na aplicação", 500);
         }
 
-
-        //nao entendi essa parte
+        //Verifica se o método do controle existe e não existir lança exceção
         if (method_exists($objetoController, $this->action)) {
             $objetoController->{$this->action}($this->params);
             return;
@@ -149,7 +141,7 @@ class App
 
         if ( isset( $_GET['url'] ) ) {
 
-            $path = $_GET['url'];//utiliza o htaccess
+            $path = $_GET['url']; //utiliza o htaccess
             $path = rtrim($path, '/');
             $path = filter_var($path, FILTER_SANITIZE_URL); 
 

@@ -28,11 +28,12 @@ class UsuarioDAO extends BaseDAO
            // $email     = $usuario->getEmail();
             return $this->insert(
                 'smifn',
-                ":fn_codigo,:fn_nome, :senha",
+                ":fn_codigo,:fn_nome, :senha, :admin",
                 [
                     ':fn_codigo'=>$usuario->getFnCodigo(),
                     ':fn_nome'=>$usuario->getFnNome(),
-                    ':senha'=>$usuario->getFnSenha()
+                    ':senha'=>$usuario->getFnSenha(),
+                    ':admin'=>$usuario->getAdmin()
                 ]
             );
         }catch (\Exception $e){

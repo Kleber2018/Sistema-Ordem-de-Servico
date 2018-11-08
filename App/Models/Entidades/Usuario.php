@@ -7,6 +7,18 @@ class Usuario
     private $fn_codigo;
     private $fn_nome;
     private $fn_senha;
+    private $admin;
+
+
+    public function getAdmin()
+    {
+        return $this->admin;
+    }
+
+    public function setAdmin($admin)
+    {
+        $this->admin = $admin;
+    }
 
     /**
      * @return mixed

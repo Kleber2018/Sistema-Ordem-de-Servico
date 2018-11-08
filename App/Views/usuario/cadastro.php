@@ -12,14 +12,22 @@
             <?php } ?>
 
             <form action="http://<?php echo APP_HOST; ?>/usuario/salvar" method="post" id="form_cadastro">
-                <div class="field">
-                    <label for="usuario-codigo" class="label" >Código do Usuário</label>
+                <label for="usuario-codigo" class="label" >Código do Usuário</label>
+                <div class="field is-grouped">
                     <div class="control has-icons-left">
                         <input type="text" class="input" name="usuario-codigo" placeholder="Código" value="" required>
                         <span class="icon is-small is-left">
                             <i class="fas fa-id-card-alt"></i>
                         </span>
                     </div>
+                    <!-- <div class="control"> -->
+                    <div class="field">
+                    <label class="checkbox">
+                        <input type="checkbox" name="admin">
+                             Administrador
+                        </label>
+                    </div>
+                <!-- </div> -->
                 </div>
                 <div class="field">
                     <label for="usuario-nome" class="label">Nome do Usuário</label>
@@ -44,6 +52,7 @@
                         <button type="submit" class="button is-link">Salvar</button>
                     </div>
                 </div>
+
             </form>
         </div>
 </main>
