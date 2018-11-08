@@ -50,8 +50,12 @@
 
 
                 <div class="field">
-                    <label for="tipo-os" class="label">Tipo (nao está puchando)</label>
-                    <div class="select">
+                    <label for="tipo-os" class="label">Tipo</label>
+                    <div class="control has-icons-left">
+                        <span class="icon is-small is-left">
+                            <i class="fas fa-pen"></i>
+                        </span>
+                    <div class="select has-icons-left">
                         <select name="os-tipo">
                             <option value="CEG">1 - CEG (Corretiva Emergêncial)</option>
                             <option value="CNE">2 - CNE (Corretiva não Emergêncial)</option>
@@ -59,19 +63,25 @@
                             <option value="MEM">9 - MEM (Melhoria)</option>
                             <option value="SIG">6 - SIG (Serviço Interno)</option>
                         </select>
+                </div>
                     </div>
                 </div>
 
 
-                <div class="field">
-                    <label for="data-ose" class="label">Data Prevista</label>
-                    <div class="control has-icons-left">
-                        <input type="text" class="input" name="os-data-prevista" placeholder="   /   /     " value="">
-                        <span class="icon is-small is-left">
-                                         <i class="fas fa-users"></i>
-                                    </span>
-                    </div>
-                </div>
+        <div class="field">
+        <label for="data-ose" class="label">Data Prevista</label>
+            <div class="control has-icons-left">
+                <input name="data-ose" type="datetime-local" class="input">
+                <span class="icon is-small is-left">
+                <i class="fas fa-clock"></i>
+                                                </span>
+            </div>
+        </div>
+        <?php 
+            $input_date=$_POST['data-ose'];
+            $date=date("Y-m-d H:i:s",strtotime($input_date));
+            echo "Debugando o formato da data: " . $date;
+        ?>
 
 
 
@@ -90,7 +100,7 @@
                     <div class="control has-icons-left">
                         <input type="text" class="input"  name="os-obs" placeholder="Observação" value="" required>
                         <span class="icon is-small is-left">
-                            <i class="fas fa-map-signs"></i>
+                        <i class="fas fa-comments"></i>
                         </span>
                     </div>
                 </div>
