@@ -24,7 +24,7 @@ class ServicoDAO extends BaseDAO
             //Função Insert da baseDAO
             return $this->insert(
                 'SMIOS',
-                ":OS_CODIGO, :OS_OBS, :OS_NOME_RESP, :OS_TIPO, :OS_TITULO, :LOC_CODIGO, :OS_DATA_R, :OS_STATUS",
+                ":OS_CODIGO, :OS_OBS, :OS_NOME_RESP, :OS_TIPO, :OS_TITULO, :LOC_CODIGO, :OS_STATUS",
                 [
                     ':OS_CODIGO'=>$servico->getOsCodigo(), //PRIMARY KEY: deve ser única e não repetida
                     ':OS_OBS'=>$servico->getOsObs(),
