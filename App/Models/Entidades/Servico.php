@@ -13,6 +13,8 @@ class Servico
     private $os_tipo;
     private $os_equipe; // equipe A, equipe B
     private $os_status; //emitida, nao executada, executada
+    private $os_dataPrevista;
+    private $os_fnCodigo;
 
     //usado em ambos
     private $dataCriacao;
@@ -22,6 +24,27 @@ class Servico
     private $osa_hora_final;
     private $osa_tipo_apropriacao;//hora extra ou normal
     private $osa_funcionario;
+
+
+    public function getfnCodigo()
+    {
+        return $this->datafnCodigo;
+    }
+
+    public function setfnCodigo($datafnCodigo)
+    {
+        $this->datafnCodigo = $datafnCodigo;
+    }
+
+    public function getDataPrevista()
+    {
+        return $this->dataPrevista;
+    }
+
+    public function setDataPrevista($dataPrevista)
+    {
+        $this->dataPrevista = $dataPrevista;
+    }
 
     /**
      * @return mixed

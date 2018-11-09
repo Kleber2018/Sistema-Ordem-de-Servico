@@ -21,10 +21,10 @@ class ServicoDAO extends BaseDAO
         try {
             $servico->setOsCodigo($this->geraCodOse($servico->getOsLocalizacao()));//para gerar o cod da Ordem de serviçõ padrão Ex:QD:023
             
-            //Função Insert da baseDAO
+            //Função Insert da BaseDAO
             return $this->insert(
                 'SMIOS',
-                ":OS_CODIGO, :OS_OBS, :OS_NOME_RESP, :OS_TIPO, :OS_TITULO, :LOC_CODIGO, :OS_STATUS",
+                ":OS_CODIGO, :OS_OBS, :OS_NOME_RESP, :OS_TIPO, :OS_TITULO, :LOC_CODIGO, :OS_STATUS, :OS_DATA_P, :FN_CODIGO",
                 [
                     ':OS_CODIGO'=>$servico->getOsCodigo(), //PRIMARY KEY: deve ser única e não repetida
                     ':OS_OBS'=>$servico->getOsObs(),
@@ -32,7 +32,9 @@ class ServicoDAO extends BaseDAO
                     ':OS_TIPO'=>$servico->getOsTipo(),
                     ':OS_TITULO'=>$servico->getOsTitulo(),
                     ':LOC_CODIGO'=>$servico->getOsLocalizacao(), //CHAVE ESTRANGEIRA: deve pré-existir na tabela SMICL
-                    ':OS_STATUS'=>'PENDENTE'
+                    ':OS_STATUS'=>'PENDENTE',
+                    ':OS_DATA_P'=>$servico->getDataPrevista(),
+                    ':FN_CODIGO'=>$_SESSION['usuario']
                 ]
             );
 

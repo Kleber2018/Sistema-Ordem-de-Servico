@@ -69,21 +69,14 @@
 
 
         <div class="field">
-        <label for="data-ose" class="label">Data Prevista</label>
+        <label for="data-ose-prevista" class="label">Data Prevista</label>
             <div class="control has-icons-left">
-                <input name="data-ose" type="datetime-local" class="input">
+                <input name="data-ose-prevista" type="datetime-local" class="input">
                 <span class="icon is-small is-left">
-                <i class="fas fa-clock"></i>
-                                                </span>
+                    <i class="fas fa-clock"></i>
+                </span>
             </div>
         </div>
-        <?php 
-            $input_date=$_POST['data-ose'];
-            $date=date("Y-m-d H:i:s",strtotime($input_date));
-            echo "Debugando o formato da data: " . $date;
-        ?>
-
-
 
                 <div class="field">
                     <label for="titulo-os" class="label">Título da ordem de Serviço</label>
