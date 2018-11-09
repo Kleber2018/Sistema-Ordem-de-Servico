@@ -7,7 +7,6 @@ class HomeController extends Controller
     public function index()
     {
        if ($_SESSION['idioma'] != 'en')  $_SESSION['idioma'] = 'ptbr';
-
        $this->render('home/index');
     }
 
@@ -24,4 +23,12 @@ class HomeController extends Controller
         $_SESSION['idioma'] = 'ptbr';
         $this->index();
     }
+
+    public function altoContraste()
+    {
+        if ($_SESSION['altocontraste'] != '-altocontraste')  $_SESSION['altocontraste'] = '-altocontraste';
+        else $_SESSION['altocontraste'] = '';
+        $this->index();
+    }
+
 }

@@ -4,7 +4,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
   <title><?php echo TITLE; ?></title>
   <link rel="stylesheet" href="http://<?php echo APP_HOST; ?>/public/css/bulma-0.7.2/css/bulma.min.css">
-  <link rel="stylesheet" href="http://<?php echo APP_HOST; ?>/public/css/estilo.css">
+  <link rel="stylesheet" href="http://<?php echo APP_HOST; ?>/public/css/estilo<?php echo $_SESSION['altocontraste']; ?>.css">
   
   <script src="http://<?php echo APP_HOST; ?>/public/js/translate.js"></script>
 
