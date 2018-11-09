@@ -10,19 +10,20 @@
     </div>
 
     <div class="navbar-end">
-
-
         <div class='navbar-item has-dropdown is-hoverable'>
-
             <a class='navbar-link has-text-grey'>
-                Idioma 
+                <label data-tag="idiomas"></label> 
             </a>
             <div class='navbar-dropdown is-right'>
                 <a class='navbar-item'  href="http://<?php echo APP_HOST; ?>/home/ptbr">
-                    <p class='content has-text-grey'>Português</p>
+                    <p class='content has-text-grey'>
+                        <label data-tag="portugues"></label>
+                    </p>
                 </a>
                 <a class='navbar-item'  href="http://<?php echo APP_HOST; ?>/home/en">
-                    <p class='content has-text-grey'>Inglês</p>
+                    <p class='content has-text-grey'>
+                        <label data-tag="ingles"></label>
+                    </p>
                 </a>
                 </form>
             </div>
@@ -30,29 +31,22 @@
 
         <div class='navbar-item has-dropdown is-hoverable <?php  if (!$_SESSION['logado']) echo "is-hidden"; ?>'>
             <a class='navbar-link has-text-grey'>
-            Bem vindo <?php echo $_SESSION['usuario']?>
+                <label data-tag="bemvindo"> </label>  <?php echo "&nbsp" . $_SESSION['usuario']?>
             </a>
-        <div class='navbar-dropdown is-right'>
-            <a class='navbar-item has-icon-left' href="http://<?php echo APP_HOST; ?>/Login/deslogar">
-                <span class='icon is-small is-left'>
-                    <i class='fas fa-sign-out-alt'></i>
-                </span>
-                <p class='content has-text-grey'>Deslogar</p>
-            </a>
+            <div class='navbar-dropdown is-right'>
+                <a class='navbar-item has-icon-left' href="http://<?php echo APP_HOST; ?>/Login/deslogar">
+                    <span class='icon is-small is-left'>
+                        <i class='fas fa-sign-out-alt'></i>
+                    </span>
+                    <p class='content has-text-grey'>
+                        <label data-tag="deslogar"></label>
+                    </p>
+                </a>
             </div>
         </div>
-
     </div>
-    </nav>
-          <!-- PHP que desloga após certo tempo -->
-<?php
-	// 	session_start();
-	// 	$logado = $_SESSION['logado'];
-	// 	$usuario = $_SESSION['usuario'];
+</nav>
 
-	// //Desloga depois de um tempo inativo.
-	// require("checaAutenticacao.php"); 
-  ?>
 
 
 

@@ -1,3 +1,17 @@
 {
-	"logo": "Electromechanical System"
+	"logo": "Electromechanical System",
+	"idiomas" : "Language",
+	"portugues" : "Portuguese",
+	"ingles" : "English",
+	"bemvindo": "Welcome",
+	"deslogar" : "Log off",
+	"administracao" : "Administration",
+	"painel" : " Dashboard",
+	"servico" : " Work Screen",
+	"cadastros" : " Registrations",
+	"localizadores" : "Locators",
+	"tarefas" : " Assignments",
+	"relatorios" : " Reports",
+	"controle" : " User Control",
+	"configuracoes" : " Settings"
 }

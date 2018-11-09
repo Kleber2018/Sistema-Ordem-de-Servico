@@ -1,0 +1,17 @@
+{
+	"logo":"Sistema Eletromecânico",
+	"idiomas":"Idioma",
+	"portugues":"Português",
+	"ingles":"Inglês",
+	"bemvindo": "Bem-vindo ",
+	"deslogar" : "Deslogar",
+	"administracao" : "Administração",
+	"painel" : " Painel",
+	"servico" : " Tela de Serviço",
+	"cadastros" : "Cadastros",
+	"localizadores" : "Localizadores",
+	"tarefas" : "Serviços",
+	"relatorios" : " Relatórios",
+	"controle" : " Controle de Usuários",
+	"configuracoes" : " Configurações"
+}
