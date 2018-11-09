@@ -38,11 +38,13 @@ class Servico
 
     public function getDataPrevista()
     {
-        //Conversão do formato de data - MySQL para HTML
+        //Conversão do formato de data - MySQL para HTML input datetime-local
         $input_date=$this->os_dataPrevista;
-        $data=date("c",strtotime($input_date));
-       // return $this->os_dataPrevista;
-        return $data;
+        $data=date("Y-m-d",strtotime($input_date));
+        $hora=date("H:i",strtotime($input_date));
+        $datahora = $data . "T" . $hora;
+
+        return $datahora;
 
     }
 

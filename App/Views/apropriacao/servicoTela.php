@@ -98,9 +98,6 @@
                     <label for="data-ose-prevista" class="label">Data Prevista</label>
                         <div class="control has-icons-left">
                             <input name="data-ose-prevista" type="datetime-local" class="input" value="<?php echo $serv->getDataPrevista(); ?>">
-                            <?php 
-                                echo "Debuggando formato da data prevista: " . $serv->getDataPrevista(); 
-                            ?>
                                                         <span class="icon is-small is-left">
                                 <i class="fas fa-clock"></i>
                             </span>
