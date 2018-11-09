@@ -28,22 +28,28 @@ class Servico
 
     public function getfnCodigo()
     {
-        return $this->datafnCodigo;
+        return $this->os_fnCodigo;
     }
 
-    public function setfnCodigo($datafnCodigo)
+    public function setfnCodigo($fnCodigo)
     {
-        $this->datafnCodigo = $datafnCodigo;
+        $this->os_fnCodigo = $fnCodigo;
     }
 
     public function getDataPrevista()
     {
-        return $this->dataPrevista;
+        //Conversão do formato de data - MySQL para HTML
+        $input_date=$this->os_dataPrevista;
+        $data=date("c",strtotime($input_date));
+       // return $this->os_dataPrevista;
+        return $data;
+
     }
 
     public function setDataPrevista($dataPrevista)
     {
-        $this->dataPrevista = $dataPrevista;
+
+        $this->os_dataPrevista = $dataPrevista;
     }
 
     /**

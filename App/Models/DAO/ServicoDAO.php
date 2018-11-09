@@ -88,7 +88,7 @@ class ServicoDAO extends BaseDAO
 
         try {
             $query = $this->select(
-                "SELECT OS_CODIGO, OS_TITULO, LOC_CODIGO, OS_NOME_RESP, OS_OBS, OS_STATUS FROM SMIOS WHERE OS_CODIGO = '$cod'"
+                "SELECT OS_CODIGO, OS_TITULO, LOC_CODIGO, OS_NOME_RESP, OS_TIPO, OS_OBS, OS_STATUS, OS_DATA_P, FN_CODIGO FROM SMIOS WHERE OS_CODIGO = '$cod'"
             );
 
             $retorno = ($query->fetchObject());
@@ -97,8 +97,15 @@ class ServicoDAO extends BaseDAO
             $servico->setOsTitulo($retorno->OS_TITULO);
             $servico->setOsLocalizacao($retorno->LOC_CODIGO);
             $servico->setOsResponsavel($retorno->OS_NOME_RESP);
+            $servico->setOsTipo($retorno->OS_TIPO);
             $servico->setOsObs($retorno->OS_OBS);
             $servico->setOsStatus($retorno->OS_STATUS);
+            $servico->setDataPrevista($retorno->OS_DATA_P);
+            $servico->setfnCodigo($retorno->FN_CODIGO);
+            
+            // echo "<pre>";
+            // var_dump ($servico);
+            // echo "</pre>";
 
             return  $servico;//Retornando o objeto servico
 

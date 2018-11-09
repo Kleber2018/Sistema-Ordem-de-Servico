@@ -51,16 +51,15 @@ class ServicoController extends Controller
         $servicoDAO = new ServicoDAO();
         $Servico = new Servico();
 
-        //Conversão do formato de data - HTML para MySQL
-        $input_date=$_POST['data-ose-prevista'];
-        $data=date("Y-m-d H:i:s",strtotime($input_date));
-
+                //Conversão do formato de data - HTML para MySQL
+                $input_date=$_POST['data-ose-prevista'];
+                $data=date("Y-m-d H:i:s",strtotime($input_date));
         $Servico->setOsLocalizacao($_POST['os-localizador1']);
         $Servico->setOsResponsavel($_POST['os-responsavel']);
         $Servico->setOsTipo($_POST['os-tipo']);
         $Servico->setOsTitulo($_POST['os-titulo']);
         $Servico->setOsObs($_POST['os-obs']);
-        $Servico->setDataPrevista($data);
+        $Servico->setDataPrevista($_POST['data-ose-prevista']);
         
         Sessao::gravaFormulario($_POST);
 

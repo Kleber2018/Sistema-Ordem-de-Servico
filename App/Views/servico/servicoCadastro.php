@@ -55,7 +55,7 @@
                         <span class="icon is-small is-left">
                             <i class="fas fa-pen"></i>
                         </span>
-                    <div class="select has-icons-left">
+                    <div class="select">
                         <select name="os-tipo">
                             <option value="CEG">1 - CEG (Corretiva Emergêncial)</option>
                             <option value="CNE">2 - CNE (Corretiva não Emergêncial)</option>

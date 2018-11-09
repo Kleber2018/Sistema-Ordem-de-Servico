@@ -80,25 +80,29 @@
 
 
                     <div class="field">
-                        <label for="tipo-os" class="label">Tipo (nao está puchando)</label>
+                        <label for="tipo-os" class="label">Tipo</label>
+                        <div class="control has-icons-left">
+                        <span class="icon is-small is-left">
+                            <i class="fas fa-pen"></i>
+                        </span>
                         <div class="select">
                             <select name="os-tipo">
-                                <option value="1">1 - CEG (Corretiva Emergêncial)</option>
-                                <option value="2">2 - CNE (Corretiva não Emergêncial)</option>
-                                <option value="3">3 - PNS (Preventiva)</option>
-                                <option value="9">9 - MEM (Melhoria)</option>
-                                <option value="6">6 - SIG (Serviço Interno)</option>
+                                <option><?php echo $serv->getOsTipo(); ?></option>
                             </select>
                         </div>
+        </div>
                     </div>
 
 
                     <div class="field">
-                        <label for="data-ose" class="label">Data Prevista</label>
+                    <label for="data-ose-prevista" class="label">Data Prevista</label>
                         <div class="control has-icons-left">
-                            <input type="text" class="input" name="os-data-prevista" placeholder="   /   /     " value="" required>
-                            <span class="icon is-small is-left">
-                                             <i class="fas fa-users"></i>
+                            <input name="data-ose-prevista" type="datetime-local" class="input" value="<?php echo $serv->getDataPrevista(); ?>">
+                            <?php 
+                                echo "Debuggando formato da data prevista: " . $serv->getDataPrevista(); 
+                            ?>
+                                                        <span class="icon is-small is-left">
+                                <i class="fas fa-clock"></i>
                             </span>
                         </div>
                     </div>
