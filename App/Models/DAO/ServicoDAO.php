@@ -20,7 +20,7 @@ class ServicoDAO extends BaseDAO
     {
         try {
             $servico->setOsCodigo($this->geraCodOse($servico->getOsLocalizacao()));//para gerar o cod da Ordem de serviçõ padrão Ex:QD:023
-            var_dump($servico->getOsCodigo());
+            
             //Função Insert da baseDAO
             return $this->insert(
                 'SMIOS',
@@ -49,24 +49,31 @@ class ServicoDAO extends BaseDAO
     public function geraCodOse($loc)
     {
         $this->vr = str_split($loc,2);
+        
         $this->vr2 = $this->vr[0];
+        var_dump($this->vr2);
+        echo '</br>';
         try {
             $query = $this->select(
-                "SELECT OS_CODIGO FROM SMIOS WHERE OS_CODIGO like '$this->vr2%' order by os_codigo DESC LIMIT 1"
+                "SELECT OS_CODIGO FROM SMIOS WHERE OS_CODIGO like '$this->vr2%' order by OS_CODIGO DESC LIMIT 1"
             );
 
             //se retornar uma linha no select ele pega esse resultado e aumenta mais 9 para gerar o código da OSE Ex:qd:045
-           if($query->execute()){
+           
+            if($query->execute()){
                 $this->codigosOse = $query->fetch();
-                 $this->vr = explode(":",$this->codigosOse['0']);
+                 $this->vr = explode(":",$this->codigosOse['OS_CODIGO']);
+                // echo  '</br> dentro do if';
+                 //var_dump($this->vr['1']);
                 $this->codNumero = intval($this->vr['1']+9);
+                //echo 'dentro do if';
                 //$this->codLetra = $this->vr[0];
             } else {//caso nao retorne resultado é pq nao existe ordem de servico para aquele localizador então ele cria um com numero 01, ex. OQ:01
                // $this->vr = str_split($loc,2);
                // $this->codLetra = $this->vr[0];
                 $this->codNumero = 01;
             }
-             return  ($this->vr2.':0'.$this->codNumero);//Retornando no padrão Ex QD:023
+             return  ($this->vr2.':'.$this->codNumero);//Retornando no padrão Ex QD:023
 
         }catch (Exception $e){
             throw new \Exception("Erro no acesso aos dados.", 500);
