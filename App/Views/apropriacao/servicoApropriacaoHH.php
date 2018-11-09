@@ -15,12 +15,22 @@
                 <div class="alert alert-warning" role="alert"><?php echo $Sessao::retornaMensagem(); ?></div>
             <?php } ?>
 
-            <form action="http://<?php echo APP_HOST; ?>/servico/salvar" method="post" id="form_cadastro">
+            
+            
+            <form action="http://<?php echo APP_HOST; ?>/apropriacao/salvarApropriacaoHH" method="post" id="form_cadastro">
 
 
-                <label for="data-ose" class="label"><h2> Ordem de Serviço QD:002 </h2></label></br>
+                <label for="data-ose" class="label"><h2> Ordem de Serviço <?php echo $this->getVar(); ?></h2></label></br>
 
-
+                <div class="field">
+                    <label for="data-ose" class="label">Ordem de serviço:</label>
+                    <div class="control has-icons-left">
+                        <input type="text" class="input" name="os-codigo" placeholder="" value="<?php echo $this->getVar(); ?>" required>
+                        <span class="icon is-small is-left">
+                                         <i class="fas fa-users"></i>
+                        </span>
+                    </div>
+                </div>
 
 
                 <div class="field">
@@ -94,6 +104,6 @@
                 <button type="submit" class="button is-link">Voltar para a ordem de servico</button>volta para a Ordem de Servico com a lista de apropriações de hora
             </div>
         </div>
-        </div>
+    </div>
 </main>
 </section>

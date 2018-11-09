@@ -29,9 +29,20 @@
 
 
 
-        <form id="form_cadastro" action="http://<?php echo APP_HOST; ?>/apropriacao/servicoApropriacaoHH" method="POST">
+        <form id="form_cadastro" action="http://<?php echo APP_HOST; ?>/apropriacao/ServicoApropriacaoHH" method="POST">
 
-                <fieldset disabled>
+                
+                    <label for="os-codigo1" class="label">Ordem de Serviço: </label> o conteudo desse campo está sendo usado para o formulario de apropriação de horas
+                    <div class="field is-grouped">
+                        <div class="control has-icons-left is-expanded is-disabled">
+                            <input type="text" class="input" name="os-codigo" placeholder="" value="<?php echo $serv->getOsCodigo(); ?>">
+                            <span class="icon is-small is-left">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                </span>
+                        </div>
+                    </div>
+
+                    <fieldset disabled>
 
                     <label for="localizador-os-codigo" class="label" >Status do Serviço</label>
                     <div class="field is-grouped">
@@ -88,7 +99,7 @@
                             <input type="text" class="input" name="os-data-prevista" placeholder="   /   /     " value="" required>
                             <span class="icon is-small is-left">
                                              <i class="fas fa-users"></i>
-                                        </span>
+                            </span>
                         </div>
                     </div>
 
@@ -112,27 +123,18 @@
                             </span>
                         </div>
                     </div>
+                    
                 </fieldset>
                 </br>
-
             <!--Redireciona para ServicoController function servicoApropriacaoHH-->
-                <div class="control">
-                    <div class="field">
-                        <button type="submit" class="button is-link" >informar realização e Apropriar Horas trabalhadas</button> Implementar: esse botão para pegar o codigo da ose que está sendo visualizada e aabre a tela servicoApropriacaoHH para add as horas trabalhadas
-                    </div>
+            <div class="control">
+                <div class="field">
+                    <button type="submit" class="button is-link" >Apropriar Horas Trabalhadas</button> Implementar: esse botão para pegar o codigo da ose que está sendo visualizada e aabre a tela servicoApropriacaoHH para add as horas trabalhadas
                 </div>
-            </form>
-        </div>
-
-
-
-
-    <div class="control">
-        <div class="field">
-            <button type="submit" class="button is-link" >informar não realização</button> Implementar: esse botão para somente alterar o status da Ose para NÃO EXECUTADA
-        </div>
+            </div>
+    </form>
     </div>
-
+              
 
 
     <table class="table">
@@ -167,26 +169,26 @@
             <td><a href="https://en.wikipedia.org/wiki/Leicester_City_F.C." title="Leicester City F.C.">Alterar</a></td>
             <td><a href="https://en.wikipedia.org/wiki/Leicester_City_F.C." title="Leicester City F.C.">Excluir</a></td>
         </tr>
-        <tr>
-            <td>01/11/2018</td>
-            <td>Kleber leandro</td>
-            <td>13:30</td>
-            <td>17:00</td>
-            <td>HORA NORMAL</td>
-            <td><a href="https://en.wikipedia.org/wiki/Leicester_City_F.C." title="Leicester City F.C.">Alterar</a></td>
-            <td><a href="https://en.wikipedia.org/wiki/Leicester_City_F.C." title="Leicester City F.C.">Excluir</a></td>
-        </tr>
-
-
 
         </tbody>
     </table>
 
+          
+        
+
     <div class="control">
         <div class="field">
-            <button type="submit" class="button is-link" >Apropriar mais horas na Ordem de Servico executada</button> Implementar: esse botão abrir a tela para add aproipriação de horas
+            <button type="submit" class="button is-link" >Informar Realização</button> Implementar: esse botão para mudar o status da Ordem de serviço para Executada
         </div>
     </div></br>
+    <div class="control">
+        <div class="field">
+            <button type="submit" class="button is-link" >Informar não Realização</button> Implementar: esse botão para mudar o status da Ordem de serviço para não Executada
+        </div>
+    </div></br>
+
+
+
 
 
 </main>

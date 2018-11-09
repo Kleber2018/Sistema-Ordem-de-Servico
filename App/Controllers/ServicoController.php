@@ -69,11 +69,7 @@ class ServicoController extends Controller
             }
     }
 
-    //function é chamada pelo App que por sua vez é chamada pelo form servicoTela para abrir novamente o servicoTela com os campos populados do View servicoTela
-    public function buscarServico(){
-
-        echo 'Precisa implementar um jeito de o codigo que for informado popular a a View servicoTela';
-    }
+   
 
     public function sucesso()
     {

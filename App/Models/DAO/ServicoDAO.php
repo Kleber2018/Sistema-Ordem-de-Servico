@@ -104,10 +104,46 @@ class ServicoDAO extends BaseDAO
             throw new \Exception("Erro no acesso aos dados.", 500);
         }
     }
+
+    public  function salvarApropriacao(Servico $servico)
+    {
+       var_dump($servico->getOsCodigo());
+        try {
+           
+            //Função Insert da baseDAO
+            return $this->insert(
+                'SMIOSA',
+                ":OS_CODIGO, :OS_DATA, :OS_AP_INI, :OS_AP_FIM, :TA_CODIGO, :FN_CODIGO",
+                [
+                    ':OS_CODIGO'=>$servico->getOsCodigo(), //PRIMARY KEY: deve ser única e não repetida
+                    ':OS_DATA'=>'NOW()',
+                    ':OS_AP_INI'=>12,
+                    ':OS_AP_FIM'=>17,
+                    ':TA_CODIGO'=>'HN',
+                    ':FN_CODIGO'=>$servico->getOsResponsavel()
+                    
+                ]
+            );
+
+        }catch (\Exception $e){
+            throw new \Exception("Erro na gravação de dados dentro do ServicoDAO.", 500);
+        }
+    }
+
     
 }
 
-/*CREATE TABLE SMIOS (
+/*
+CREATE TABLE SMIOSA (
+OS_CODIGO VARCHAR(8) PRIMARY KEY,
+OS_DATA DATETIME,
+OS_AP_FIM NUMERIC(5),
+OS_AP_INI NUMERIC(5),
+TA_CODIGO VARCHAR(10),
+FN_CODIGO VARCHAR(10)
+);
+
+CREATE TABLE SMIOS (
 OS_CODIGO VARCHAR(8) PRIMARY KEY,
 OS_OBS VARCHAR(60),
 OS_DATA_P DATETIME,

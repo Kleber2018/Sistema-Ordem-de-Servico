@@ -69,27 +69,28 @@ class ApropriacaoController extends Controller
 
 
     //Function é chamada pelo App.php com os parametros passados pela View servicoApropriacaoHH.php
-    public function servicoApropriacaoHH()
+    public function ServicoApropriacaoHH()
     {
+        var_dump($_POST['os-codigo']);
+        $this->setVar($_POST['os-codigo']);
+        
         $this->render('/apropriacao/servicoApropriacaoHH');
     }
 
 
     //para salvar a apropriacao de horas (AINDA NÃO IMPLEMENTADO)
-    public function salvar()
+    public function salvarApropriacaoHH()
     {
         $servicoDAO = new ServicoDAO();
         $Servico = new Servico();
 
-        $Servico->setOsLocalizacao($_POST['os-localizador1']);
+        $Servico->setOsCodigo($_POST['os-codigo']);
         $Servico->setOsResponsavel($_POST['os-responsavel']);
-        $Servico->setOsTipo($_POST['os-tipo']);
-        $Servico->setOsTitulo($_POST['os-titulo']);
-        $Servico->setOsObs($_POST['os-obs']);
+       
 
-        Sessao::gravaFormulario($_POST);//???
+        //Sessao::gravaFormulario($_POST);//???
 
-            if($servicoDAO->salvar($Servico)){
+            if($servicoDAO->salvarApropriacao($Servico)){
                 $this->redirect('/servico/sucesso');
             }else{
                 Sessao::gravaMensagem("Erro ao gravar");
