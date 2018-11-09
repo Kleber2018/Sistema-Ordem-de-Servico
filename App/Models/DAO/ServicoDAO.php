@@ -32,7 +32,6 @@ class ServicoDAO extends BaseDAO
                     ':OS_TIPO'=>$servico->getOsTipo(),
                     ':OS_TITULO'=>$servico->getOsTitulo(),
                     ':LOC_CODIGO'=>$servico->getOsLocalizacao(), //CHAVE ESTRANGEIRA: deve pré-existir na tabela SMICL
-                    ':OS_DATA_R'=>'NOW()',
                     ':OS_STATUS'=>'PENDENTE'
                 ]
             );
@@ -51,8 +50,7 @@ class ServicoDAO extends BaseDAO
         $this->vr = str_split($loc,2);
         
         $this->vr2 = $this->vr[0];
-        var_dump($this->vr2);
-        echo '</br>';
+       
         try {
             $query = $this->select(
                 "SELECT OS_CODIGO FROM SMIOS WHERE OS_CODIGO like '$this->vr2%' order by OS_CODIGO DESC LIMIT 1"
