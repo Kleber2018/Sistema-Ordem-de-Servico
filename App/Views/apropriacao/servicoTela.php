@@ -49,7 +49,7 @@
                         <div class="control has-icons-left is-expanded is-disabled">
                             <input type="text" class="input" name="os-localizador1" placeholder="Ex: PENDENTE, EXECUTADA" value="<?php echo $serv->getOsStatus(); ?>" required>
                             <span class="icon is-small is-left">
-                                    <i class="fas fa-map-marker-alt"></i>
+                                <i class="fas fa-angle-double-right"></i>
                                 </span>
                         </div>
                     </div>
@@ -120,7 +120,7 @@
                         <div class="control has-icons-left">
                             <input type="text" class="input"  name="os-obs" placeholder="Observação" value="<?php echo $serv->getOsObs(); ?>" required>
                             <span class="icon is-small is-left">
-                                <i class="fas fa-map-signs"></i>
+                                <i class="fas fa-comments"></i>
                             </span>
                         </div>
                     </div>
