@@ -21,11 +21,14 @@ class Servico
 
     //variaveis apropriacao de horas do serviço
     private $osa_data;
+    private $osa_hora_inicial;
     private $osa_hora_final;
     private $osa_tipo_apropriacao;//hora extra ou normal
     private $osa_funcionario;
 
 
+
+    
     public function getfnCodigo()
     {
         return $this->os_fnCodigo;

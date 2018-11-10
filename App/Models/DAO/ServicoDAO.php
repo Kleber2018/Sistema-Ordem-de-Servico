@@ -116,26 +116,26 @@ class ServicoDAO extends BaseDAO
 
     public  function salvarApropriacao(Servico $servico)
     {
-       var_dump($servico->getOsCodigo());
+       
         try {
            
             //Função Insert da baseDAO
             return $this->insert(
                 'SMIOSA',
-                ":OS_CODIGO, :OS_DATA, :OS_AP_INI, :OS_AP_FIM, :TA_CODIGO, :FN_CODIGO",
+                ":OS_CODIGO, :FN_CODIGO, :OS_DATA, :OS_AP_FIM, :OS_AP_INI, :TA_CODIGO",
                 [
                     ':OS_CODIGO'=>$servico->getOsCodigo(), //PRIMARY KEY: deve ser única e não repetida
-                    ':OS_DATA'=>'NOW()',
-                    ':OS_AP_INI'=>12,
-                    ':OS_AP_FIM'=>17,
-                    ':TA_CODIGO'=>'HN',
-                    ':FN_CODIGO'=>$servico->getOsResponsavel()
-                    
+                    ':FN_CODIGO'=>$servico->getOsResponsavel(),
+                    ':OS_DATA'=>$servico->getOsaData(),
+                    ':OS_AP_FIM'=>$servico->getOsaHoraInicial(),
+                    ':OS_AP_INI'=>$servico->getOsaHoraFinal(),
+                    ':TA_CODIGO'=>$servico->getOsaTipoApropriacao()
                 ]
-            );
+            );//INSERT INTO SMIOSA(OS_CODIGO, OS_DATA, OS_AP_FIM, TA_CODIGO, FN_CODIGO) VALUES ('AX:9', '2018-11-10', '14:01:16', 'HN', 'KLEBER');
+
 
         }catch (\Exception $e){
-            throw new \Exception("Erro na gravação de dados dentro do ServicoDAO.", 500);
+            throw new \Exception("Erro na gravação de dados dentro do ServicoDAO da Apropriação.", 500);
         }
     }
 

@@ -86,7 +86,16 @@ class ApropriacaoController extends Controller
 
         $Servico->setOsCodigo($_POST['os-codigo']);
         $Servico->setOsResponsavel($_POST['os-responsavel']);
-       
+        $Servico->setOsaData($_POST['data-apropriacao']);
+        $Servico->setOsaHoraInicial($_POST['hora-inicial']);
+        $Servico->setOsaHoraFinal($_POST['hora-final']);
+
+        $Servico->setOsaTipoApropriacao($_POST['tipo-os']);
+
+
+       // $input_date=$_POST['data-ose-prevista'];
+       // $data=date("Y-m-d H:i:s",strtotime($input_date));
+
 
         //Sessao::gravaFormulario($_POST);//???
 

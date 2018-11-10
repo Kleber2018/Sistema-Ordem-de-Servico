@@ -33,10 +33,21 @@
                 </div>
 
 
-                <div class="field">
-                    <label for="data-ose" class="label">Data da Apropriação de Horas</label>
+
+            <div class="field">
+                <label for="data-apropriacao" class="label">Data da Apropriação de Horas</label>
                     <div class="control has-icons-left">
-                        <input type="text" class="input" name="os-data-prevista" placeholder="   /   /     " value="" required>
+                        <input name="data-apropriacao" type="date" class="input">
+                        <span class="icon is-small is-left">
+                            <i class="fas fa-clock"></i>
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="field">
+                    <label for="hora-inicial" class="label">Hora Inicial</label>
+                    <div class="control has-icons-left">
+                        <input type="time" class="input" name="hora-inicial" value="" required>
                         <span class="icon is-small is-left">
                                          <i class="fas fa-users"></i>
                         </span>
@@ -46,9 +57,9 @@
 
 
                 <div class="field">
-                    <label for="data-ose" class="label">Hora Inicial</label>
+                    <label for="hora-final" class="label">Hora Final</label>
                     <div class="control has-icons-left">
-                        <input type="text" class="input" name="os-data-prevista" placeholder="   :     " value="" required>
+                        <input type="time" class="input" name="hora-final" value="" required>
                         <span class="icon is-small is-left">
                                          <i class="fas fa-users"></i>
                         </span>
@@ -56,24 +67,12 @@
                 </div>
 
 
-                <div class="field">
-                    <label for="data-ose" class="label">Hora Final</label>
-                    <div class="control has-icons-left">
-                        <input type="text" class="input" name="os-data-prevista" placeholder="   :     " value="" required>
-                        <span class="icon is-small is-left">
-                                         <i class="fas fa-users"></i>
-                        </span>
-                    </div>
-                </div>
-
-
-
-                <div class="field">
+                               <div class="field">
                     <label for="tipo-os" class="label">Tipo de Apontamento</label>
                     <div class="select">
-                        <select name="os-tipo">
-                            <option value="1">HN (Hora Normal)</option>
-                            <option value="2">HE (Hora Extra)</option>
+                        <select name="tipo-os">
+                            <option value="HN">HN (Hora Normal)</option>
+                            <option value="HE">HE (Hora Extra)</option>
                         </select>
                     </div>
                 </div>
