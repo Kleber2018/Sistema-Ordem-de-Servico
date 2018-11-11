@@ -130,7 +130,7 @@
             <!--Redireciona para ServicoController function servicoApropriacaoHH-->
             <div class="control">
                 <div class="field">
-                    <button type="submit" class="button is-link" >Apropriar Horas Trabalhadas</button> Implementar: esse botão para pegar o codigo da ose que está sendo visualizada e aabre a tela servicoApropriacaoHH para add as horas trabalhadas
+                    <button type="submit" class="button is-link" >Apropriar Horas Trabalhadas</button>
                 </div>
             </div>
     </form>
@@ -138,43 +138,36 @@
               
 
 
+
+<?php if($this->getVar2()):?><!--PARA OCULTAR A TABELA CASO NÃO TENHA APROPRIAÇÃO DE HORAS-->
     <table class="table">
         <thead>
         <tr>
-            <th><abbr title="Position">Data</abbr></th>
-            <th><abbr title="Played">Funcionário</abbr></th>
-            <th><abbr title="Won">Início</abbr></th>
-            <th><abbr title="Drawn">Término</abbr></th>
-            <th><abbr title="Lost">Tipo</abbr></th>
-            <th><abbr title="Goals for"> </abbr></th>
-            <th><abbr title="Goals against"> </abbr></th>
+            <th><abbr title="Position">Data da Apropriação</abbr></th>
+            <th><abbr title="Position">Hora Inicial</abbr></th>
+            <th><abbr title="Position">Hora Final</abbr></th>
+            <th><abbr title="Position">Tipo de Apropriação</abbr></th>
+            <th><abbr title="Position">Executante</abbr></th>
         </tr>
         </thead>
 
-        <tbody>
-        <tr>
-            <td>01/11/2018</td>
-            <td>Kleber leandro</td>
-            <td>08:30</td>
-            <td>12:00</td>
-            <td>HORA NORMAL</td>
-            <td><a href="https://en.wikipedia.org/wiki/Leicester_City_F.C." title="Leicester City F.C.">Alterar</a></td>
-            <td><a href="https://en.wikipedia.org/wiki/Leicester_City_F.C." title="Leicester City F.C.">Excluir</a></td>
-        </tr>
-        <tr>
-            <td>01/11/2018</td>
-            <td>Felipe</td>
-            <td>08:30</td>
-            <td>12:00</td>
-            <td>HORA NORMAL</td>
-            <td><a href="https://en.wikipedia.org/wiki/Leicester_City_F.C." title="Leicester City F.C.">Alterar</a></td>
-            <td><a href="https://en.wikipedia.org/wiki/Leicester_City_F.C." title="Leicester City F.C.">Excluir</a></td>
-        </tr>
-
+        <tbody>         
+                <?php
+                    foreach ($this->getVar2() as $apropriacoes) {
+                        echo "<tr>";
+                        echo "<td>".$apropriacoes->getOsaData()."</td>";
+                        echo "<td>".$apropriacoes->getOsaHoraInicial()."</td>";
+                        echo "<td>".$apropriacoes->getOsaHoraFinal()."</td>";
+                        echo "<td>".$apropriacoes->getOsaTipoApropriacao()."</td>";
+                        echo "<td>".$apropriacoes->getOsaFuncionario()."</td>";
+                        echo '<td><a href="https://en.wikipedia.org/wiki/Leicester_City_F.C." title="Leicester City F.C.">Alterar</a></td>'; //IMPLEMENTAR
+                        echo '<td><a href="https://en.wikipedia.org/wiki/Leicester_City_F.C." title="Leicester City F.C.">Excluir</a></td>'; //IMPLEMENTAR
+                        echo "</tr>";
+                    }
+                    ?>
         </tbody>
     </table>
-
-          
+<?php endif ?>
         
 
     <div class="control">

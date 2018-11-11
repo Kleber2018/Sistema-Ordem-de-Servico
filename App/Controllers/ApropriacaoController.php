@@ -48,12 +48,13 @@ class ApropriacaoController extends Controller
         //$Servico = new Servico();
 
         $Servico = $servicoDAO->buscaOrdemServico($_POST['os-codigo']);//envia para o servicoDAO o codigo informado na tela servicoBusca e retorna um objeto Servico
-
+        $apropriacoes = $servicoDAO->listarApropriacao($_POST['os-codigo']);
         //self::setViewParam('Servico',$Servico);
 
         //Verifica se o cod informado na view servicoBusca existe
         if($Servico->getOsCodigo()){
             $this->setVar($Servico);
+            $this->setVar2($apropriacoes);
 
             $this->render('/apropriacao/servicoTela');
         } else {
@@ -107,11 +108,6 @@ class ApropriacaoController extends Controller
     }
 
 
-
-    //function é chamada pelo App que por sua vez é chamada pelo form servicoTela para abrir novamente o servicoTela com os campos populados do View servicoTela
-    public function buscarServico(){
-        echo 'Precisa implementar um jeito de o codigo que for informado popular a a View servicoTela';
-    }
 
 
     //abre uma view informando que a apropriacao foi adcionada com sucesso

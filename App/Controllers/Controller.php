@@ -9,7 +9,8 @@ abstract class Controller
 {
     protected $app;
     private $viewVar;
-    private $var;
+    private $var; //variavel para ser usada nas view
+    private $var2; //variavel2 para ser usada nas view
 
 
     public function __construct($app)
@@ -71,20 +72,28 @@ abstract class Controller
     }
 
     // /**
-    //  * @return mixed
+    //  * Variável 1 para ser usada nas views
     //  */
     public function getVar()
     {
         return $this->var;
     }
-
-    // /**
-    //  * @param mixed $serv
-    //  */
     public function setVar($var)
     {
         $this->var = $var;
     }
 
+
+    // /**
+    //  * Variável 2 para ser usada nas views
+    //  */
+    public function getVar2()
+    {
+        return $this->var2;
+    }
+    public function setVar2($var)
+    {
+        $this->var2 = $var;
+    }
 
 }

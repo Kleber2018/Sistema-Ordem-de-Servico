@@ -48,6 +48,7 @@ class LocalizadorDAO extends BaseDAO
         }
     }
 
+    //Para listar os localizadores cadastrados para cadastrar uma ordem de serviço na view servicoCadastro
     public function listar($cod = null)
     {
         $localizadores = array();

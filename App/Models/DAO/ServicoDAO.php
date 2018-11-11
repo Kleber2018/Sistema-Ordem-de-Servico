@@ -139,6 +139,35 @@ class ServicoDAO extends BaseDAO
         }
     }
 
+
+
+    //para listar as apropriações já cadastradas na view servicoTela
+    public function listarApropriacao($cod)
+    {
+        $apropriacoes = array();
+
+        $query = $this->select(
+            "SELECT OS_CODIGO, OS_DATA, OS_AP_FIM, OS_AP_INI, TA_CODIGO, FN_CODIGO FROM SMIOSA WHERE OS_CODIGO = '$cod'"
+        );
+
+        while ($retorno = $query -> fetchObject()) {
+            $servico = new Servico();
+            
+            $servico->setOsCodigo($retorno->OS_CODIGO);
+            $servico->setOsaData($retorno->OS_DATA);
+            $servico->setOsaHoraFinal($retorno->OS_AP_FIM);
+            $servico->setOsaHoraInicial($retorno->OS_AP_INI);
+            if($retorno->TA_CODIGO = 'HN'){
+                $servico->setOsaTipoApropriacao('HN - Hora Normal');
+            } elseif ($retorno->TA_CODIGO = 'HE'){
+                $servico->setOsaTipoApropriacao('HE - Hora Extra');
+            }
+            $servico->setOsaFuncionario($retorno->FN_CODIGO);
+            $apropriacoes[] = $servico;
+        }
+        return $apropriacoes;
+    }  
+
     
 }
 
