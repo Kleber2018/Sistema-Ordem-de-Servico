@@ -79,6 +79,8 @@ class ApropriacaoController extends Controller
     }
 
 
+	
+	
     //para salvar a apropriacao de horas (AINDA NÃO IMPLEMENTADO)
     public function salvarApropriacaoHH()
     {
@@ -107,7 +109,50 @@ class ApropriacaoController extends Controller
             }
     }
 
+    public function informarRealizacao()
+    {
+        $servicoDAO = new ServicoDAO();
+        $Servico = new Servico();
 
+        $Servico->setOsCodigo($_POST['os-codigo']);
+        $Servico->setOsStatus('Executado');
+
+	
+        //Sessao::gravaFormulario($_POST);//???
+
+            if($servicoDAO->update(
+			'SMIOS',"OS_STATUS = :OS_STATUS",[':OS_STATUS'=>$Servico->getOsStatus(), ':OS_CODIGO'=>$Servico->getOsCodigo()],"OS_CODIGO = :OS_CODIGO"
+			)
+			){
+                $this->redirect('/servico/sucesso');
+            }else{
+                Sessao::gravaMensagem("Erro ao gravar");
+            }
+    }
+	
+    public function informarNaoRealizacao()
+    {
+        $servicoDAO = new ServicoDAO();
+        $Servico = new Servico();
+
+        $Servico->setOsCodigo($_POST['os-codigo']);
+        $Servico->setOsStatus('Não Executado');
+
+	
+        //Sessao::gravaFormulario($_POST);//???
+
+            if($servicoDAO->update(
+			'SMIOS',"OS_STATUS = :OS_STATUS",[':OS_STATUS'=>$Servico->getOsStatus(), ':OS_CODIGO'=>$Servico->getOsCodigo()],"OS_CODIGO = :OS_CODIGO"
+			)
+			){
+                $this->redirect('/servico/sucesso');
+            }else{
+                Sessao::gravaMensagem("Erro ao gravar");
+            }
+    }
+	
+	
+	
 
 
     //abre uma view informando que a apropriacao foi adcionada com sucesso
