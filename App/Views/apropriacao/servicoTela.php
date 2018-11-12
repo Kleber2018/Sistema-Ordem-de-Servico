@@ -156,7 +156,6 @@
                         echo "<td>".$apropriacoes->getOsaHoraFinal()."</td>";
                         echo "<td>".$apropriacoes->getOsaTipoApropriacao()."</td>";
                         echo "<td>".$apropriacoes->getOsaFuncionario()."</td>";
-                        echo '<td><a href="https://en.wikipedia.org/wiki/Leicester_City_F.C." title="Leicester City F.C.">Alterar</a></td>'; //IMPLEMENTAR
                         echo '<td><a href="https://en.wikipedia.org/wiki/Leicester_City_F.C." title="Leicester City F.C.">Excluir</a></td>'; //IMPLEMENTAR
                         echo "</tr>";
                     }
