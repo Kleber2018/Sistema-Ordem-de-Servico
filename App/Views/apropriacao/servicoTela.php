@@ -33,11 +33,8 @@
 
                 
                       <div class="field is-grouped">
-                        <div class="control has-icons-left is-expanded is-disabled">
+                        <div class="control is-expanded is-disabled">
                             <input type="hidden" class="input" name="os-codigo" placeholder="" value="<?php echo $serv->getOsCodigo(); ?>">
-                            <span class="icon is-small is-left">
-                                    <i class="fas fa-map-marker-alt"></i>
-                                </span>
                         </div>
                     </div>
 
