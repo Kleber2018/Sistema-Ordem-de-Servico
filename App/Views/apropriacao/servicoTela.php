@@ -32,10 +32,9 @@
         <form id="form_cadastro" action="http://<?php echo APP_HOST; ?>/apropriacao/ServicoApropriacaoHH" method="POST">
 
                 
-                    <label for="os-codigo1" class="label">Ordem de Serviço: </label> o conteudo desse campo está sendo usado para o formulario de apropriação de horas
-                    <div class="field is-grouped">
+                      <div class="field is-grouped">
                         <div class="control has-icons-left is-expanded is-disabled">
-                            <input type="text" class="input" name="os-codigo" placeholder="" value="<?php echo $serv->getOsCodigo(); ?>">
+                            <input type="hidden" class="input" name="os-codigo" placeholder="" value="<?php echo $serv->getOsCodigo(); ?>">
                             <span class="icon is-small is-left">
                                     <i class="fas fa-map-marker-alt"></i>
                                 </span>
