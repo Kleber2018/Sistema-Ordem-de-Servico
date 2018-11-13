@@ -203,6 +203,38 @@ class ServicoDAO extends BaseDAO
 
 
 
+    public function listaServicosExecutados()
+    {
+        $servicos = array();
+
+        try {
+            $query = $this->select(
+                "SELECT OS_CODIGO, OS_TITULO, LOC_CODIGO, OS_NOME_RESP, OS_TIPO, OS_OBS, OS_STATUS, OS_DATA_P FROM SMIOS WHERE OS_STATUS  LIKE '%EXECUTADO%'"
+            );
+
+            while ($retorno = $query -> fetchObject()) {
+                $servico = new Servico();
+
+                $servico->setOsCodigo($retorno->OS_CODIGO);
+                $servico->setOsTitulo($retorno->OS_TITULO);
+                $servico->setOsLocalizacao($retorno->LOC_CODIGO);
+                $servico->setOsResponsavel($retorno->OS_NOME_RESP);
+                $servico->setOsTipo($retorno->OS_TIPO);
+                $servico->setOsObs($retorno->OS_OBS);
+                $servico->setOsStatus($retorno->OS_STATUS);
+                $servico->setOsaData($retorno->OS_DATA_P);
+
+                $servicos[] = $servico;
+            }
+            return $servicos;
+        }catch (\Exception $e){
+            throw new \Exception("Erro na gravação de dados dentro do ServicoDAO lista serviços pendentes.", 500);
+        }
+    }
+
+
+
+
     public function retornaDadosGrafProdut()
     {
         $dado = new Dados();
