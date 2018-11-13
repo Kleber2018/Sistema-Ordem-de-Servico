@@ -10,9 +10,6 @@
 
 
 
-
-
-
 <?php if($this->getVar()):?><!--PARA OCULTAR A TABELA CASO NÃO TENHA ORDENS DE SERVIÇO-->
     <table class="table">
         <thead>
@@ -54,5 +51,78 @@
 
 
 <?php endif; ?>
+
+
+
+<html>
+  <head>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+
+        var data = google.visualization.arrayToDataTable([
+          ['Tipo', 'Quantidade'],
+          ['PNS - Preventiva Não Sistematizada',     6],
+          ['CEG - Corretiva Emergêncial',      2],
+          ['CNE - Corretiva Não Emergência',  2],
+          ['SIG - Serviços Internos Gerais', 8],
+		  ['MEM - Melhorias Eletromecãnicas', 2]
+        ]);
+
+	
+        var options = {
+          title: 'Produtividade Geral dos Serviços'
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+
+        chart.draw(data, options);
+      }
+    </script>
+  </head>
+  <body>
+    <div id="piechart" style="width: 800px; height: 500px;"></div>
+  </body>
+</html>
+
+
+
+
+
+<table><tbody>
+<?php
+
+              //var_dump($this->getVar2());
+              
+              print_r($this->getVar2());
+
+              
+              
+              echo '</br>';
+                    foreach ($this->getVar2() as $dado) {
+
+                        var_dump($dado);
+                        echo "<tr>";
+                        echo "<td>".$dado->os_ceg."</td>";
+                        echo "<td>".$dado->getOscne()."</td>";
+                        echo "<td>".$dado->getOspns()."</td>";
+                        echo "<td>".$dado->getOssig()."</td>";
+                        echo "<td>".$dado->getOsmem()."</td>";
+                        echo "</tr>";
+                    }
+                    ?>
+
+</tbody></table>
+
+        
+
+
+
+
+
+
 </main>
 </section>

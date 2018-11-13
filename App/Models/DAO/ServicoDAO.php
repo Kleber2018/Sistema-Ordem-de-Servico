@@ -3,6 +3,7 @@
 namespace App\Models\DAO;
 
 use App\Models\Entidades\Servico;
+use App\Models\Entidades\Dados;
 
 class ServicoDAO extends BaseDAO
 {
@@ -200,6 +201,52 @@ class ServicoDAO extends BaseDAO
     }
 
 
+
+
+    public function retornaDadosGrafProdut()
+    {
+        $dado = new Dados();
+
+        try {
+            $query = $this->select(
+                "SELECT COUNT(OS_CODIGO), OS_TIPO FROM SMIOS GROUP BY OS_TIPO"
+            );
+            $vr = 'COUNT(OS_CODIGO)';
+            while ($retorno = $query -> fetchObject()) {
+                                
+                $dado->setOsTipo($retorno->OS_TIPO);
+
+                switch($retorno->OS_TIPO){
+                    case 'PNS':
+                        $dado->setOspns($retorno->$vr);
+                        break;
+                    case 'CEG':
+                        $dado->setOsceg($retorno->$vr);
+                        break;
+                    case 'CNE':
+                        $dado->setOscne($retorno->$vr);
+                        break;
+                    case 'MEM':
+                        $dado->setOsmem($retorno->$vr);
+                        break;
+                    case 'SIG':
+                        $dado->setOssig($retorno->$vr);
+                        break;
+                    default:
+                    $dado->setOsvalor($retorno->$vr);
+                }
+
+            }
+
+            return $dado;
+        }catch (\Exception $e){
+            throw new \Exception("Erro na gravação de dados dentro do ServicoDAO lista serviços pendentes.", 500);
+        }
+    }
+
+
+
+    
 
 
 

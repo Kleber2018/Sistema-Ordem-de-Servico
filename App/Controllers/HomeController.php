@@ -4,7 +4,7 @@ namespace App\Controllers;
 
 use App\Models\DAO\ServicoDAO;
 use App\Models\Entidades\Servico;
-
+use App\Models\Entidades\Dados;
 
 class HomeController extends Controller
 {
@@ -16,10 +16,13 @@ class HomeController extends Controller
 
        //para listar as OSEs Pendentes
         $servicoDAO = new ServicoDAO();
+
+        $dadosGrafico =  $servicoDAO->retornaDadosGrafProdut();
         //$apropriacoes = $servicoDAO->listarApropriacao($_POST['os-codigo']);
         $Servicos = $servicoDAO->listaServicosPendentes();
 
         $this->setVar($Servicos);
+        $this->setVar2($dadosGrafico);
 
        $this->render('home/index');
     }

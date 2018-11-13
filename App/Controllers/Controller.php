@@ -4,6 +4,8 @@ namespace App\Controllers;
 
 use App\Lib\Sessao;
 use App\Models\Entidades\Servico;
+use App\Models\Entidades\Dados;
+
 
 abstract class Controller
 {
@@ -11,6 +13,7 @@ abstract class Controller
     private $viewVar;
     private $var; //variavel para ser usada nas view
     private $var2; //variavel2 para ser usada nas view
+    
 
 
     public function __construct($app)
