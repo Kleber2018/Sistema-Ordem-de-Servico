@@ -5,6 +5,7 @@ namespace App\Models\Entidades;
 class Servico
 {
     //variaveis serviço
+    private $id;
     private $os_codigo; //codigo da Ordem de Serviço gerado automaticamente
     private $os_obs;
     private $os_localizacao;
@@ -26,9 +27,22 @@ class Servico
     private $osa_tipo_apropriacao;//hora extra ou normal
     private $osa_funcionario;
 
+    /**
+     * @return mixed
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
 
+    /**
+     * @param mixed $id
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+    }
 
-    
     public function getfnCodigo()
     {
         return $this->os_fnCodigo;

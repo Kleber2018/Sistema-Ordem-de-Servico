@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Lib\Sessao;
+use App\Models\DAO\ApropriacaoDAO;
 use App\Models\DAO\ServicoDAO;
 use App\Models\Entidades\Servico;
 
@@ -150,7 +151,22 @@ class ApropriacaoController extends Controller
                 Sessao::gravaMensagem("Erro ao gravar");
             }
     }
-	
+
+
+    //utilizado pelo botão excluir da apropriação de horas da view ServicoTela
+    public function exclusaoApropriacao($cod){
+
+        $apropriacaoDAO = new ApropriacaoDAO();
+
+        if(!$apropriacaoDAO->excluir($cod[0])){
+            //Sessao::gravaMensagem("Produto inexistente");
+            $this->redirect('/');
+        }
+
+        //Sessao::gravaMensagem("Apropriação excluido com sucesso!");
+
+       $this->redirect('/');
+    }
 	
 	
 

@@ -147,12 +147,13 @@ class ServicoDAO extends BaseDAO
         $apropriacoes = array();
 
         $query = $this->select(
-            "SELECT OS_CODIGO, OS_DATA, OS_AP_FIM, OS_AP_INI, TA_CODIGO, FN_CODIGO FROM SMIOSA WHERE OS_CODIGO = '$cod'"
+            "SELECT ID, OS_CODIGO, OS_DATA, OS_AP_FIM, OS_AP_INI, TA_CODIGO, FN_CODIGO FROM SMIOSA WHERE OS_CODIGO = '$cod'"
         );
 
         while ($retorno = $query -> fetchObject()) {
             $servico = new Servico();
-            
+
+            $servico->setId($retorno->ID);
             $servico->setOsCodigo($retorno->OS_CODIGO);
             $servico->setOsaData($retorno->OS_DATA);
             $servico->setOsaHoraFinal($retorno->OS_AP_FIM);

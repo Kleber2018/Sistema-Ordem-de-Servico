@@ -94,7 +94,7 @@
 
                 <div class="control">
                     <div class="field">
-                        <button type="submit" class="button is-link">Salvar e inserir nova Apropriação</button>abre novamente a tela para inserir outra apropriação
+                        <button type="submit" class="button is-link">Salvar Apropriação</button>
                     </div>
                 </div>
             </form>
