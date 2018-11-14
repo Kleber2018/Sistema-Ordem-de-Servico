@@ -52,10 +52,17 @@ class App
         //Para começar uma sessão válida
         
         $logado = $_SESSION["logado"];
+            echo '</br> função run </br>';
+            var_dump($this->controller);
 
+            //recebe o nome da pasta e add a palavra Pontroller
             if ($this->controller) {
-                $this->controllerName = ucwords($this->controller) . 'Controller';
-                $this->controllerName = preg_replace('/[^a-zA-Z]/i', '', $this->controllerName);
+                if($logado == "true"){
+                    $this->controllerName = ucwords($this->controller) . 'Controller';//ucwords - retorna a primeira letra em maiuscula
+                    $this->controllerName = preg_replace('/[^a-zA-Z]/i', '', $this->controllerName); //pesquisa por uma expressão regular
+                } else {
+                    $this->controllerName = "LoginController";
+                }
             } else {
                 if($logado == "true"){
                     session_start();
@@ -70,17 +77,17 @@ class App
         $this->action           = preg_replace('/[^a-zA-Z]/i', '', $this->action);
 
 
-/*
-            echo '</br>';
-            var_dump($this->controller);
-            echo '</br>';
-            var_dump(!$this->controller);
-            echo '</br>';
-            var_dump($this->controllerFile);
-            echo '</br>';
-            var_dump($this->action);
-            echo '</br>';
-*/
+
+            // echo '</br> controller ';
+            // var_dump($this->controller);
+            // echo '</br>';
+            // var_dump(!$this->controller);
+            // echo '</br> file ';
+            // var_dump($this->controllerFile);
+            // echo '</br> action';
+            // var_dump($this->action);
+            // echo '</br>';
+
  
         //Nesse momento  ele abre as páginas
         if (!$this->controller) {
@@ -108,16 +115,14 @@ class App
         $objetoController = new $nomeClasse($this);
 
 
-/*
-        var_dump($objetoController);
-        echo '</br>';
-       var_dump($nomeClasse);
-        echo '</br>';
-       var_dump($this->action);
-        echo '</br>';
-        var_dump($this->params);
 
-*/
+    //     var_dump($objetoController);
+    //     echo '</br> nome classe:  ';
+    //    var_dump($nomeClasse);
+    //     echo '</br> Parametro:';
+    //     var_dump($this->params);
+
+
         //Se o controller não existir lança exceção
         if (!class_exists($nomeClasse)) {
             throw new Exception("Erro na aplicação", 500);
@@ -142,18 +147,36 @@ class App
         if ( isset( $_GET['url'] ) ) {
 
             $path = $_GET['url']; //utiliza o htaccess
-            $path = rtrim($path, '/');
-            $path = filter_var($path, FILTER_SANITIZE_URL); 
+
+            // echo '</br>';
+            // var_dump($path);
+            $path = rtrim($path, '/');//limpando os espaços em branco no final da String
+
+            // echo '</br>';
+            // var_dump($path);
+            $path = filter_var($path, FILTER_SANITIZE_URL); //verifica se a url é no padrão url
 
             $path = explode('/', $path);
+            // echo '</br>';
+            // var_dump($path[0]);
+            // echo '</br> 1: ';
+            // var_dump($path[1]);
 
-            $this->controller  = $this->verificaArray( $path, 0 );
-            $this->action      = $this->verificaArray( $path, 1 );
+            // echo '</br> 2: ';
+            // var_dump($path[2]);
+            // echo '</br> 2: ';
 
+            $this->controller  = $this->verificaArray( $path, 0 );//atribuindo valor da posição 0 na variavel controller
+            $this->action      = $this->verificaArray( $path, 1 );// atribuindo valor na action
+
+            //verifica se a posição 2 contem parametros (ex.os_codigo)
             if ( $this->verificaArray( $path, 2 ) ) {
-                unset( $path[0] );
-                unset( $path[1] );
+                unset( $path[0] );//destroi a prosição 0
+                unset( $path[1] );//destroi a posição 1
+                // var_dump($path);
                 $this->params = array_values( $path );
+
+                // var_dump($this->params);
             }
         }
     }
@@ -178,6 +201,7 @@ class App
         return $this->params;
     }
 
+    //verificando se o array existe
     private function verificaArray ( $array, $key ) {
         if ( isset( $array[ $key ] ) && !empty( $array[ $key ] ) ) {
             return $array[ $key ];
