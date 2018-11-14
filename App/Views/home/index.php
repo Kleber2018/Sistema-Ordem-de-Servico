@@ -54,8 +54,13 @@
 
 
 
+
+
+
 <html>
   <head>
+  <?php     $d = $this->getVar2();  ?>
+
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript">
       google.charts.load('current', {'packages':['corechart']});
@@ -65,11 +70,11 @@
 
         var data = google.visualization.arrayToDataTable([
           ['Tipo', 'Quantidade'],
-          ['PNS - Preventiva Não Sistematizada',     6],
-          ['CEG - Corretiva Emergêncial',      2],
-          ['CNE - Corretiva Não Emergência',  2],
-          ['SIG - Serviços Internos Gerais', 8],
-		  ['MEM - Melhorias Eletromecãnicas', 2]
+          ['PNS - Preventiva Não Sistematizada',     <?php echo $d['pns'];?>],
+          ['CEG - Corretiva Emergêncial',      <?php echo $d['ceg'];?>],
+          ['CNE - Corretiva Não Emergência',  <?php echo $d['cne'];?>],
+          ['SIG - Serviços Internos Gerais', <?php echo $d['sig'];?>],
+		  ['MEM - Melhorias Eletromecãnicas', <?php echo $d['mem'];?>]
         ]);
 
 	
@@ -87,39 +92,6 @@
     <div id="piechart" style="width: 800px; height: 500px;"></div>
   </body>
 </html>
-
-
-
-
-
-<table><tbody>
-<?php
-
-              //var_dump($this->getVar2());
-              
-              print_r($this->getVar2());
-
-              
-              
-              echo '</br>';
-                    foreach ($this->getVar2() as $dado) {
-
-                        var_dump($dado);
-                        echo "<tr>";
-                        echo "<td>".$dado->os_ceg."</td>";
-                        echo "<td>".$dado->getOscne()."</td>";
-                        echo "<td>".$dado->getOspns()."</td>";
-                        echo "<td>".$dado->getOssig()."</td>";
-                        echo "<td>".$dado->getOsmem()."</td>";
-                        echo "</tr>";
-                    }
-                    ?>
-
-</tbody></table>
-
-        
-
-
 
 
 

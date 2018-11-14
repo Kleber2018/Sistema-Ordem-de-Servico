@@ -20,16 +20,16 @@
 
         <label for="localizador-os-codigo" class="label" >Ordem de Servico: <?php echo $serv->getOsCodigo(); ?></label>
 
-
+<div class="field is-grouped">
         <div class="control">
             <div class="field">
-                <button type="submit" class="button is-link <?php if (!$_SESSION['admin']) echo "is-hidden"; ?>" >Excluir</button> Implementar: esse botão para excluir a Ordem de Serviço
+                <button type="submit" class="button is-link <?php if (!$_SESSION['admin']) echo "is-hidden"; ?>" >Excluir</button> <!--Implementar: esse botão para excluir a Ordem de Serviço-->
             </div>
         </div>
-
-	 <form id="form_cadastro" action="http://<?php echo APP_HOST; ?>/apropriacao/informarNaoRealizacao" method="POST">
+        <div class="control">
+	    <form id="form_cadastro" action="http://<?php echo APP_HOST; ?>/apropriacao/informarNaoRealizacao" method="POST">
      
-                      <div class="field is-grouped">
+                      <div>
                         <div class="control is-expanded is-disabled">
                             <input type="hidden" class="input" name="os-codigo" placeholder="" value="<?php echo $serv->getOsCodigo(); ?>">
                         </div>
@@ -41,7 +41,8 @@
                     <button type="submit" class="button is-link <?php if ($serv->getOsStatus() == 'Não Executado') echo "is-hidden"; ?>" >Informar não Realização</button>
                 </div>
             </div>
-    </form>
+        </form>
+        </div>
 	
 		 <form id="form_cadastro" action="http://<?php echo APP_HOST; ?>/apropriacao/informarRealizacao" method="POST">             
                       <div class="field is-grouped">
@@ -56,7 +57,9 @@
             <button type="submit" class="button is-link <?php if ($serv->getOsStatus() == 'Executado') echo "is-hidden"; ?>" >Informar Realização</button>
                 </div>
             </div>
-    </form>
+        </form>
+    
+    </div>
 	
 
         <form id="form_cadastro" action="http://<?php echo APP_HOST; ?>/apropriacao/ServicoApropriacaoHH" method="POST">

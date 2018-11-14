@@ -14,7 +14,7 @@ class RelatoriosController extends Controller
         //para listar as OSEs Pendentes
         $servicoDAO = new ServicoDAO();
 
-        $dadosGrafico =  $servicoDAO->retornaDadosGrafProdut();
+        $dadosGrafico =  $servicoDAO->retornaDadosGrafProdut('EXECUTADO');
         //$apropriacoes = $servicoDAO->listarApropriacao($_POST['os-codigo']);
         $Servicos = $servicoDAO->listaServicosExecutados();
 

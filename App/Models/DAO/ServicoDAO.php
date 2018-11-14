@@ -235,18 +235,25 @@ class ServicoDAO extends BaseDAO
 
 
 
-    public function retornaDadosGrafProdut()
+    public function retornaDadosGrafProdut($s)
     {
         $dado = new Dados();
 
         try {
             $query = $this->select(
-                "SELECT COUNT(OS_CODIGO), OS_TIPO FROM SMIOS GROUP BY OS_TIPO"
+                "SELECT COUNT(OS_CODIGO), OS_TIPO FROM SMIOS WHERE OS_STATUS  LIKE '%$s%' GROUP BY OS_TIPO"
             );
             $vr = 'COUNT(OS_CODIGO)';
+            $dado->setOspns(0);
+            $dado->setOsceg(0);
+            $dado->setOscne(0);
+            $dado->setOsmem(0);
+            $dado->setOssig(0);
             while ($retorno = $query -> fetchObject()) {
                                 
                 $dado->setOsTipo($retorno->OS_TIPO);
+
+               
 
                 switch($retorno->OS_TIPO){
                     case 'PNS':
@@ -270,7 +277,16 @@ class ServicoDAO extends BaseDAO
 
             }
 
-            return $dado;
+            $d = array(
+                'pns' => $dado->getOspns(),
+                'ceg' => $dado->getOsceg(),
+                'cne' => $dado->getOscne(),
+                'sig' => $dado->getOssig(),
+                'mem' => $dado->getOsmem()
+            );
+
+
+            return $d;
         }catch (\Exception $e){
             throw new \Exception("Erro na gravação de dados dentro do ServicoDAO lista serviços pendentes.", 500);
         }

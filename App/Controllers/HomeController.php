@@ -17,7 +17,7 @@ class HomeController extends Controller
        //para listar as OSEs Pendentes
         $servicoDAO = new ServicoDAO();
 
-        $dadosGrafico =  $servicoDAO->retornaDadosGrafProdut();
+        $dadosGrafico =  $servicoDAO->retornaDadosGrafProdut('PENDENTE');
         //$apropriacoes = $servicoDAO->listarApropriacao($_POST['os-codigo']);
         $Servicos = $servicoDAO->listaServicosPendentes();
 
