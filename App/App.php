@@ -52,8 +52,8 @@ class App
         //Para começar uma sessão válida
         
         $logado = $_SESSION["logado"];
-            echo '</br> função run </br>';
-            var_dump($this->controller);
+            //echo '</br> função run </br>';
+            //var_dump($this->controller);
 
             //recebe o nome da pasta e add a palavra Pontroller
             if ($this->controller) {
@@ -144,9 +144,31 @@ class App
     //para url amigavel
     public function url () {
 
+        $rotas = [
+            "home/index" => "home/index",
+            "index" => "home/index",
+            "entrada" => "home/index",
+            "/" => "home/index",
+            "cadastro" => "usuario/cadastro",
+            "localizador"=>"localizador/localizadorCadastro",
+            "buscar"=>"apropriacao/servicoBusca"
+        ];
+
+            
         if ( isset( $_GET['url'] ) ) {
 
-            $path = $_GET['url']; //utiliza o htaccess
+            $verificador = $rotas[$_GET['url']];
+            // echo '</br> teste';
+            // var_dump($verificador);
+            
+            if(isset($verificador)){
+                $path = $verificador;
+                // echo 'dentro do if'; 
+            } else {
+                $path = $_GET['url'];
+                // echo 'fora do if'; 
+            }
+    
 
             // echo '</br>';
             // var_dump($path);
@@ -160,7 +182,7 @@ class App
             // echo '</br>';
             // var_dump($path[0]);
             // echo '</br> 1: ';
-            // var_dump($path[1]);
+            //  var_dump($path[1]);
 
             // echo '</br> 2: ';
             // var_dump($path[2]);
