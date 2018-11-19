@@ -15,6 +15,18 @@ class ServicoDAO extends BaseDAO
 
     //private $vr;//verificador para depurar
 
+    public  function deletando($cod){
+
+        try {
+            return $this->delete('SMIOS',"OS_CODIGO = '$cod'");
+
+       }catch (Exception $e){
+
+           throw new \Exception("Erro ao deletar $e", 500);
+       }
+
+    }
+
 
     //salva os dados do formulário da View/usuario/cadastro
     public  function salvar(Servico $servico)

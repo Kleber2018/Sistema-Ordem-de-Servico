@@ -109,6 +109,23 @@ class ApropriacaoController extends Controller
                 Sessao::gravaMensagem("Erro ao gravar");
             }
     }
+    public function excluirServico()
+    {
+        $servicoDAO = new ServicoDAO();
+        $Servico = new Servico();
+
+        // $Servico->setOsCodigo($_POST['os-codigo']);
+        var_dump($_POST['os-codigo']);
+
+
+        //Sessao::gravaFormulario($_POST);//???
+
+            if($servicoDAO->deletando($_POST['os-codigo'])){
+                $this->redirect('/servico/sucesso');
+            }else {
+                Sessao::gravaMensagem("Erro ao gravar");
+            }
+    }
 
     public function informarRealizacao()
     {
@@ -116,7 +133,7 @@ class ApropriacaoController extends Controller
         $Servico = new Servico();
 
         $Servico->setOsCodigo($_POST['os-codigo']);
-        $Servico->setOsStatus('Executado');
+        $Servico->setOsStatus('EXECUTADO');
 
 	
         //Sessao::gravaFormulario($_POST);//???
@@ -137,7 +154,7 @@ class ApropriacaoController extends Controller
         $Servico = new Servico();
 
         $Servico->setOsCodigo($_POST['os-codigo']);
-        $Servico->setOsStatus('Não Executado');
+        $Servico->setOsStatus('NÃO EXECUTADO');
 
 	
         //Sessao::gravaFormulario($_POST);//???

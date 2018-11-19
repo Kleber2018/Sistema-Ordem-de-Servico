@@ -59,7 +59,7 @@ abstract class BaseDAO
         }
     }
 
-    public function delete($table, $where=null)
+    public function delete($table,$where)
     {
         if(!empty($table))
         {
