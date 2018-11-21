@@ -159,6 +159,7 @@ class App
             "relatorio"=>"relatorios",
             "controleusuarios"=>"usuario/cadastro",
             "config"=>"configuracoes"
+            
         ];
 
             

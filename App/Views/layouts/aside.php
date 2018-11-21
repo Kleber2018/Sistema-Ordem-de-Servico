@@ -2,6 +2,7 @@
   
   <aside class="column is-2 aside menu is-fullheight">
     
+    
     <ul class="menu-list ">
         <p class="menu-label"><label data-tag="administracao"></p>
         <li class="menu-item"><a href="http://localhost/projeto-final/"><span class="icon is-small"><i class="fas fa-tachometer-alt"></i></span><span data-tag="painel"></span></a></li>
