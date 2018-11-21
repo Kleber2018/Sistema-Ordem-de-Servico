@@ -149,9 +149,16 @@ class App
             "index" => "home/index",
             "entrada" => "home/index",
             "/" => "home/index",
+            "painel"=>"home/index",
             "cadastro" => "usuario/cadastro",
             "localizador"=>"localizador/localizadorCadastro",
-            "buscar"=>"apropriacao/servicoBusca"
+            "buscar"=>"apropriacao/servicoBusca",
+            "teladeserviço"=>"apropriacao/servicoBusca",
+            "cadastrolocalizador"=>"localizador/localizadorCadastro",
+            "cadastroserviço"=>"servico/servicoCadastro",
+            "relatorio"=>"relatorios",
+            "controleusuarios"=>"usuario/cadastro",
+            "config"=>"configuracoes"
         ];
 
             
