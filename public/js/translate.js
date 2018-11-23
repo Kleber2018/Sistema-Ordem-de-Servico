@@ -9,7 +9,7 @@
 				_self = this;
 				var xrhFile = new XMLHttpRequest();
 				//load content data 
-				xrhFile.open("GET", "http://localhost/projeto-final/public/js/lang/"+this.lng+".json", false); //Arrumar o caminho
+				xrhFile.open("GET", "/projeto-final/public/js/lang/"+this.lng+".json", false);
 				xrhFile.onreadystatechange = function ()
 				{
 					if(xrhFile.readyState === 4)
