@@ -8,14 +8,17 @@ use App\Models\Entidades\Usuario;
 
 class UsuarioController extends Controller
 {
+    
+    //para abrir a view de cadastro de Uusarios
     public function cadastro()
     {
         $this->render('/usuario/cadastro');
 
-        Sessao::limpaFormulario();
-        Sessao::limpaMensagem();
+        // Sessao::limpaFormulario();
+        // Sessao::limpaMensagem();
     }
 
+    //utilizado pela view usuario/cadastro para salvar o novo usuario
     public function salvar()
     {
         $Usuario = new Usuario();

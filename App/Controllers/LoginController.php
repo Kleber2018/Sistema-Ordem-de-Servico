@@ -25,6 +25,7 @@ class LoginController extends Controller
         require_once PATH . '/App/Views/login/login.php';
     }
 
+    //utilizado pelo login para verificar se o usuario existe no BD
     public function verificar(){
 
         //Setando dados para buscar no banco de dados
@@ -51,41 +52,6 @@ class LoginController extends Controller
             echo "<script>alert('Dados incorretos!');";
             echo "window.location='..';</script>";
         }    
-
-        // //CÓDIGO ANTIGO
-        // session_start();
-
-        // $verificador[0] = array(
-        //     'usuario' => "kleber",
-        //     'senha' => "123"
-        // );
-        // $verificador[1] = array(
-        //     'usuario' => "Leandro",
-        //     'senha' => "123"
-        // );
-        // $verificador[2] = array(
-        //     'usuario' => "adm",
-        //     'senha' => "333"
-        // );
-
-        // $vr=true;
-        // //VERIFICA SE O USUARIO EXISTE E CRIA A SESSION
-        // foreach($usuario as $linha){
-        //     if($usuario == $linha['usuario'] && $senha == $linha['senha']){
-        //         $_SESSION['logado'] = "true";
-        //         $_SESSION['usuario'] = $usuario;
-        //         $this->redirect('/home/index');
-        //         $vr=false;
-        //     }
-        // }
-
-        // if($vr){
-        //     header("location: login.php");
-        // }
-        // if(isset($_SESSION["logado"]) && $_SESSION["logado"] == "true"){
-        //     header("location: index.php");
-        // }
-        
     }
 
 

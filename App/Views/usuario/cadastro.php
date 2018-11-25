@@ -7,15 +7,15 @@
         <br/>
     </nav>
     <div class="content">
-            <?php if($Sessao::retornaMensagem()){ ?>
+            <!-- < ?php if($Sessao::retornaMensagem()){ ?>
                 <div class="alert alert-warning" role="alert"><?php echo $Sessao::retornaMensagem(); ?></div>
-            <?php } ?>
+            < ?php } ? > -->
 
             <form action="http://<?php echo APP_HOST; ?>/usuario/salvar" method="post" id="form_cadastro">
                 <label for="usuario-codigo" class="label" >Código do Usuário</label>
                 <div class="field is-grouped">
                     <div class="control has-icons-left">
-                        <input type="text" class="input" name="usuario-codigo" placeholder="Código" value="" required>
+                        <input type="text" class="input" name="usuario-codigo" placeholder="Código" onkeydown="limita12(this);" onkeyup="limita12(this);" value="" required>
                         <span class="icon is-small is-left">
                             <i class="fas fa-id-card-alt"></i>
                         </span>
@@ -32,7 +32,7 @@
                 <div class="field">
                     <label for="usuario-nome" class="label">Nome do Usuário</label>
                     <div class="control has-icons-left">
-                        <input type="text" class="input"  name="usuario-nome" placeholder="Nome" value="" required>
+                        <input type="text" class="input"  name="usuario-nome" placeholder="Nome" onkeydown="limita12(this);" onkeyup="limita12(this);" value="" required>
                         <span class="icon is-small is-left">
                             <i class="fas fa-user"></i>
                         </span>
@@ -41,7 +41,7 @@
                 <div class="field">
                     <label for="email" class="label">Senha do Usuário</label>
                     <div class="control has-icons-left">
-                        <input type="password" class="input" name="usuario-senha" placeholder="Senha" value="" required>
+                        <input type="password" class="input" name="usuario-senha" placeholder="Senha" onkeydown="limita12(this);" onkeyup="limita12(this);" value="" required>
                         <span class="icon is-small is-left">
                             <i class="fas fas fa-lock"></i>
                         </span>

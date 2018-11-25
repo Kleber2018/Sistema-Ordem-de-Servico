@@ -20,7 +20,6 @@ class ApropriacaoController extends Controller
         }
  
         $Sessao  = Sessao::class;
-
        $serv = $this->getVar(); //precisa estar aki dentro para popular os compos dentro da view
       
         
@@ -32,25 +31,18 @@ class ApropriacaoController extends Controller
     }
 
 
-
         // chamado pelo menu para abrir a view servicoBusca
     public function servicoBusca()
     {
         $this->render('/apropriacao/servicoBusca');
-
-        // Sessao::limpaFormulario();
-        // Sessao::limpaMensagem();
     }
 
     //Function é chamada pelo App.php com o codigo passados pela View servicoBusca.php
     public function servicoTela()
     {
         $servicoDAO = new ServicoDAO();
-        //$Servico = new Servico();
-
         $Servico = $servicoDAO->buscaOrdemServico($_POST['os-codigo']);//envia para o servicoDAO o codigo informado na tela servicoBusca e retorna um objeto Servico
         $apropriacoes = $servicoDAO->listarApropriacao($_POST['os-codigo']);
-        //self::setViewParam('Servico',$Servico);
 
         //Verifica se o cod informado na view servicoBusca existe
         if($Servico->getOsCodigo()){
@@ -71,7 +63,6 @@ class ApropriacaoController extends Controller
     public function ApropriacaoSucesso($cod)
     {
         $servicoDAO = new ServicoDAO();
-   
         $Servico = $servicoDAO->buscaOrdemServico($cod);//envia para o servicoDAO o codigo informado na tela servicoBusca e retorna um objeto Servico
         $apropriacoes = $servicoDAO->listarApropriacao($cod);
 
@@ -89,7 +80,6 @@ class ApropriacaoController extends Controller
 
     }
 
-
     //Function é chamada pelo App.php com os parametros passados pela View servicoApropriacaoHH.php
     public function ServicoApropriacaoHH()
     {
@@ -97,10 +87,7 @@ class ApropriacaoController extends Controller
         $this->render('/apropriacao/servicoApropriacaoHH');
     }
 
-
-	
-	
-    //para salvar a apropriacao de horas (AINDA NÃO IMPLEMENTADO)
+	//para salvar a apropriacao de horas (AINDA NÃO IMPLEMENTADO)
     public function salvarApropriacaoHH()
     {
         $servicoDAO = new ServicoDAO();
@@ -113,13 +100,6 @@ class ApropriacaoController extends Controller
         $Servico->setOsaHoraFinal($_POST['hora-final']);
 
         $Servico->setOsaTipoApropriacao($_POST['tipo-os']);
-
-
-       // $input_date=$_POST['data-ose-prevista'];
-       // $data=date("Y-m-d H:i:s",strtotime($input_date));
-
-
-        //Sessao::gravaFormulario($_POST);//???
 
             if($servicoDAO->salvarApropriacao($Servico)){
                 $this->ApropriacaoSucesso($_POST['os-codigo']);//para abrir a view da Ordem de Serviço
@@ -149,9 +129,6 @@ class ApropriacaoController extends Controller
         $Servico->setOsCodigo($_POST['os-codigo']);
         $Servico->setOsStatus('EXECUTADO');
 
-	
-        //Sessao::gravaFormulario($_POST);//???
-
             if($servicoDAO->update(
 			'SMIOS',"OS_STATUS = :OS_STATUS",[':OS_STATUS'=>$Servico->getOsStatus(), ':OS_CODIGO'=>$Servico->getOsCodigo()],"OS_CODIGO = :OS_CODIGO"
 			)
@@ -169,9 +146,6 @@ class ApropriacaoController extends Controller
 
         $Servico->setOsCodigo($_POST['os-codigo']);
         $Servico->setOsStatus('NÃO EXECUTADO');
-
-	
-        //Sessao::gravaFormulario($_POST);//???
 
             if($servicoDAO->update(
 			'SMIOS',"OS_STATUS = :OS_STATUS",[':OS_STATUS'=>$Servico->getOsStatus(), ':OS_CODIGO'=>$Servico->getOsCodigo()],"OS_CODIGO = :OS_CODIGO"
@@ -199,9 +173,6 @@ class ApropriacaoController extends Controller
        $this->redirect('/');
     }
 	
-	
-
-
     //abre uma view informando que a apropriacao foi adcionada com sucesso
     public function sucesso()
     {

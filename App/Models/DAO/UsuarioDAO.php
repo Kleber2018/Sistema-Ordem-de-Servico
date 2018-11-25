@@ -6,22 +6,25 @@ use App\Models\Entidades\Usuario;
 
 class UsuarioDAO extends BaseDAO
 {
-    public function verificaEmail($email)
-    {
-        try {
+    
+    //não usado?
+    // public function verificaEmail($email)
+    // {
+    //     try {
 
-            $query = $this->select(
-                "SELECT * FROM usuario WHERE email = '$email' "
-            );
+    //         $query = $this->select(
+    //             "SELECT * FROM usuario WHERE email = '$email' "
+    //         );
 
-            return $query->fetch();
+    //         return $query->fetch();
 
-        }catch (Exception $e){
-            throw new \Exception("Erro no acesso aos dados.", 500);
-        }
-    }
+    //     }catch (Exception $e){
+    //         throw new \Exception("Erro no acesso aos dados.", 500);
+    //     }
+    // }
 
 
+    //Salva um novo usuário para Login
     public  function salvar(Usuario $usuario) {
         try {
             //$nome      = $usuario->getNome();
@@ -41,6 +44,7 @@ class UsuarioDAO extends BaseDAO
         }
     }
 
+    //Verifica se o usuário existe no BD
     public function buscaLogin(Usuario $usuario)
     {
         try {
@@ -52,6 +56,12 @@ class UsuarioDAO extends BaseDAO
         }catch (Exception $e){
             throw new \Exception("Erro no acesso aos dados no dao usuario.", 500);
         }
+    }
+
+    public function listaUsuarios(){
+
+        
+
     }
 
 }

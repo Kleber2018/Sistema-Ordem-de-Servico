@@ -8,17 +8,14 @@ use App\Models\Entidades\Dados;
 
 class HomeController extends Controller
 {
+
+    //Para tela inicial
     public function index()
     {
        if ($_SESSION['idioma'] != 'en')  $_SESSION['idioma'] = 'ptbr';
-
-
-
-       //para listar as OSEs Pendentes
         $servicoDAO = new ServicoDAO();
-
         $dadosGrafico =  $servicoDAO->retornaDadosGrafProdut('PENDENTE');
-        //$apropriacoes = $servicoDAO->listarApropriacao($_POST['os-codigo']);
+
         $Servicos = $servicoDAO->listaServicosPendentes();
 
         $this->setVar($Servicos);

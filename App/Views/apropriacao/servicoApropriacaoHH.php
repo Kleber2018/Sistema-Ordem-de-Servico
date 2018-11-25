@@ -12,7 +12,7 @@
 
     <div class="content">
             <!-- < ?php if($Sessao::retornaMensagem()){ ?>
-                <div class="alert alert-warning" role="alert"><?php echo $Sessao::retornaMensagem(); ?></div>
+                <div class="alert alert-warning" role="alert">< ?php echo $Sessao::retornaMensagem(); ?></div>
             < ?php } ? > -->
 
                         
