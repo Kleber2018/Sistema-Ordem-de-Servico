@@ -22,7 +22,7 @@
                 <label for="localizador-codigo" class="label" >Código do localizador</label>
                 <div class="field is-grouped">
                     <div class="control has-icons-left is-expanded">
-                        <input type="text" class="input" name="loc-codigo1" placeholder="Ex: QD(PONTA GROSSA), OQ(PALMEIRA)" value="" required>
+                        <input type="text" class="input" name="loc-codigo1" placeholder="Ex: QD(PONTA GROSSA), OQ(PALMEIRA)"  onkeydown="limita12(this);" onkeyup="limita12(this);" value="" required>
                         <span class="icon is-small is-left">
                                 <i class="fas fa-map-marker-alt"></i>
                             </span>
@@ -34,7 +34,7 @@
                 <div class="field">
                     <label for="localizacao-titulo" class="label">Título do localizador</label>
                     <div class="control has-icons-left">
-                        <input type="text" class="input"  name="loc-titulo" placeholder="Título" value="" required>
+                        <input type="text" class="input"  name="loc-titulo" placeholder="Título" onkeydown="limita30(this);" onkeyup="limita30(this);" value="" required>
                         <span class="icon is-small is-left">
                             <i class="fas fa-map-signs"></i>
                         </span>
@@ -45,7 +45,7 @@
                 <div class="field">
                     <label for="equipe" class="label">Equipe Responsável Pelo Localizador</label>
                     <div class="control has-icons-left">
-                        <input type="text" class="input" name="loc-equipe" placeholder="Equipe" value="" required>
+                        <input type="text" class="input" name="loc-equipe" placeholder="Equipe" onkeydown="limita12(this);" onkeyup="limita12(this);" value="" required>
                         <span class="icon is-small is-left">
                              <i class="fas fa-users"></i>
                         </span>

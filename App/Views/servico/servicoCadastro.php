@@ -9,11 +9,10 @@
     </nav>
 
 
-
     <div class="content">
-            <?php if($Sessao::retornaMensagem()){ ?>
+            <!-- < ?php if($Sessao::retornaMensagem()){ ?>
                 <div class="alert alert-warning" role="alert"><?php echo $Sessao::retornaMensagem(); ?></div>
-            <?php } ?>
+            < ?php } ?> -->
 
             <form action="http://<?php echo APP_HOST; ?>/servico/salvar" method="post" id="form_cadastro">
 
@@ -36,11 +35,10 @@
             </div>
         </div>
 
-
                 <div class="field">
                     <label for="responsavel-ose" class="label">Responsável</label>
                     <div class="control has-icons-left">
-                        <input type="text" class="input" name="os-responsavel" placeholder="Responsável" value="" required>
+                        <input type="text" class="input" name="os-responsavel" placeholder="Responsável" onkeydown="limita30(this);" onkeyup="limita30(this);" value="" required>
                         <span class="icon is-small is-left">
                              <i class="fas fa-users"></i>
                         </span>
@@ -81,7 +79,7 @@
                 <div class="field">
                     <label for="titulo-os" class="label">Título da ordem de Serviço</label>
                     <div class="control has-icons-left">
-                        <input type="text" class="input"  name="os-titulo" placeholder="Título" value="" required>
+                        <input type="text" class="input"  name="os-titulo" placeholder="Título" onkeydown="limita90(this);" onkeyup="limita90(this);" value="" required>
                         <span class="icon is-small is-left">
                             <i class="fas fa-map-signs"></i>
                         </span>
@@ -91,7 +89,7 @@
                 <div class="field">
                     <label for="obs-os" class="label">Observação</label>
                     <div class="control has-icons-left">
-                        <input type="text" class="input"  name="os-obs" placeholder="Observação" value="" required>
+                        <input type="text" class="input"  name="os-obs" placeholder="Observação" onkeydown="limita90(this);" onkeyup="limita90(this);" value="" required>
                         <span class="icon is-small is-left">
                         <i class="fas fa-comments"></i>
                         </span>
@@ -107,35 +105,3 @@
         </div>
 </main>
 </section>
-
-
-<!-- <div class="container">
-    <div class="row">
-        <div class="col-md-3"></div>
-        <div class="col-md-6">
-            <h3>Cadastro de Localizador</h3>
-
-            <?php if($Sessao::retornaMensagem()){ ?>
-                <div class="alert alert-warning" role="alert"><?php echo $Sessao::retornaMensagem(); ?></div>
-            <?php } ?>
-
-            <form action="http://<?php echo APP_HOST; ?>/localizador/salvar" method="post" id="form_cadastro">
-                <div class="form-group">
-                    <label for="localizador-codigo">Codigo da Localização</label>
-                    <input type="text" class="form-control"  name="loc-codigo" placeholder="EX: QD(PONTA GROSSA), OQ(PALMEIRA)" value="<?php echo $Sessao::retornaValorFormulario('nome'); ?>" required>
-                </div>
-                <div class="form-group">
-                    <label for="localizacao-titulo">Título da Localização</label>
-                    <input type="text" class="form-control" name="loc-titulo" placeholder="Título" value="<?php echo $Sessao::retornaValorFormulario('email'); ?>" required>
-                </div>
-                <div class="form-group">
-                    <label for="equipe">Equipe responsável pela Localização</label>
-                    <input type="text" class="form-control" name="loc-equipe" placeholder="Equipe A" value="<?php echo $Sessao::retornaValorFormulario('email'); ?>" required>
-                </div>
-
-                <button type="submit" class="btn btn-success btn-sm">Salvar</button>
-            </form>
-        </div>
-        <div class=" col-md-3"></div>
-    </div>
-</div> -->

@@ -18,11 +18,11 @@ class ApropriacaoController extends Controller
             $segundosDeslogar = 5; // Deslogar se a última requisição for maior que X segundos
             $this->checaAutenticacao($segundosDeslogar);
         }
-        //$viewVar = $this->getViewVar();
+ 
         $Sessao  = Sessao::class;
 
        $serv = $this->getVar(); //precisa estar aki dentro para popular os compos dentro da view
-      //  print_r ($serv);
+      
         
         require_once PATH . '/App/Views/layouts/header.php';
         require_once PATH . '/App/Views/layouts/menu.php';
@@ -38,8 +38,8 @@ class ApropriacaoController extends Controller
     {
         $this->render('/apropriacao/servicoBusca');
 
-        Sessao::limpaFormulario();
-        Sessao::limpaMensagem();
+        // Sessao::limpaFormulario();
+        // Sessao::limpaMensagem();
     }
 
     //Function é chamada pelo App.php com o codigo passados pela View servicoBusca.php
@@ -64,18 +64,36 @@ class ApropriacaoController extends Controller
             $this->render('/apropriacao/servicoInexistente');
         }
 
-        Sessao::limpaFormulario();
-        Sessao::limpaMensagem();
+        // Sessao::limpaFormulario();
+        // Sessao::limpaMensagem();
     }
 
+    public function ApropriacaoSucesso($cod)
+    {
+        $servicoDAO = new ServicoDAO();
+   
+        $Servico = $servicoDAO->buscaOrdemServico($cod);//envia para o servicoDAO o codigo informado na tela servicoBusca e retorna um objeto Servico
+        $apropriacoes = $servicoDAO->listarApropriacao($cod);
+
+        //Verifica se o cod informado na view servicoBusca existe
+        if($Servico->getOsCodigo()){
+            $this->setVar($Servico);
+            $this->setVar2($apropriacoes);
+
+            $this->render('/apropriacao/servicoTela');
+        } else {
+            $this->setBuscado($cod);
+
+            $this->render('/apropriacao/servicoInexistente');
+        }
+
+    }
 
 
     //Function é chamada pelo App.php com os parametros passados pela View servicoApropriacaoHH.php
     public function ServicoApropriacaoHH()
     {
-        var_dump($_POST['os-codigo']);
         $this->setVar($_POST['os-codigo']);
-        
         $this->render('/apropriacao/servicoApropriacaoHH');
     }
 
@@ -104,7 +122,9 @@ class ApropriacaoController extends Controller
         //Sessao::gravaFormulario($_POST);//???
 
             if($servicoDAO->salvarApropriacao($Servico)){
-                $this->redirect('/servico/sucesso');
+                $this->ApropriacaoSucesso($_POST['os-codigo']);//para abrir a view da Ordem de Serviço
+
+                //$this->redirect('/servico/sucesso');
             }else{
                 Sessao::gravaMensagem("Erro ao gravar");
             }
@@ -113,12 +133,6 @@ class ApropriacaoController extends Controller
     {
         $servicoDAO = new ServicoDAO();
         $Servico = new Servico();
-
-        // $Servico->setOsCodigo($_POST['os-codigo']);
-        var_dump($_POST['os-codigo']);
-
-
-        //Sessao::gravaFormulario($_POST);//???
 
             if($servicoDAO->deletando($_POST['os-codigo'])){
                 $this->redirect('/servico/sucesso');

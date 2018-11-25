@@ -11,24 +11,17 @@
 
 
     <div class="content">
-            <?php if($Sessao::retornaMensagem()){ ?>
+            <!-- < ?php if($Sessao::retornaMensagem()){ ?>
                 <div class="alert alert-warning" role="alert"><?php echo $Sessao::retornaMensagem(); ?></div>
-            <?php } ?>
+            < ?php } ? > -->
 
-            
-            
+                        
             <form action="http://<?php echo APP_HOST; ?>/apropriacao/salvarApropriacaoHH" method="post" id="form_cadastro">
-
-
                 <label for="data-ose" class="label"><h2> Ordem de Serviço <?php echo $this->getVar(); ?></h2></label></br>
-
                 <div class="field">
-                    <label for="data-ose" class="label">Ordem de serviço:</label>
+                    <!-- <label for="data-ose" class="label">Ordem de serviço:</label> -->
                     <div class="control has-icons-left">
-                        <input type="text" class="input" name="os-codigo" placeholder="" value="<?php echo $this->getVar(); ?>" required>
-                        <span class="icon is-small is-left">
-                                         <i class="fas fa-users"></i>
-                        </span>
+                        <input type="hidden" class="input" name="os-codigo" placeholder="" value="<?php echo $this->getVar(); ?>">
                     </div>
                 </div>
 
@@ -82,14 +75,12 @@
                 <div class="field">
                     <label for="responsavel-ose" class="label">Responsável</label>
                     <div class="control has-icons-left">
-                        <input type="text" class="input" name="os-responsavel" placeholder="Responsável" value="" required>
+                        <input type="text" class="input" name="os-responsavel" placeholder="Responsável" onkeydown="limita30(this);" onkeyup="limita30(this);" value="" required>
                         <span class="icon is-small is-left">
                              <i class="fas fa-users"></i>
                         </span>
                     </div>
                 </div>
-
-
 
 
                 <div class="control">
@@ -98,11 +89,24 @@
                     </div>
                 </div>
             </form>
-        <div class="control">
-            <div class="field">
-                <button type="submit" class="button is-link">Voltar para a ordem de servico</button>volta para a Ordem de Servico com a lista de apropriações de hora
-            </div>
+    </div>
+
+<!-- Botão para voltar para a tela de servico -->
+ <form id="form_cadastro" action="http://<?php echo APP_HOST; ?>/apropriacao/ServicoTela" method="POST">
+
+    <div class="field">
+        <div class="control has-icons-left">
+        <input type="hidden" class="input" name="os-codigo" placeholder="" value="<?php echo $this->getVar(); ?>">
         </div>
     </div>
+
+    <div class="control">
+        <div class="field">
+            <button type="submit" class="button is-link" >Voltar para Ordem de Servico</button>
+        </div>
+    </div>
+    </form>
+</div>
+
 </main>
 </section>

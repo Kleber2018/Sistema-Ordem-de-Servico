@@ -58,41 +58,32 @@ class ServicoDAO extends BaseDAO
 
 
     /*
-     * Para criar um código para a OSE no padrão Ex: QD:026
+     * Para criar um código para a OSE no padrão Ex: QD:26
      */
     public function geraCodOse($loc)
     {
-        $this->vr = str_split($loc,2);
-        
-        $this->vr2 = $this->vr[0];
+        $this->vr = str_split($loc,2);//separa a string em um vetor com duas letras Ex: AX BM
+        $this->vr2 = $this->vr[0];//Atribui o valor do primeiro vetor na vr2 por exemplo AX
        
         try {
             $query = $this->select(
                 "SELECT OS_CODIGO FROM SMIOS WHERE OS_CODIGO like '$this->vr2%' order by OS_CODIGO DESC LIMIT 1"
             );
 
-            //se retornar uma linha no select ele pega esse resultado e aumenta mais 9 para gerar o código da OSE Ex:qd:045
-           
-            if($query->execute()){
-                $this->codigosOse = $query->fetch();
-                 $this->vr = explode(":",$this->codigosOse['OS_CODIGO']);
-                // echo  '</br> dentro do if';
-                 //var_dump($this->vr['1']);
-                $this->codNumero = intval($this->vr['1']+9);
-                //echo 'dentro do if';
-                //$this->codLetra = $this->vr[0];
-            } else {//caso nao retorne resultado é pq nao existe ordem de servico para aquele localizador então ele cria um com numero 01, ex. OQ:01
-               // $this->vr = str_split($loc,2);
-               // $this->codLetra = $this->vr[0];
-                $this->codNumero = 01;
+            $this->codigosOse = $query->fetch();
+            $this->vr = explode(":",$this->codigosOse['OS_CODIGO']);
+            $this->codNumero = intval($this->vr['1']+9);
+            
+            //se for == a 9 significa que não existe nenhuma OS por esse motivo inicie no número 18
+            if($this->codNumero == 9){
+                $this->codNumero = 18;
             }
-             return  ($this->vr2.':'.$this->codNumero);//Retornando no padrão Ex QD:023
+             return  ($this->vr2.':'.$this->codNumero);//Retornando no padrão Ex QD:23
 
         }catch (Exception $e){
             throw new \Exception("Erro no acesso aos dados.", 500);
         }
     }
-
 
     //busca as informações do Serviço pelo codigo informado na View buscaServico.php para a View ServicoTela
     public function buscaOrdemServico($cod)

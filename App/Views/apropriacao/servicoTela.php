@@ -17,10 +17,10 @@
 
 
 
-
         <label for="localizador-os-codigo" class="label" >Ordem de Servico: <?php echo $serv->getOsCodigo(); ?></label>
         <div class="field is-grouped">
-        <form id="form_cadastro" action="http://<?php echo APP_HOST; ?>/apropriacao/excluirServico" method="POST">
+            <div class="control">
+                <form id="form_cadastro" action="http://<?php echo APP_HOST; ?>/apropriacao/excluirServico" method="POST">
                     <div>
                         <div class="control is-expanded is-disabled">
                             <input type="hidden" class="input" name="os-codigo" placeholder="" value="<?php echo $serv->getOsCodigo(); ?>">
@@ -29,41 +29,43 @@
                     </br>            
                     <div class="control">
                         <div class="field">
-                            <button type="submit" class="button is-link <?php if (!$_SESSION['admin']) echo "is-hidden"; ?>" >Excluir</button> <!--Implementar: esse botão para excluir a Ordem de Serviço-->
+                            <button type="submit" class="button is-link <?php if (!$_SESSION['admin']) echo "is-hidden"; ?>" >Excluir</button>
                         </div>
                     </div>
-        </form>            
-        <div class="control">
-	    <form id="form_cadastro" action="http://<?php echo APP_HOST; ?>/apropriacao/informarNaoRealizacao" method="POST">
-                      <div>
-                        <div class="control is-expanded is-disabled">
-                            <input type="hidden" class="input" name="os-codigo" placeholder="" value="<?php echo $serv->getOsCodigo(); ?>">
-                        </div>
-                    </div>                  
-                </br>
-            <!--Redireciona para ServicoController function servicoApropriacaoHH-->
+                </form>  
+            </div>          
             <div class="control">
-                <div class="field">
-                    <button type="submit" class="button is-link <?php if ($serv->getOsStatus() == 'NÃO EXECUTADO') echo "is-hidden"; ?>" >Informar não Realização</button>
-                </div>
-            </div>
-        </form>
-        </div>
-	
-		 <form id="form_cadastro" action="http://<?php echo APP_HOST; ?>/apropriacao/informarRealizacao" method="POST">             
-                      <div class="field is-grouped">
-                        <div class="control is-expanded is-disabled">
-                            <input type="hidden" class="input" name="os-codigo" placeholder="" value="<?php echo $serv->getOsCodigo(); ?>">
+                <form id="form_cadastro" action="http://<?php echo APP_HOST; ?>/apropriacao/informarNaoRealizacao" method="POST">
+                            <div>
+                                <div class="control is-expanded is-disabled">
+                                    <input type="hidden" class="input" name="os-codigo" placeholder="" value="<?php echo $serv->getOsCodigo(); ?>">
+                                </div>
+                            </div>                  
+                        </br>
+                    <!--Redireciona para ServicoController function servicoApropriacaoHH-->
+                    <div class="control">
+                        <div class="field">
+                            <button type="submit" class="button is-link <?php if ($serv->getOsStatus() == 'NÃO EXECUTADO') echo "is-hidden"; ?>" >Informar não Realização</button>
                         </div>
-                    </div>                  
-                </br>
-            <!--Redireciona para ServicoController function servicoApropriacaoHH-->
-            <div class="control">
-                <div class="field">
-            <button type="submit" class="button is-link <?php if ($serv->getOsStatus() == 'EXECUTADO') echo "is-hidden"; ?>" >Informar Realização</button>
-                </div>
+                    </div>
+                </form>
             </div>
-        </form>
+            <div class="control">
+                <form id="form_cadastro" action="http://<?php echo APP_HOST; ?>/apropriacao/informarRealizacao" method="POST">             
+                            <div>
+                                <div class="control is-expanded is-disabled">
+                                    <input type="hidden" class="input" name="os-codigo" placeholder="" value="<?php echo $serv->getOsCodigo(); ?>">
+                                </div>
+                            </div>                  
+                        </br>
+                    <!--Redireciona para ServicoController function servicoApropriacaoHH-->
+                    <div class="control">
+                        <div class="field">
+                    <button type="submit" class="button is-link <?php if ($serv->getOsStatus() == 'EXECUTADO') echo "is-hidden"; ?>" >Informar Realização</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
     
     </div>
 	

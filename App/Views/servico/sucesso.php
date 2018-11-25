@@ -8,7 +8,7 @@
         <br/>
     </nav>
         <div class="content">
-            <h1>Localizador <?php echo $Sessao::retornaValorFormulario('os-titulo');?> cadastrado com sucesso.</h1>
+            <h1>Serviço <?php echo $Sessao::retornaValorFormulario('os-titulo');?> cadastrado com sucesso.</h1>
             <a href="http://<?php echo APP_HOST; ?>/servico/servicoCadastro" class="button is-info">Voltar</a>
         </div>
 </main>

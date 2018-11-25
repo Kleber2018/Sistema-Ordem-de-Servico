@@ -34,7 +34,7 @@
                         echo "<td>".$servico->getOsLocalizacao()."</td>";
                         echo "<td>".$servico->getOsResponsavel()."</td>";
                         echo "<td>".$servico->getOsTipo()."</td>";
-                        echo "<td>".$servico->getOsObs()."</td>";
+                        echo '<td>'.$servico->getOsObs()."</td>";
                         echo "<td>".$servico->getOsStatus()."</td>";
                         echo "<td>".$servico->getOsaData()."</td>";
                         echo "</tr>";

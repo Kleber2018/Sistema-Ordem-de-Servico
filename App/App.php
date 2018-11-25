@@ -161,9 +161,10 @@ class App
             "config"=>"configuracoes"
         ];
 
-            
+            //Verifica se existe um Get
         if ( isset( $_GET['url'] ) ) {
 
+            //a entrada do Get é usado o array associativo $rotas para alterar o get para uma rota correta
             $verificador = $rotas[$_GET['url']];
             // echo '</br> teste';
             // var_dump($verificador);
