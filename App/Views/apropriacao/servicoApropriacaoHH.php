@@ -8,13 +8,10 @@
         <br/>
     </nav>
 
-
-
     <div class="content">
             <!-- < ?php if($Sessao::retornaMensagem()){ ?>
                 <div class="alert alert-warning" role="alert">< ?php echo $Sessao::retornaMensagem(); ?></div>
             < ?php } ? > -->
-
                         
             <form action="http://<?php echo APP_HOST; ?>/apropriacao/salvarApropriacaoHH" method="post" id="form_cadastro">
                 <label for="data-ose" class="label"><h2> Ordem de Serviço <?php echo $this->getVar(); ?></h2></label></br>
@@ -25,9 +22,7 @@
                     </div>
                 </div>
 
-
-
-            <div class="field">
+                <div class="field">
                 <label for="data-apropriacao" class="label">Data da Apropriação de Horas</label>
                     <div class="control has-icons-left">
                         <input name="data-apropriacao" type="date" class="input">
@@ -47,8 +42,6 @@
                     </div>
                 </div>
 
-
-
                 <div class="field">
                     <label for="hora-final" class="label">Hora Final</label>
                     <div class="control has-icons-left">
@@ -59,8 +52,7 @@
                     </div>
                 </div>
 
-
-                               <div class="field">
+               <div class="field">
                     <label for="tipo-os" class="label">Tipo de Apontamento</label>
                     <div class="select">
                         <select name="tipo-os">
@@ -69,8 +61,6 @@
                         </select>
                     </div>
                 </div>
-
-
 
                 <div class="field">
                     <label for="responsavel-ose" class="label">Responsável</label>
@@ -82,7 +72,6 @@
                     </div>
                 </div>
 
-
                 <div class="control">
                     <div class="field">
                         <button type="submit" class="button is-link">Salvar Apropriação</button>
@@ -92,19 +81,19 @@
     </div>
 
 <!-- Botão para voltar para a tela de servico -->
- <form id="form_cadastro" action="http://<?php echo APP_HOST; ?>/apropriacao/ServicoTela" method="POST">
+    <form id="form_cadastro" action="http://<?php echo APP_HOST; ?>/apropriacao/ServicoTela" method="POST">
 
-    <div class="field">
-        <div class="control has-icons-left">
-        <input type="hidden" class="input" name="os-codigo" placeholder="" value="<?php echo $this->getVar(); ?>">
-        </div>
-    </div>
-
-    <div class="control">
         <div class="field">
-            <button type="submit" class="button is-link" >Voltar para Ordem de Servico</button>
+            <div class="control has-icons-left">
+            <input type="hidden" class="input" name="os-codigo" placeholder="" value="<?php echo $this->getVar(); ?>">
+            </div>
         </div>
-    </div>
+
+        <div class="control">
+            <div class="field">
+                <button type="submit" class="button is-link" >Voltar para Ordem de Servico</button>
+            </div>
+        </div>
     </form>
 </div>
 

@@ -13,11 +13,7 @@
                 <div class="alert alert-warning" role="alert">< ?php echo $Sessao::retornaMensagem(); ?></div>
             < ?php } ?> -->
 
-
-
             <form action="http://<?php echo APP_HOST; ?>/localizador/salvar" method="post" id="form_cadastro">
-
-
 
                 <label for="localizador-codigo" class="label" >Código do localizador</label>
                 <div class="field is-grouped">
@@ -26,8 +22,7 @@
                         <span class="icon is-small is-left">
                                 <i class="fas fa-map-marker-alt"></i>
                             </span>
-                    </div>
-                   
+                    </div>                   
                 </div>
 
 

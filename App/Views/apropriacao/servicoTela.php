@@ -20,7 +20,7 @@
         <label for="localizador-os-codigo" class="label" >Ordem de Servico: <?php echo $serv->getOsCodigo(); ?></label>
         <div class="field is-grouped">
             <div class="control">
-                <form id="form_cadastro" action="http://<?php echo APP_HOST; ?>/apropriacao/excluirServico" method="POST">
+                <form id="form_cadastro" action="http://<?php echo APP_HOST; ?>/servico/excluirServico" method="POST">
                     <div>
                         <div class="control is-expanded is-disabled">
                             <input type="hidden" class="input" name="os-codigo" placeholder="" value="<?php echo $serv->getOsCodigo(); ?>">

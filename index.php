@@ -18,7 +18,7 @@
         translate.process(); 
     }
     </script>
- 
+
 </head>
 <?php
 

@@ -75,7 +75,19 @@ class ServicoController extends Controller
             }
     }
 
-   
+    //utilizado pela telaServico para excluir a Ordem de Serviço
+    public function excluirServico()
+    {
+        $servicoDAO = new ServicoDAO();
+        $Servico = new Servico();
+
+            if($servicoDAO->deletando($_POST['os-codigo'])){
+                $this->redirect('/');
+            }else {
+                echo 'erro ao gravar';
+                //Sessao::gravaMensagem("Erro ao gravar");
+            }
+    }
 
     public function sucesso()
     {
@@ -92,6 +104,7 @@ class ServicoController extends Controller
         // }
     }
 
+    //para montar a view servicoCadastro no controller
     public function index()
     {
         $localizadorDAO = new localizadorDAO();

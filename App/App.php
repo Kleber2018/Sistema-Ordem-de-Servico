@@ -47,6 +47,7 @@ class App
     }
 
 
+    //Monta o controller apartir dos parâmetros repassados pela função url
     public function run()
     {
         //Para começar uma sessão válida

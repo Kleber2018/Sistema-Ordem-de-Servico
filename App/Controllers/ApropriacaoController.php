@@ -50,7 +50,6 @@ class ApropriacaoController extends Controller
             $apropriacoes = $servicoDAO->listarApropriacao($_POST['os-codigo']);
         }
        
-
         //Verifica se o cod informado na view servicoBusca existe
         if($Servico->getOsCodigo()){
             $this->setVar($Servico);
@@ -67,6 +66,7 @@ class ApropriacaoController extends Controller
         // Sessao::limpaMensagem();
     }
 
+    //Utilizado pela função ServicoApropriacaoHH (logo abaixo) depois que a apropriação foi salva, para abrir a tela da Ordem de Serviço
     public function ApropriacaoSucesso($cod)
     {
         $servicoDAO = new ServicoDAO();
@@ -117,19 +117,9 @@ class ApropriacaoController extends Controller
                 //Sessao::gravaMensagem("Erro ao gravar");
             }
     }
-    public function excluirServico()
-    {
-        $servicoDAO = new ServicoDAO();
-        $Servico = new Servico();
+    
 
-            if($servicoDAO->deletando($_POST['os-codigo'])){
-                $this->redirect('/servico/sucesso');
-            }else {
-                echo 'erro ao gravar';
-                //Sessao::gravaMensagem("Erro ao gravar");
-            }
-    }
-
+    //utilizado pela View servicoTela para alterar o Status da Ordem de Servico para Realizada
     public function informarRealizacao()
     {
         $servicoDAO = new ServicoDAO();
@@ -149,7 +139,8 @@ class ApropriacaoController extends Controller
                 //Sessao::gravaMensagem("Erro ao gravar");
             }
     }
-	
+
+	//utilizado pela View servicoTela para alterar o Status da Ordem de Servico para Não Realizada
     public function informarNaoRealizacao()
     {
         $servicoDAO = new ServicoDAO();
@@ -170,7 +161,7 @@ class ApropriacaoController extends Controller
     }
 
 
-    //utilizado pelo botão excluir da apropriação de horas da view ServicoTela
+    //Utilizado pela view ServicoTela para excluir uma apropriação de horas
     public function exclusaoApropriacao($cod){
 
         $apropriacaoDAO = new ApropriacaoDAO();
@@ -198,6 +189,7 @@ class ApropriacaoController extends Controller
         // }
     }
 
+    
     public function index()
     {
         $this->redirect('/apropriação/servicoBusca');
