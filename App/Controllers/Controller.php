@@ -2,7 +2,7 @@
 
 namespace App\Controllers;
 
-use App\Lib\Sessao;
+// use App\Lib\Sessao;
 use App\Models\Entidades\Servico;
 use App\Models\Entidades\Dados;
 
@@ -30,7 +30,7 @@ abstract class Controller
             $this->checaAutenticacao($segundosDeslogar);
         }
         $viewVar = $this->getViewVar();
-        $Sessao  = Sessao::class;
+        //$Sessao  = Sessao::class;
 
        // $serv = $this->getServ(); //precisa estar aki dentro para popular os compos dentro da view
 

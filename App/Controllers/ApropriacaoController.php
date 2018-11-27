@@ -2,7 +2,7 @@
 
 namespace App\Controllers;
 
-use App\Lib\Sessao;
+// use App\Lib\Sessao;
 use App\Models\DAO\ApropriacaoDAO;
 use App\Models\DAO\ServicoDAO;
 use App\Models\Entidades\Servico;
@@ -15,11 +15,11 @@ class ApropriacaoController extends Controller
     public function render($view)
     {
         if ($_SESSION['lembrar'] != "on"){
-            $segundosDeslogar = 5; // Deslogar se a última requisição for maior que X segundos
+            $segundosDeslogar = 10; // Deslogar se a última requisição for maior que X segundos
             $this->checaAutenticacao($segundosDeslogar);
         }
  
-        $Sessao  = Sessao::class;
+        //$Sessao  = Sessao::class;
        $serv = $this->getVar(); //precisa estar aki dentro para popular os compos dentro da view
       
         
@@ -38,11 +38,18 @@ class ApropriacaoController extends Controller
     }
 
     //Function é chamada pelo App.php com o codigo passados pela View servicoBusca.php
-    public function servicoTela()
+    public function servicoTela($cod = null)
     {
         $servicoDAO = new ServicoDAO();
-        $Servico = $servicoDAO->buscaOrdemServico($_POST['os-codigo']);//envia para o servicoDAO o codigo informado na tela servicoBusca e retorna um objeto Servico
-        $apropriacoes = $servicoDAO->listarApropriacao($_POST['os-codigo']);
+        //para separar entrada Via POST e via function
+        if(isset($cod)){
+            $Servico = $servicoDAO->buscaOrdemServico($cod);//envia para o servicoDAO o codigo informado na tela servicoBusca e retorna um objeto Servico
+            $apropriacoes = $servicoDAO->listarApropriacao($cod);
+        }else{
+            $Servico = $servicoDAO->buscaOrdemServico($_POST['os-codigo']);//envia para o servicoDAO o codigo informado na tela servicoBusca e retorna um objeto Servico
+            $apropriacoes = $servicoDAO->listarApropriacao($_POST['os-codigo']);
+        }
+       
 
         //Verifica se o cod informado na view servicoBusca existe
         if($Servico->getOsCodigo()){
@@ -106,7 +113,8 @@ class ApropriacaoController extends Controller
 
                 //$this->redirect('/servico/sucesso');
             }else{
-                Sessao::gravaMensagem("Erro ao gravar");
+                echo 'erro ao gravar';
+                //Sessao::gravaMensagem("Erro ao gravar");
             }
     }
     public function excluirServico()
@@ -117,7 +125,8 @@ class ApropriacaoController extends Controller
             if($servicoDAO->deletando($_POST['os-codigo'])){
                 $this->redirect('/servico/sucesso');
             }else {
-                Sessao::gravaMensagem("Erro ao gravar");
+                echo 'erro ao gravar';
+                //Sessao::gravaMensagem("Erro ao gravar");
             }
     }
 
@@ -133,9 +142,11 @@ class ApropriacaoController extends Controller
 			'SMIOS',"OS_STATUS = :OS_STATUS",[':OS_STATUS'=>$Servico->getOsStatus(), ':OS_CODIGO'=>$Servico->getOsCodigo()],"OS_CODIGO = :OS_CODIGO"
 			)
 			){
-                $this->redirect('/servico/sucesso');
+                $this->servicoTela($Servico->getOsCodigo());//para retornar na tela de serviço
+               
             }else{
-                Sessao::gravaMensagem("Erro ao gravar");
+                echo 'erro ao gravar';
+                //Sessao::gravaMensagem("Erro ao gravar");
             }
     }
 	
@@ -151,9 +162,10 @@ class ApropriacaoController extends Controller
 			'SMIOS',"OS_STATUS = :OS_STATUS",[':OS_STATUS'=>$Servico->getOsStatus(), ':OS_CODIGO'=>$Servico->getOsCodigo()],"OS_CODIGO = :OS_CODIGO"
 			)
 			){
-                $this->redirect('/servico/sucesso');
+                $this->servicoTela($Servico->getOsCodigo());//para retornar a tela do serviço
             }else{
-                Sessao::gravaMensagem("Erro ao gravar");
+                echo 'erro ao gravar';
+                //Sessao::gravaMensagem("Erro ao gravar");
             }
     }
 
@@ -176,14 +188,14 @@ class ApropriacaoController extends Controller
     //abre uma view informando que a apropriacao foi adcionada com sucesso
     public function sucesso()
     {
-        if(Sessao::retornaValorFormulario('os-titulo')) {
+        //if(Sessao::retornaValorFormulario('os-titulo')) {
             $this->render('/servico/sucesso');
 
-            Sessao::limpaFormulario();
-            Sessao::limpaMensagem();
-        }else{
-            $this->redirect('/');
-        }
+            //Sessao::limpaFormulario();
+           // Sessao::limpaMensagem();
+        // }else{
+        //     $this->redirect('/');
+        // }
     }
 
     public function index()

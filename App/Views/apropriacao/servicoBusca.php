@@ -10,9 +10,9 @@
 
 
     <div class="content">
-            <?php if($Sessao::retornaMensagem()){ ?>
-                <div class="alert alert-warning" role="alert"><?php echo $Sessao::retornaMensagem(); ?></div>
-            <?php } ?>
+            <!-- < ?php if($Sessao::retornaMensagem()){ ?>
+                <div class="alert alert-warning" role="alert">< ?php echo $Sessao::retornaMensagem(); ?></div>
+            < ?php } ?> -->
 
 
 

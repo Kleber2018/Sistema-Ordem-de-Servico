@@ -2,7 +2,7 @@
 
 namespace App\Controllers;
 
-use App\Lib\Sessao;
+// use App\Lib\Sessao;
 use App\Models\DAO\UsuarioDAO;
 use App\Models\Entidades\Usuario;
 
@@ -32,7 +32,7 @@ class UsuarioController extends Controller
             $Usuario->setAdmin(0);
         }
 
-        Sessao::gravaFormulario($_POST);
+        // Sessao::gravaFormulario($_POST);
 
         $usuarioDAO = new UsuarioDAO();
 
@@ -46,20 +46,23 @@ class UsuarioController extends Controller
         if($usuarioDAO->salvar($Usuario)){
             $this->redirect('/usuario/sucesso');
         }else{
-            Sessao::gravaMensagem("Erro ao gravar");
+            echo 'Erro ao gravar';
+            //Sessao::gravaMensagem("Erro ao gravar");
         }
     }
     
     public function sucesso()
     {
-        if(Sessao::retornaValorFormulario('usuario-nome')) {
-            $this->render('/usuario/sucesso');
 
-            Sessao::limpaFormulario();
-            Sessao::limpaMensagem();
-        }else{
-            $this->redirect('/');
-        }
+        $this->render('/usuario/sucesso');
+        // if(Sessao::retornaValorFormulario('usuario-nome')) {
+        //     $this->render('/usuario/sucesso');
+
+        //     Sessao::limpaFormulario();
+        //     Sessao::limpaMensagem();
+        // }else{
+        //     $this->redirect('/');
+        // }
     }
 
     public function index()

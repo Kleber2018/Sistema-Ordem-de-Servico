@@ -11,7 +11,7 @@ class LoginController extends Controller
 
     public function renderLogin()
     {
-        $Sessao  = Sessao::class;
+        //$Sessao  = Sessao::class;
         // require_once PATH . '/App/Views/layouts/header.php';
         // require_once PATH . '/App/Views/layouts/menu.php';
         require_once PATH . '/App/Views/login/login.php';
@@ -19,7 +19,7 @@ class LoginController extends Controller
 
     public function index()
     {
-        $Sessao  = Sessao::class;
+        //$Sessao  = Sessao::class;
         // require_once PATH . '/App/Views/layouts/header.php';
         // require_once PATH . '/App/Views/layouts/menu.php';
         require_once PATH . '/App/Views/login/login.php';

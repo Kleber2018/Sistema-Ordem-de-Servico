@@ -2,7 +2,7 @@
 
 namespace App\Controllers;
 
-use App\Lib\Sessao;
+// use App\Lib\Sessao;
 
 class ConfiguracoesController extends Controller
 {

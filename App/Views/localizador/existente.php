@@ -8,7 +8,7 @@
         <br/>
     </nav>
         <div class="content">
-            <h1>Localizador <?php echo $Sessao::retornaValorFormulario('loc-titulo');?> Código já existe.</h1>
+            <h1>Localizador Código já existe.</h1>
             <a href="http://<?php echo APP_HOST; ?>/localizador/localizadorCadastro" class="button is-info">Voltar</a>
         </div>
 </main>

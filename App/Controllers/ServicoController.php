@@ -1,7 +1,7 @@
 <?php
 namespace App\Controllers;
 
-use App\Lib\Sessao;
+// use App\Lib\Sessao;
 use App\Models\DAO\ServicoDAO;
 use App\Models\DAO\LocalizadorDAO;
 use App\Models\Entidades\Servico;
@@ -65,12 +65,13 @@ class ServicoController extends Controller
         $Servico->setOsObs($_POST['os-obs']);
         $Servico->setDataPrevista($_POST['data-ose-prevista']);
         
-        Sessao::gravaFormulario($_POST);
+        //Sessao::gravaFormulario($_POST);
 
             if($servicoDAO->salvar($Servico)){
                 $this->redirect('/servico/sucesso');
             }else{
-                Sessao::gravaMensagem("Erro ao gravar");
+                echo 'erro ao gravar';
+                //Sessao::gravaMensagem("Erro ao gravar");
             }
     }
 
@@ -78,15 +79,17 @@ class ServicoController extends Controller
 
     public function sucesso()
     {
-        if(Sessao::retornaValorFormulario('os-titulo')) {
-            $this->render('/servico/sucesso');
+        
+        $this->render('/servico/sucesso');
+        // if(Sessao::retornaValorFormulario('os-titulo')) {
+        //     $this->render('/servico/sucesso');
 
-            Sessao::limpaFormulario();
-            Sessao::limpaMensagem();
-        }else{
+        //     Sessao::limpaFormulario();
+        //     Sessao::limpaMensagem();
+        // }else{
             
-            $this->redirect('/');
-        }
+        //     $this->redirect('/');
+        // }
     }
 
     public function index()

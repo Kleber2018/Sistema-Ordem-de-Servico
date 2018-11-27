@@ -2,7 +2,7 @@
 
 namespace App\Controllers;
 
-use App\Lib\Sessao;
+//use App\Lib\Sessao;
 use App\Models\DAO\ServicoDAO;
 use App\Models\Entidades\Servico;
 use App\Models\Entidades\Dados;
