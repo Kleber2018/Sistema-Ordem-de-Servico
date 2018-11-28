@@ -2,8 +2,6 @@
 
 namespace App\Controllers;
 
-// use App\Lib\Sessao;
-
 class ConfiguracoesController extends Controller
 {
     public function index()
@@ -12,13 +10,4 @@ class ConfiguracoesController extends Controller
        $this->render('/configuracoes/configuracoesTela');
 
     }
-
-    // public function configuracoesTela()
-    // {
-    //     $this->render('/configuracoes/configuracoesTela');
-
-    //     Sessao::limpaFormulario();
-    //     Sessao::limpaMensagem();
-    // }
-
 }

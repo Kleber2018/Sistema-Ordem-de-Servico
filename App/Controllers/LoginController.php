@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Controllers;
 
 use App\Models\DAO\UsuarioDAO;
@@ -7,21 +6,13 @@ use App\Models\Entidades\Usuario;
 
 class LoginController extends Controller
 {
-
-
     public function renderLogin()
     {
-        //$Sessao  = Sessao::class;
-        // require_once PATH . '/App/Views/layouts/header.php';
-        // require_once PATH . '/App/Views/layouts/menu.php';
         require_once PATH . '/App/Views/login/login.php';
     }
 
     public function index()
     {
-        //$Sessao  = Sessao::class;
-        // require_once PATH . '/App/Views/layouts/header.php';
-        // require_once PATH . '/App/Views/layouts/menu.php';
         require_once PATH . '/App/Views/login/login.php';
     }
 
@@ -54,14 +45,12 @@ class LoginController extends Controller
         }    
     }
 
-
     /**
      * Destruir a session e redirecionar para / que na Clase App direciona para login.php
      */
     public function deslogar(){
         session_start();
         $logado = $_SESSION["logado"];
-        //$usuario = $_SESSION["usuario"];
 
         if($logado == "true"){
             session_destroy();

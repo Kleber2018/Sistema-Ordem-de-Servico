@@ -1,8 +1,6 @@
 <?php
-
 namespace App\Controllers;
 
-// use App\Lib\Sessao;
 use App\Models\DAO\LocalizadorDAO;
 use App\Models\Entidades\Localizador;
 
@@ -10,11 +8,7 @@ class LocalizadorController extends Controller
 {
     public function localizadorCadastro()
     {
-
         $this->render('/localizador/localizadorCadastro');
-
-        //Sessao::limpaFormulario();
-       // Sessao::limpaMensagem();
     }
 
     public function salvar()
@@ -24,8 +18,6 @@ class LocalizadorController extends Controller
         $Localizador->setLocTitulo($_POST['loc-titulo']);
         $Localizador->setLocEquipe($_POST['loc-equipe']);
 
-        //Sessao::gravaFormulario($_POST);
-
         $localizadorDAO = new LocalizadorDAO();
 
          if($localizadorDAO->verificaCodIgual($Localizador->getLocCodigo())){
@@ -34,8 +26,7 @@ class LocalizadorController extends Controller
             if($localizadorDAO->salvar($Localizador)){
                 $this->redirect('/localizador/sucesso');
             }else{
-                //$this->redirect('/localizador/exitente');
-                //Sessao::gravaMensagem("Erro ao gravar");
+                echo "Erro ao gravar";
             }
         }
     }
@@ -44,32 +35,11 @@ class LocalizadorController extends Controller
     public function sucesso()
     {
         $this->render('/localizador/sucesso');
-        
-        // if(Sessao::retornaValorFormulario('loc-titulo')) {
-        //     $this->render('/localizador/sucesso');
-
-        //     Sessao::limpaFormulario();
-        //     Sessao::limpaMensagem();
-        // }else{
-            
-        //     $this->redirect('/');
-        // }
     }
-
 
     public function existente()
     {
         $this->render('/localizador/existente');
-
-        // if(Sessao::retornaValorFormulario('loc-titulo')) {
-        //     $this->render('/localizador/existente');
-
-        //     //Sessao::limpaFormulario();
-        //     //Sessao::limpaMensagem();
-        // }else{
-            
-        //     $this->redirect('/');
-        // }
     }
 
 

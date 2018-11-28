@@ -1,8 +1,6 @@
 <?php
-
 namespace App\Controllers;
 
-// use App\Lib\Sessao;
 use App\Models\DAO\ApropriacaoDAO;
 use App\Models\DAO\ServicoDAO;
 use App\Models\Entidades\Servico;
@@ -19,10 +17,8 @@ class ApropriacaoController extends Controller
             $this->checaAutenticacao($segundosDeslogar);
         }
  
-        //$Sessao  = Sessao::class;
        $serv = $this->getVar(); //precisa estar aki dentro para popular os compos dentro da view
       
-        
         require_once PATH . '/App/Views/layouts/header.php';
         require_once PATH . '/App/Views/layouts/menu.php';
         require_once PATH . '/App/Views/layouts/aside.php';
@@ -54,16 +50,11 @@ class ApropriacaoController extends Controller
         if($Servico->getOsCodigo()){
             $this->setVar($Servico);
             $this->setVar2($apropriacoes);
-
             $this->render('/apropriacao/servicoTela');
         } else {
             $this->setBuscado($_POST['os-codigo']);
-
             $this->render('/apropriacao/servicoInexistente');
         }
-
-        // Sessao::limpaFormulario();
-        // Sessao::limpaMensagem();
     }
 
     //Utilizado pela função ServicoApropriacaoHH (logo abaixo) depois que a apropriação foi salva, para abrir a tela da Ordem de Serviço
@@ -77,11 +68,9 @@ class ApropriacaoController extends Controller
         if($Servico->getOsCodigo()){
             $this->setVar($Servico);
             $this->setVar2($apropriacoes);
-
             $this->render('/apropriacao/servicoTela');
         } else {
             $this->setBuscado($cod);
-
             $this->render('/apropriacao/servicoInexistente');
         }
 
@@ -110,11 +99,8 @@ class ApropriacaoController extends Controller
 
             if($servicoDAO->salvarApropriacao($Servico)){
                 $this->ApropriacaoSucesso($_POST['os-codigo']);//para abrir a view da Ordem de Serviço
-
-                //$this->redirect('/servico/sucesso');
             }else{
                 echo 'erro ao gravar';
-                //Sessao::gravaMensagem("Erro ao gravar");
             }
     }
     
@@ -136,7 +122,6 @@ class ApropriacaoController extends Controller
                
             }else{
                 echo 'erro ao gravar';
-                //Sessao::gravaMensagem("Erro ao gravar");
             }
     }
 
@@ -156,7 +141,6 @@ class ApropriacaoController extends Controller
                 $this->servicoTela($Servico->getOsCodigo());//para retornar a tela do serviço
             }else{
                 echo 'erro ao gravar';
-                //Sessao::gravaMensagem("Erro ao gravar");
             }
     }
 
@@ -167,11 +151,8 @@ class ApropriacaoController extends Controller
         $apropriacaoDAO = new ApropriacaoDAO();
 
         if(!$apropriacaoDAO->excluir($cod[0])){
-            //Sessao::gravaMensagem("Produto inexistente");
             $this->redirect('/');
         }
-
-        //Sessao::gravaMensagem("Apropriação excluido com sucesso!");
 
        $this->redirect('/');
     }
@@ -179,31 +160,13 @@ class ApropriacaoController extends Controller
     //abre uma view informando que a apropriacao foi adcionada com sucesso
     public function sucesso()
     {
-        //if(Sessao::retornaValorFormulario('os-titulo')) {
             $this->render('/servico/sucesso');
-
-            //Sessao::limpaFormulario();
-           // Sessao::limpaMensagem();
-        // }else{
-        //     $this->redirect('/');
-        // }
     }
 
-    
     public function index()
     {
         $this->redirect('/apropriação/servicoBusca');
     }
-
-    //utilizado dentro da View servicoTela
-    // public function getServ()
-    // {
-    //     return $this->serv;
-    // }
-    // public function setServ(Servico $serv)
-    // {
-    //     $this->serv = $serv;
-    // }
 
   //utilizado pela view servicoInexistente
     public function getBuscado()

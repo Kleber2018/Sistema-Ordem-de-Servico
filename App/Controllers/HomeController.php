@@ -24,6 +24,7 @@ class HomeController extends Controller
        $this->render('home/index');
     }
 
+    //para intenacionalização
     public function en()
     {
         unset ($_SESSION['idioma']);
@@ -31,6 +32,7 @@ class HomeController extends Controller
         $this->index();
     }
 
+    //para intenacionalização
     public function ptbr()
     {
         unset ($_SESSION['idioma']);

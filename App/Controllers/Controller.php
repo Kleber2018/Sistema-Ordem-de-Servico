@@ -1,11 +1,8 @@
 <?php
-
 namespace App\Controllers;
 
-// use App\Lib\Sessao;
 use App\Models\Entidades\Servico;
 use App\Models\Entidades\Dados;
-
 
 abstract class Controller
 {
@@ -14,13 +11,10 @@ abstract class Controller
     private $var; //variavel para ser usada nas view
     private $var2; //variavel2 para ser usada nas view
     
-
-
     public function __construct($app)
     {
         $this->setViewParam('nameController',$app->getControllerName());
     }
-
 
     //monta a página
     public function render($view)
@@ -30,9 +24,6 @@ abstract class Controller
             $this->checaAutenticacao($segundosDeslogar);
         }
         $viewVar = $this->getViewVar();
-        //$Sessao  = Sessao::class;
-
-       // $serv = $this->getServ(); //precisa estar aki dentro para popular os compos dentro da view
 
         require_once PATH . '/App/Views/layouts/header.php';
         require_once PATH . '/App/Views/layouts/menu.php';
@@ -52,15 +43,12 @@ abstract class Controller
         return $this->viewVar;
     }
 
-
-
     public function setViewParam($varName, $varValue)
     {
         if ($varName != "" && $varValue != "") {
             $this->viewVar[$varName] = $varValue;
         }
     }
-
 
     public function checaAutenticacao($segundosDeslogar){
         if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > $segundosDeslogar)) {
@@ -85,7 +73,6 @@ abstract class Controller
     {
         $this->var = $var;
     }
-
 
     // /**
     //  * Variável 2 para ser usada nas views
