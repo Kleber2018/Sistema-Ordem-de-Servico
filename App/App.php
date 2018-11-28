@@ -54,7 +54,17 @@ class App
         $logado = $_SESSION["logado"];
             //echo '</br> função run </br>';
             //var_dump($this->controller);
-
+        
+        
+        
+        //para caso ele tente informar uma palavra na url e não esteja logado vai redirecionarpara login
+        /*
+            if($logado == "false"){
+                home/index
+                $this->controller  = 'home';
+                $this->action    =  'index';
+            }
+*/
             //recebe o nome da pasta e add a palavra Pontroller
             if ($this->controller) {
                 if($logado == "true"){
