@@ -6,24 +6,6 @@ use App\Models\Entidades\Usuario;
 
 class UsuarioDAO extends BaseDAO
 {
-    
-    //não usado?
-    // public function verificaEmail($email)
-    // {
-    //     try {
-
-    //         $query = $this->select(
-    //             "SELECT * FROM usuario WHERE email = '$email' "
-    //         );
-
-    //         return $query->fetch();
-
-    //     }catch (Exception $e){
-    //         throw new \Exception("Erro no acesso aos dados.", 500);
-    //     }
-    // }
-
-
     //Salva um novo usuário para Login
     public  function salvar(Usuario $usuario) {
         try {
@@ -49,7 +31,6 @@ class UsuarioDAO extends BaseDAO
     {
         try {
             $sql = "SELECT * FROM SMIFN WHERE FN_CODIGO = '" . $usuario->getFnCodigo() ."' AND SENHA = '" . $usuario->getFnSenha() . "'";
-            //echo $sql . "<br/>";
             $query = $this->select($sql);
             return $query->fetch();
 
@@ -57,11 +38,4 @@ class UsuarioDAO extends BaseDAO
             throw new \Exception("Erro no acesso aos dados no dao usuario.", 500);
         }
     }
-
-    public function listaUsuarios(){
-
-        
-
-    }
-
 }

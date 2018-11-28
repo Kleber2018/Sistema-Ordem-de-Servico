@@ -8,23 +8,17 @@ use App\Models\Entidades\Dados;
 class ServicoDAO extends BaseDAO
 {
     private $codigosOse;
-
     //para ser usado na funcão geraCodOse, Ex: QD:023
     private $codLetra; //QD
     private $codNumero;//023
 
-    //private $vr;//verificador para depurar
-
+    //Utilizado pela view ServicoTela para excluir uma ordem de servico
     public  function deletando($cod){
-
         try {
             return $this->delete('SMIOS',"OS_CODIGO = '$cod'");
-
        }catch (Exception $e){
-
            throw new \Exception("Erro ao deletar $e", 500);
        }
-
     }
 
 
@@ -89,7 +83,6 @@ class ServicoDAO extends BaseDAO
     public function buscaOrdemServico($cod)
     {
         $servico = new Servico();
-
         try {
             $query = $this->select(
                 "SELECT OS_CODIGO, OS_TITULO, LOC_CODIGO, OS_NOME_RESP, OS_TIPO, OS_OBS, OS_STATUS, OS_DATA_P, FN_CODIGO FROM SMIOS WHERE OS_CODIGO = '$cod'"
@@ -106,10 +99,6 @@ class ServicoDAO extends BaseDAO
             $servico->setOsStatus($retorno->OS_STATUS);
             $servico->setDataPrevista($retorno->OS_DATA_P);
             $servico->setfnCodigo($retorno->FN_CODIGO);
-            
-            // echo "<pre>";
-            // var_dump ($servico);
-            // echo "</pre>";
 
             return  $servico;//Retornando o objeto servico
 
@@ -120,9 +109,7 @@ class ServicoDAO extends BaseDAO
 
     public  function salvarApropriacao(Servico $servico)
     {
-       
         try {
-           
             //Função Insert da baseDAO
             return $this->insert(
                 'SMIOSA',
@@ -136,7 +123,6 @@ class ServicoDAO extends BaseDAO
                     ':TA_CODIGO'=>$servico->getOsaTipoApropriacao()
                 ]
             );//INSERT INTO SMIOSA(OS_CODIGO, OS_DATA, OS_AP_FIM, TA_CODIGO, FN_CODIGO) VALUES ('AX:9', '2018-11-10', '14:01:16', 'HN', 'KLEBER');
-
 
         }catch (\Exception $e){
             throw new \Exception("Erro na gravação de dados dentro do ServicoDAO da Apropriação.", 500);
@@ -177,7 +163,6 @@ class ServicoDAO extends BaseDAO
     public function listaServicosPendentes()
     {
         $servicos = array();
-
         try {
             $query = $this->select(
                 "SELECT OS_CODIGO, OS_TITULO, LOC_CODIGO, OS_NOME_RESP, OS_TIPO, OS_OBS, OS_STATUS, OS_DATA_P FROM SMIOS WHERE OS_STATUS  = 'PENDENTE'"
@@ -203,13 +188,10 @@ class ServicoDAO extends BaseDAO
         }
     }
 
-
-
-
+    //utilizado pelo RelatorioController para listar os servios já executados na view Relatorios
     public function listaServicosExecutados()
     {
         $servicos = array();
-
         try {
             $query = $this->select(
                 "SELECT OS_CODIGO, OS_TITULO, LOC_CODIGO, OS_NOME_RESP, OS_TIPO, OS_OBS, OS_STATUS, OS_DATA_P FROM SMIOS WHERE OS_STATUS  LIKE '%EXECUTADO%'"
@@ -235,9 +217,7 @@ class ServicoDAO extends BaseDAO
         }
     }
 
-
-
-
+    //utilizado pelo HomeControler para contar as Ordens de serviço que vão ser utilizadas no gráfico da tela home e tela Relatórios
     public function retornaDadosGrafProdut($s)
     {
         $dado = new Dados();
@@ -255,8 +235,6 @@ class ServicoDAO extends BaseDAO
             while ($retorno = $query -> fetchObject()) {
                                 
                 $dado->setOsTipo($retorno->OS_TIPO);
-
-               
 
                 switch($retorno->OS_TIPO){
                     case 'PNS':
@@ -277,9 +255,7 @@ class ServicoDAO extends BaseDAO
                     default:
                     $dado->setOsvalor($retorno->$vr);
                 }
-
             }
-
             $d = array(
                 'pns' => $dado->getOspns(),
                 'ceg' => $dado->getOsceg(),
@@ -288,44 +264,9 @@ class ServicoDAO extends BaseDAO
                 'mem' => $dado->getOsmem()
             );
 
-
             return $d;
         }catch (\Exception $e){
             throw new \Exception("Erro na gravação de dados dentro do ServicoDAO lista serviços pendentes.", 500);
         }
     }
-
-
-
-    
-
-
-
 }
-
-/*
-CREATE TABLE SMIOSA (
-OS_CODIGO VARCHAR(8) PRIMARY KEY,
-OS_DATA DATETIME,
-OS_AP_FIM NUMERIC(5),
-OS_AP_INI NUMERIC(5),
-TA_CODIGO VARCHAR(10),
-FN_CODIGO VARCHAR(10)
-);
-
-CREATE TABLE SMIOS (
-OS_CODIGO VARCHAR(8) PRIMARY KEY,
-OS_OBS VARCHAR(60),
-OS_DATA_P DATETIME,
-OS_NOME_RESP VARCHAR(20),
-OS_TIPO VARCHAR(3),
-OS_TITULO VARCHAR(120),
-OS_DATA_R DATETIME,
-OS_UO_EQUIPE VARCHAR(7),
-OS_STATUS VARCHAR(15),
-ADIC_DATA DATE,
-LOC_CODIGO CHAR(12),
-FN_CODIGO VARCHAR(10),
-EEM_CODIGO CHAR(12),
-ADIC_OPER VARCHAR(10)
-);*/

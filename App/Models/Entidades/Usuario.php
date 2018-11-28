@@ -9,7 +9,6 @@ class Usuario
     private $fn_senha;
     private $admin;
 
-
     public function getAdmin()
     {
         return $this->admin;

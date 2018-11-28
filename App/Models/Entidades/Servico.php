@@ -67,7 +67,6 @@ class Servico
 
     public function setDataPrevista($dataPrevista)
     {
-
         $this->os_dataPrevista = $dataPrevista;
     }
 

@@ -10,9 +10,6 @@ class LocalizadorDAO extends BaseDAO
     //salva os dados do formulário da View/usuario/cadastro
     public  function salvar(Localizador $localizador) {
         try {
-
-           // $nome      = $usuario->getNome();
-            //$email     = $usuario->getEmail();
             return $this->insert(
                 'smicl',
                 ":loc_codigo, :loc_titulo, :loc_equipe",
@@ -36,13 +33,11 @@ class LocalizadorDAO extends BaseDAO
     public function verificaCodIgual($cod)
     {
         try {
-
             $query = $this->select(
                 "SELECT * FROM SMICL WHERE LOC_CODIGO = '$cod' "
             );
 
             return $query->fetch();
-
         }catch (Exception $e){
             throw new \Exception("Erro no acesso aos dados.", 500);
         }
@@ -81,5 +76,4 @@ class LocalizadorDAO extends BaseDAO
             return $localizadores;
         }
     }  
-
 }
