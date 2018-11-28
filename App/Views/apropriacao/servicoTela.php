@@ -8,15 +8,7 @@
         <br/>
     </nav>
 
-
     <div class="content">
-            <!--< ?php if($Sessao::retornaMensagem()){ ?>
-                <div class="alert alert-warning" role="alert">< ?php echo $Sessao::retornaMensagem(); ?></div>
-            < ?php } ?> -->
-
-
-
-
         <label for="localizador-os-codigo" class="label" >Ordem de Servico: <?php echo $serv->getOsCodigo(); ?></label>
         <div class="field is-grouped">
             <div class="control">
@@ -66,12 +58,9 @@
                     </div>
                 </form>
             </div>
-    
     </div>
 	
-
         <form id="form_cadastro" action="http://<?php echo APP_HOST; ?>/apropriacao/ServicoApropriacaoHH" method="POST">
-
                 
                       <div class="field is-grouped">
                         <div class="control is-expanded is-disabled">
@@ -114,8 +103,6 @@
                         </div>
                     </div>
 
-
-
                     <div class="field">
                         <label for="tipo-os" class="label">Tipo</label>
                         <div class="control has-icons-left">
@@ -127,9 +114,8 @@
                                 <option><?php echo $serv->getOsTipo(); ?></option>
                             </select>
                         </div>
+            </div>
         </div>
-                    </div>
-
 
                     <div class="field">
                     <label for="data-ose-prevista" class="label">Data Prevista</label>
@@ -140,7 +126,6 @@
                             </span>
                         </div>
                     </div>
-
 
                     <div class="field">
                         <label for="titulo-os" class="label">Título da ordem de Serviço</label>
@@ -173,9 +158,6 @@
     </form>
     </div>
               
-
-
-
 <?php if($this->getVar2()):?><!--PARA OCULTAR A TABELA CASO NÃO TENHA APROPRIAÇÃO DE HORAS-->
     <table class="table">
         <thead>

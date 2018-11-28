@@ -8,8 +8,6 @@
             <h1>Tela Inicial do software de Manutenção Eletromecânica</h1>
     </div>
 
-
-
 <?php if($this->getVar()):?><!--PARA OCULTAR A TABELA CASO NÃO TENHA ORDENS DE SERVIÇO-->
     <table class="table">
         <thead>
@@ -49,12 +47,7 @@
         <h2>Nenhuma Ordem de Serviço Pendente</h2>
     </div>
 
-
 <?php endif; ?>
-
-
-
-
 
 
 <html>
@@ -92,9 +85,6 @@
     <div id="piechart" style="width: 800px; height: 500px;"></div>
   </body>
 </html>
-
-
-
 
 </main>
 </section>

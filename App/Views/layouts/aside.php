@@ -7,7 +7,6 @@
         <li class="menu-item"><a <?php if($viewVar['nameController'] == "ApropriacaoController") { ?> class="is-active" <?php } ?> href="http://<?php echo APP_HOST; ?>/apropriacao/servicoBusca"><i class="fas fa-briefcase"></i> <span data-tag="servico"></span></a></li>
             <li><a><span class="icon is-small"><i class="fas fa-edit"></i></span> <span data-tag="cadastros"></span></a>
               <ul>
-                  <!-- <li class="menu-item"><a>Equipamentos</a></li> -->
                   <li class="menu-item"><a <?php if($viewVar['nameController'] == "LocalizadorController") { ?> class="is-active" <?php } ?> href="http://<?php echo APP_HOST; ?>/localizador/localizadorCadastro"><span data-tag="localizadores"></span></a></li>
                   <li class="menu-item <?php if (!$_SESSION['admin']) echo "is-hidden"; ?>"><a <?php if($viewVar['nameController'] == "ServicoController") { ?> class="is-active" <?php } ?> href="http://<?php echo APP_HOST; ?>/servico/servicoCadastro"><span data-tag="tarefas"></span></a></li>
                 </ul>

@@ -17,7 +17,6 @@ class App
     public  $controllerName;
     public static $driver;
 
-
     public function __construct()
     {
         /*
@@ -97,6 +96,7 @@ class App
                 $this->controller = new HomeController($this);
                 $this->controller->index();
             } else {
+                print_r('dentro do login');
                 $this->controller = new LoginController($this);
                 $this->controller->renderLogin();
             }
@@ -137,7 +137,7 @@ class App
             $objetoController->index($this->params);
             return;
         } else {
-            throw new Exception("Nosso suporte já esta verificando desculpe!", 500);
+            throw new Exception("ERRO 500 - Digite um endereço válido", 500);
         }
         throw new Exception("Página não encontrada.", 404);
     }

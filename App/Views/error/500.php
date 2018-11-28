@@ -1,4 +1,4 @@
-<!-- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt">
 <head>
     <meta charset="utf-8">
@@ -13,4 +13,4 @@
         <h1 class="error"><?php echo $varMessage; ?></h1>
     </div>
 <!-- </body>
-</html> -->
+</html>

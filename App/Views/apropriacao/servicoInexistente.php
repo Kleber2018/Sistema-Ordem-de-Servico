@@ -8,7 +8,7 @@
         <br/>
     </nav>
         <div class="content">
-            <h2>Não encontrado o serviço com o código: <b><?php echo $this->getBuscado();/*$Sessao::retornaValorFormulario('loc-titulo');*/?></b></h2>
+            <h2>Não encontrado o serviço com o código: <b><?php echo $this->getBuscado(); ?></b></h2>
             <a href="http://<?php echo APP_HOST; ?>/apropriacao/servicoBusca" class="button is-info">Voltar</a>
         </div>
 </main>

@@ -9,10 +9,7 @@
     </nav>
 
     <div class="content">
-            <!-- < ?php if($Sessao::retornaMensagem()){ ?>
-                <div class="alert alert-warning" role="alert">< ?php echo $Sessao::retornaMensagem(); ?></div>
-            < ?php } ? > -->
-                        
+                                 
             <form action="http://<?php echo APP_HOST; ?>/apropriacao/salvarApropriacaoHH" method="post" id="form_cadastro">
                 <label for="data-ose" class="label"><h2> Ordem de Serviço <?php echo $this->getVar(); ?></h2></label></br>
                 <div class="field">

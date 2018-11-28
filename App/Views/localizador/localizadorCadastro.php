@@ -8,13 +8,7 @@
         <br/>
     </nav>
     <div class="content">
-
-            <!-- < ?php if($Sessao::retornaMensagem()){ ?>
-                <div class="alert alert-warning" role="alert">< ?php echo $Sessao::retornaMensagem(); ?></div>
-            < ?php } ?> -->
-
             <form action="http://<?php echo APP_HOST; ?>/localizador/salvar" method="post" id="form_cadastro">
-
                 <label for="localizador-codigo" class="label" >Código do localizador</label>
                 <div class="field is-grouped">
                     <div class="control has-icons-left is-expanded">
@@ -25,7 +19,6 @@
                     </div>                   
                 </div>
 
-
                 <div class="field">
                     <label for="localizacao-titulo" class="label">Título do localizador</label>
                     <div class="control has-icons-left">
@@ -35,7 +28,6 @@
                         </span>
                     </div>
                 </div>
-
 
                 <div class="field">
                     <label for="equipe" class="label">Equipe Responsável Pelo Localizador</label>
@@ -56,4 +48,3 @@
             </form>
         </div>
 </main>
-<!--</section>-->

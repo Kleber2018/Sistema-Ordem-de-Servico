@@ -8,14 +8,8 @@
         <br/>
     </nav>
 
-
     <div class="content">
-            <!-- < ?php if($Sessao::retornaMensagem()){ ?>
-                <div class="alert alert-warning" role="alert">< ?php echo $Sessao::retornaMensagem(); ?></div>
-            < ?php } ?> -->
-
             <form action="http://<?php echo APP_HOST; ?>/servico/salvar" method="post" id="form_cadastro">
-
 
                 <label for="localizador-os-codigo" class="label" >Código do localizador</label>
         <div class="field">
@@ -44,8 +38,6 @@
                         </span>
                     </div>
                 </div>
-
-
 
                 <div class="field">
                     <label for="tipo-os" class="label">Tipo</label>

@@ -41,12 +41,3 @@
 
 </head>
 <body onLoad="load('<?php echo $_SESSION['idioma']; ?>')"> 
-<!-- < ?php 
-    //Atribuindo a língua escolhida
-    // $str = file_get_contents("http://" . APP_HOST . "/public/lang/pt-br.json");
-
-    // //$str = file_get_contents("http://" . APP_HOST . "/public/lang/" . $idioma . ".json");
-    // $json = json_decode($str, true);
-    // // echo '<br/>' . $idioma;
-    // // echo '<br/>' . '<pre>' . print_r($json, true) . '</pre>';
-? > -->

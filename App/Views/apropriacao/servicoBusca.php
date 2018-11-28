@@ -8,17 +8,7 @@
         <br/>
     </nav>
 
-
     <div class="content">
-            <!-- < ?php if($Sessao::retornaMensagem()){ ?>
-                <div class="alert alert-warning" role="alert">< ?php echo $Sessao::retornaMensagem(); ?></div>
-            < ?php } ?> -->
-
-
-
-
-
-
         <form id="form_cadastro" action="http://<?php echo APP_HOST; ?>/apropriacao/ServicoTela" method="POST">
 
                     <div class="field">
@@ -31,7 +21,6 @@
                         </div>
                     </div>
 
-
                 </br>
 
             <!--Redireciona para ServicoController function servicoApropriacaoHH-->
@@ -42,9 +31,6 @@
                 </div>
             </form>
         </div>
-
-
-
 
 </main>
 </section>
