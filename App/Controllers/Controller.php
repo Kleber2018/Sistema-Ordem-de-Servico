@@ -20,7 +20,7 @@ abstract class Controller
     public function render($view)
     {
         if ($_SESSION['lembrar'] != "on"){
-            $segundosDeslogar = 10; // Deslogar se a última requisição for maior que X segundos
+            $segundosDeslogar = TEMPO; // Deslogar se a última requisição for maior que X segundos
             $this->checaAutenticacao($segundosDeslogar);
         }
         $viewVar = $this->getViewVar();

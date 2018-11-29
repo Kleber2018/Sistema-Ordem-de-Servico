@@ -28,14 +28,15 @@ class App
          if (isset ($_SESSION['databaseDriver'])) self::$driver = $_SESSION['databaseDriver'];
          else self::$driver = 'mysql';
               
-        define('APP_HOST'       , $_SERVER['HTTP_HOST'] . "/projeto-final");
+        define('APP_HOST'       , $_SERVER['HTTP_HOST'] . "/projeto-final");//a pasta do projeto precisa ter esse mesmo nome
         define('PATH'           , realpath('./'));//para poder gerenciar os diretorios internos da aplicação
         define('TITLE'          , "Projeto Final de PHP");
         define('DB_HOST'        , "localhost");
-        define('DB_USER'        , "root");
-        define('DB_PASSWORD'    , "");
-        define('DB_NAME'        , "ProjetoWebServidor");
+        define('DB_USER'        , "root");//usuario no BD
+        define('DB_PASSWORD'    , "");//senha do BD
+        define('DB_NAME'        , "ProjetoWebServidor");//nome do BD
         define('DB_DRIVER'      , self::$driver);
+        define('TEMPO'          , 10);//Tempo para desconectar por inatividade (Caso não tenha habilitado o Lembre-me)
 
         $this->url();
     }
@@ -48,63 +49,30 @@ class App
 
     //Monta o controller apartir dos parâmetros repassados pela função url
     public function run()
-    {
-        //Para começar uma sessão válida
-        
+    {  
         $logado = $_SESSION["logado"];
-            //echo '</br> função run </br>';
-            //var_dump($this->controller);
-        
-        // var_dump($logado);
-        
-        // //para caso ele tente informar uma palavra na url e não esteja logado vai redirecionarpara login
-        // var_dump($this->action);
-        // var_dump($this->controller);
-            // if(empty($logado)){
-            //     // $this->controller  = "home";//atribuindo valor da posição 0 na variavel controller
-            //     // $this->action      = "index";//
-            //     echo '<br> dentro';
-            //     $this->setController('login');
-            //     $this->setAction('index');
-            //     var_dump($this->action);
-            //     var_dump($this->controller);
-            // }
-
-            //recebe o nome da pasta e add a palavra Pontroller
-            if ($this->controller) {
-                if($logado == "true"){
-                    $this->controllerName = ucwords($this->controller) . 'Controller';//ucwords - retorna a primeira letra em maiuscula
-                    $this->controllerName = preg_replace('/[^a-zA-Z]/i', '', $this->controllerName); //pesquisa por uma expressão regular
-                } else {
-                    $this->controllerName = "LoginController";
-                }
+      
+        //recebe o nome da pasta e add a palavra Controller
+        if ($this->controller) {
+            if($logado == "true"){
+                $this->controllerName = ucwords($this->controller) . 'Controller';//ucwords - retorna a primeira letra em maiuscula
+                $this->controllerName = preg_replace('/[^a-zA-Z]/i', '', $this->controllerName); //pesquisa por uma expressão regular
             } else {
-                if($logado == "true"){
-                    session_start();
-                    $this->controllerName = "HomeController";
-                } else {
-                    $this->controllerName = "LoginController";
-                }
+                $this->controllerName = "LoginController";
             }
-
+        } else {
+            if($logado == "true"){
+                session_start();
+                $this->controllerName = "HomeController";
+            } else {
+                $this->controllerName = "LoginController";
+            }
+        }
 
         $this->controllerFile   = $this->controllerName . '.php';
         $this->action           = preg_replace('/[^a-zA-Z]/i', '', $this->action);
 
-
-
-            // echo '</br> controller ';
-            // var_dump($this->controller);
-            // echo '</br>';
-            // var_dump(!$this->controller);
-            // echo '</br> file ';
-            // var_dump($this->controllerFile);
-            // echo '</br> action';
-            // var_dump($this->action);
-            // echo '</br>';
-
- 
-        //Nesse momento  ele abre as páginas
+        //se controller for null ele direciona para home ou index
         if (!$this->controller) {
             //Verifica se está logado para direcionar para tela inicial ou login
             if($logado == "true"){
@@ -121,23 +89,9 @@ class App
             throw new Exception("Página não encontrada.", 404);
         }
 
-/*
-        echo '</br>nome da classe';
-        var_dump($this->controllerName);
-*/
-
-        //não entendi esse aki
+        //instanciando a classe controller específica
         $nomeClasse     = "\\App\\Controllers\\" . $this->controllerName;
         $objetoController = new $nomeClasse($this);
-
-
-
-    //     var_dump($objetoController);
-    //     echo '</br> nome classe:  ';
-    //    var_dump($nomeClasse);
-    //     echo '</br> Parametro:';
-    //     var_dump($this->params);
-
 
         //Se o controller não existir lança exceção
         if (!class_exists($nomeClasse)) {
@@ -179,63 +133,17 @@ class App
         ];
 
         $logado = $_SESSION["logado"];
-        //echo '</br> função run </br>';
-        //var_dump($this->controller);
-    echo '<br>';
-        var_dump($logado);
-        echo '<br>';
-
-        // if(empty($logado)){
-        //         // $this->controller  = "home";//atribuindo valor da posição 0 na variavel controller
-        //         // $this->action      = "index";//
-        //         echo '<br> dentro';
-        //         $this->setController('login');
-        //         $this->setAction('index');
-        //         var_dump($this->action);
-        //         var_dump($this->controller);
-        //     }
-
-
-
-
 
             //Verifica se existe um Get
         if ( isset( $_GET['url'] ) ) {
-            
-            // if(empty($logado)){
-            //     //a entrada do Get é usado o array associativo $rotas para alterar o get para uma rota correta
-            //     $verificador = $rotas[strtolower($_GET['url'])];//strtollower transforma tudo em minusculo
-            // } else {
-            //     $verificador = $rotas['home/index'];
-            // }
-
-
             if(isset($verificador)){
                 $path = $verificador;
-                // echo 'dentro do if'; 
             } else {
                 $path = $_GET['url'];
-                // echo 'fora do if'; 
             }
-    
-
-            // echo '</br>';
-            // var_dump($path);
             $path = rtrim($path, '/');//limpando os espaços em branco no final da String
-
-            // echo '</br>';
-            // var_dump($path);
             $path = filter_var($path, FILTER_SANITIZE_URL); //verifica se a url é no padrão url
-
             $path = explode('/', $path);
-            // echo '</br>';
-            // var_dump($path[0]);
-            // echo '</br> 1: ';
-            //  var_dump($path[1]);
-
-            // echo '</br> 2: ';
-            // var_dump($path[2]);
-            // echo '</br> 2: ';
 
             $this->controller  = $this->verificaArray( $path, 0 );//atribuindo valor da posição 0 na variavel controller
             $this->action      = $this->verificaArray( $path, 1 );// atribuindo valor na action
@@ -244,10 +152,7 @@ class App
             if ( $this->verificaArray( $path, 2 ) ) {
                 unset( $path[0] );//destroi a prosição 0
                 unset( $path[1] );//destroi a posição 1
-                // var_dump($path);
                 $this->params = array_values( $path );
-
-                // var_dump($this->params);
             }
         }
     }
