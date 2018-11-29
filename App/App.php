@@ -55,16 +55,21 @@ class App
             //echo '</br> função run </br>';
             //var_dump($this->controller);
         
+        // var_dump($logado);
         
-        
-        //para caso ele tente informar uma palavra na url e não esteja logado vai redirecionarpara login
-        /*
-            if($logado == "false"){
-                home/index
-                $this->controller  = 'home';
-                $this->action    =  'index';
-            }
-*/
+        // //para caso ele tente informar uma palavra na url e não esteja logado vai redirecionarpara login
+        // var_dump($this->action);
+        // var_dump($this->controller);
+            // if(empty($logado)){
+            //     // $this->controller  = "home";//atribuindo valor da posição 0 na variavel controller
+            //     // $this->action      = "index";//
+            //     echo '<br> dentro';
+            //     $this->setController('login');
+            //     $this->setAction('index');
+            //     var_dump($this->action);
+            //     var_dump($this->controller);
+            // }
+
             //recebe o nome da pasta e add a palavra Pontroller
             if ($this->controller) {
                 if($logado == "true"){
@@ -155,6 +160,7 @@ class App
     //para url amigavel
     public function url () {
 
+        //relação de rotas utilizaveis
         $rotas = [
             "home/index" => "home/index",
             "index" => "home/index",
@@ -172,14 +178,38 @@ class App
             "config"=>"configuracoes"
         ];
 
+        $logado = $_SESSION["logado"];
+        //echo '</br> função run </br>';
+        //var_dump($this->controller);
+    echo '<br>';
+        var_dump($logado);
+        echo '<br>';
+
+        // if(empty($logado)){
+        //         // $this->controller  = "home";//atribuindo valor da posição 0 na variavel controller
+        //         // $this->action      = "index";//
+        //         echo '<br> dentro';
+        //         $this->setController('login');
+        //         $this->setAction('index');
+        //         var_dump($this->action);
+        //         var_dump($this->controller);
+        //     }
+
+
+
+
+
             //Verifica se existe um Get
         if ( isset( $_GET['url'] ) ) {
-
-            //a entrada do Get é usado o array associativo $rotas para alterar o get para uma rota correta
-            $verificador = $rotas[$_GET['url']];
-            // echo '</br> teste';
-            // var_dump($verificador);
             
+            // if(empty($logado)){
+            //     //a entrada do Get é usado o array associativo $rotas para alterar o get para uma rota correta
+            //     $verificador = $rotas[strtolower($_GET['url'])];//strtollower transforma tudo em minusculo
+            // } else {
+            //     $verificador = $rotas['home/index'];
+            // }
+
+
             if(isset($verificador)){
                 $path = $verificador;
                 // echo 'dentro do if'; 
@@ -240,6 +270,16 @@ class App
     public function getParams()
     {
         return $this->params;
+    }
+
+    public function setController($c)
+    {
+        $this->controller = $c;
+    }
+
+    public function setAction($a)
+    {
+        $this->action = $a;
     }
 
     //verificando se o array existe
