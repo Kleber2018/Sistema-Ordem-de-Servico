@@ -1,4 +1,3 @@
-DROP DATABASE ProjetoWebServidor;
 CREATE DATABASE ProjetoWebServidor;
 USE ProjetoWebServidor;
 
