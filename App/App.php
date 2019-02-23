@@ -32,9 +32,9 @@ class App
         define('PATH'           , realpath('./'));//para poder gerenciar os diretorios internos da aplicação
         define('TITLE'          , "Projeto Final de PHP");
         define('DB_HOST'        , "localhost");
-        define('DB_USER'        , "root");//usuario no BD
-        define('DB_PASSWORD'    , "");//senha do BD
-        define('DB_NAME'        , "ProjetoWebServidor");//nome do BD
+        define('DB_USER'        , "u435110360_kl");//usuario no BD
+        define('DB_PASSWORD'    , "76441533");//senha do BD
+        define('DB_NAME'        , "u435110360_os");//nome do BD
         define('DB_DRIVER'      , self::$driver);
         define('TEMPO'          , 1000);//Tempo para desconectar por inatividade (Caso não tenha habilitado o Lembre-me)
 
