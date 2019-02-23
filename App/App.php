@@ -36,7 +36,7 @@ class App
         define('DB_PASSWORD'    , "");//senha do BD
         define('DB_NAME'        , "ProjetoWebServidor");//nome do BD
         define('DB_DRIVER'      , self::$driver);
-        define('TEMPO'          , 10);//Tempo para desconectar por inatividade (Caso não tenha habilitado o Lembre-me)
+        define('TEMPO'          , 1000);//Tempo para desconectar por inatividade (Caso não tenha habilitado o Lembre-me)
 
         $this->url();
     }
