@@ -28,7 +28,7 @@ class App
          if (isset ($_SESSION['databaseDriver'])) self::$driver = $_SESSION['databaseDriver'];
          else self::$driver = 'mysql';
               
-        define('APP_HOST'       , $_SERVER['HTTP_HOST'] . "/os");//a pasta do projeto precisa ter esse mesmo nome
+        define('APP_HOST'       , $_SERVER['HTTP_HOST'] . "");//a pasta do projeto precisa ter esse mesmo nome
         define('PATH'           , realpath('./'));//para poder gerenciar os diretorios internos da aplicação
         define('TITLE'          , "Projeto Final de PHP");
         define('DB_HOST'        , "localhost");
