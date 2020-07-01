@@ -28,13 +28,13 @@ class App
          if (isset ($_SESSION['databaseDriver'])) self::$driver = $_SESSION['databaseDriver'];
          else self::$driver = 'mysql';
               
-        define('APP_HOST'       , $_SERVER['HTTP_HOST'] . "");//a pasta do projeto precisa ter esse mesmo nome
+        define('APP_HOST'       , $_SERVER['HTTP_HOST'] . "/OSE");//a pasta do projeto precisa ter esse mesmo nome
         define('PATH'           , realpath('./'));//para poder gerenciar os diretorios internos da aplicação
         define('TITLE'          , "Projeto Final de PHP");
         define('DB_HOST'        , "localhost");
-        define('DB_USER'        , "u435110360_kl");//usuario no BD
-        define('DB_PASSWORD'    , "76441533");//senha do BD
-        define('DB_NAME'        , "u435110360_os");//nome do BD
+        define('DB_USER'        , "kleber");//usuario no BD
+        define('DB_PASSWORD'    , "123");//senha do BD
+        define('DB_NAME'        , "projetowebservidor");//nome do BD
         define('DB_DRIVER'      , self::$driver);
         define('TEMPO'          , 1000);//Tempo para desconectar por inatividade (Caso não tenha habilitado o Lembre-me)
 
